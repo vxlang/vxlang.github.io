@@ -5,5 +5,5 @@ title: VXLANG
 
 # {{ page.title }}
 
-<img src="vxlang.gif" loop=infinite />
+<img src="image/vxlang.gif" loop=infinite />
 
