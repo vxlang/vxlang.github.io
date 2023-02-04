@@ -8,12 +8,16 @@ project:
   version: "0.8.9"
 
 collections:
-  api:
   guides:
     output: true
     permalink: "/:collection/:path/"
     title: Guides
     tab-order: 1
+  download:
+    output: true
+    permalink: "/:collection/:path/"
+    title: Download
+    tab-order: 2  
 
 highlighter: rouge
 permalink: pretty
