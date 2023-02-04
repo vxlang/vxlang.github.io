@@ -10,6 +10,7 @@ title: Introduction
       <img src="image/vxlang.gif" loop=infinite width="800" height="600" />
    </a>
 </div>
+<br>
   
 **Welcome to the vxlang page.**
   
@@ -18,7 +19,7 @@ The default version of vxlang is free and will support a service that adds virtu
   
 The free version of vxlang virtualization features and options include:
 ```
---opt-entry    :  Virtualize entry point.
+--opt-entry    : Virtualize entry point.
 --opt-call     : Virtualize function calls.
 --opt-ref-call : Virtualize reference calls.
 --opt-ref-ptr  : Virtualize the reference pointers.
