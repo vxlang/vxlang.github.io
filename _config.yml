@@ -2,10 +2,10 @@
 # default site settings
 # configure these values for your project
 project:
-  name: "{project_name}"
-  owner: "{project_owner}"
-  repo: "{project_repo}"
-  version: "{project_version}"
+  name: "vxlang"
+  owner: "vxlang"
+  repo: "https://vxlang.github.io/"
+  version: "0.8.9"
 
 collections:
   api:
