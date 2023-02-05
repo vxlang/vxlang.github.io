@@ -12,14 +12,14 @@ title: Overview
 </div>
 <br>
   
-##Overview
+## Overview
   
 **vxlang** is a anti-tamper project that supports code virtualization, obfuscation, and tampering detection.   
 The default version of vxlang is free and will support a service that adds virtual-cores and detections upon user request.  
   
 The current feature supports Windows native binary files (EXE/DLL) on x86-64 and will be expanded through updates.
 
-##Software Protector
+## Software Protector
   
 - **Code-Virtualization:**  
 ```
@@ -38,7 +38,7 @@ Detects actions such as debugging or process stoppage, or gathering information 
   
 The first goal is to ensure the stability and activation of all functions.
 
-##Version
+## Version
 
 0.8.9 
 ---
