@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 0.8.9 hotfix 1
+title: Download
 order: -1
 ---
 
