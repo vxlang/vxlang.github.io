@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Introduction
+title: Overview
 ---
 
 # {{ page.title }}
@@ -12,27 +12,64 @@ title: Introduction
 </div>
 <br>
   
-**Welcome to the vxlang page.**
+##Overview
   
 **vxlang** is a anti-tamper project that supports code virtualization, obfuscation, and tampering detection.   
 The default version of vxlang is free and will support a service that adds virtual-cores and detections upon user request.  
   
-The free version of vxlang virtualization features and options include:
+The current feature supports Windows native binary files (EXE/DLL) on x86-64 and will be expanded through updates.
+
+##Software Protector
+  
+- **Code-Virtualization:**  
 ```
---opt-entry    : Virtualize entry point.
---opt-call     : Virtualize function calls.
---opt-ref-call : Virtualize reference calls.
---opt-ref-ptr  : Virtualize the reference pointers.
---level        : Adjust the obfuscation level.
---opt-pack     : Add packing and protection codes.
+Clears known code and replaces it with unknown or meaningless code.
+``` 
+  
+- **Compress executable:**
+```
+Encrypts and hides the source file. Runtime access is required for source verification.
 ```
   
-Detection features and options are as follows:
+- **Detection of process access:**  
 ```
---opt-debug  : Detect process debugging. 
---opt-pause  : Detect process pause. 
---opt-patch  : Detect process memory patch.
---opt-handle : Detect read process.
+Detects actions such as debugging or process stoppage, or gathering information through handles.
 ```
+  
+The first goal is to ensure the stability and activation of all functions.
 
+##Version
 
+0.8.9 
+---
+- SDK release. 
+- Added extension module functionality. 
+- Add virtualization commands. 
+- Fixed a known bug.
+- Features will be added through hotfix updates. (ex. Packer control via extension module) 
+  - [Download](https://url.kr/xjvo2s) 
+
+~~0.8.8~~
+---
+- ~~Output a detection or error message box.~~ 
+- ~~Add detection method.~~ 
+- ~~Add Virtualization for Specific x86 Instruction.~~ 
+- ~~Fixed a known bug.~~ 
+  - ~~[Download](https://url.kr/i5eap1)~~ 
+
+~~0.8.7~~
+---
+- ~~Fixed reloc-table related bugs.~~ 
+- ~~Obfuscating the Jump table.~~ 
+- ~~Update obfuscation code.~~ 
+- ~~Improved compiler speed.~~ 
+  - [Download](https://url.kr/2e9r5g)
+
+~~0.8.6~~
+---
+~~Add Free Beta version, Add Detection Code, and Add Specific Code Virtualization Methods.~~  
+- ~~[DOWNLOAD](https://url.kr/y63wkf)~~  
+
+~~0.8.5~~
+---
+~~Add Free Beta version, Virtualization Tools, and Packers.~~
