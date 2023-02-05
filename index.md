@@ -5,9 +5,6 @@ title: Introduction
 
 # {{ page.title }}
 
-<!--
-<img src="그림주소" style="max-width: 100%; height: auto;"> 
--->
 <div align="center">
    <a href="https://vxlang.github.io/">
       <img src="image/vxlang.gif" loop=infinite style="max-width: 100%; height: auto;" />

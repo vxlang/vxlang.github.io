@@ -13,11 +13,16 @@ collections:
     permalink: "/:collection/:path/"
     title: Guides
     tab-order: 1
+  update:
+    output: true
+    permalink: "/:collection/:path/"
+    title: Update
+    tab-order: 2
   download:
     output: true
     permalink: "/:collection/:path/"
     title: Download
-    tab-order: 2  
+    tab-order: 3  
 
 highlighter: rouge
 permalink: pretty
