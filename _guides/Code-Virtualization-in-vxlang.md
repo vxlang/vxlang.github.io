@@ -10,7 +10,7 @@ order: 1
 The compiled code is then linked back to the executable.  
   
 <div align="center">
-      <img src="image/vxlang-1.png" loop=infinite style="max-width: 100%; height: auto;" />
+      <img src="../image/vxlang-1.png" loop=infinite style="max-width: 100%; height: auto;" />
 </div>
 <br>
 
