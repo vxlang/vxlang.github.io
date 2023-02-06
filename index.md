@@ -13,29 +13,34 @@ title: Overview
 <br>
   
 ## Overview
-  
-**vxlang** is a anti-tamper project that supports code virtualization, obfuscation, and tampering detection.   
-The default version of vxlang is free and will support a service that adds virtual-cores and detections upon user request.  
-  
-The current feature supports Windows native binary files (EXE/DLL) on x86-64 and will be expanded through updates.
+
+**vxlang** is an anti-tamper project to prevent static or dynamic analysis, file modification, and tampering from attackers.   
+Software that is dependent on the system is compiled and converted into machine language code. This is represented by a human-visible mnemonic.   
+
+The mnemonic can be found through the disassembler that fits the system, and additional information can be collected and restored to higher-level code.   This software analysis and modulation process is a reverse engineering activity, and the vxlang project supports services that prevent it.   
+   
+vxlang currently targets native binary files on x86-64 and Microsoft Windows systems(*.exe/*.dll).   
+The target binary type will be expanded through the update.   
 
 ## Software Protector
-  
-- **Code-Virtualization:**  
-  - Clears known code and replaces it with unknown or meaningless code.
-  
-- **Compress executable:**
-  - Encrypts and hides the source file. Runtime access is required for source verification.
-  
-- **Detection of process access:**  
-  - Detects actions such as debugging or process stoppage, or gathering information through handles.
- 
-- **Customization**
-  - The extansion module allows control of the protector.
- 
-The first mission is to ensure the stability and activation of all functions.
+
+Executable compression is a method of compressing files in an executable state. This compression state hides the source code and file information. In this state, the software protector blocks additional encryption and access in runtime state.    
+
+vxlang acts as a software protector, providing file modulation, code modulation, and dynamic analysis protection.   
+
+## Software Code obfuscation and virtualization
+
+The software protector blocks access to the encryption and runtime states, but has the weakness of exposing the source when the runtime state is dumped. Adding dummy code to the source code exposed in this static or dynamic state or modulating it with the same code is described as code obfuscation.
+
+Code virtualization is a way of representing real-world operational commands as virtual code and allowing them to operate on internal virtual machines. vxlang supports these obfuscation and virtualization services.
+
+## Step
+
+The first step is to ensure that all features supported by vxlang work reliably and support additional features.
 
 ## Special Thanks
+
+Thank you to everyone who helped with the development.
 
 - [2GG](https://twitter.com/2gg) 
 - [kao](https://lifeinhex.com/) 
