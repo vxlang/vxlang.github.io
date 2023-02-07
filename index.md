@@ -14,13 +14,11 @@ title: Overview
   
 ## Overview
 
-**vxlang** is an anti-tamper project to prevent static or dynamic analysis, file modification, and tampering from attackers.   
-Software that is dependent on the system is compiled and converted into machine language code. This is represented by a human-visible mnemonic.   
+**vxlang** is an anti-tamper project to prevent static or dynamic analysis, file modification, and tampering from attackers. Software that is dependent on the system is compiled and converted into machine language code. This is represented by a human-visible mnemonic.   
 
 The mnemonic can be found through the disassembler that fits the system, and additional information can be collected and restored to higher-level code.   This software analysis and modulation process is a reverse engineering activity, and the vxlang project supports services that prevent it.   
    
-vxlang currently targets native binary files on x86-64 and Microsoft Windows systems(*.exe/*.dll).   
-The target binary type will be expanded through the update.   
+vxlang currently targets native binary files on x86-64 and Microsoft Windows systems(*.exe/*.dll). The target binary type will be expanded through the update.   
 
 ## Software Protector
 
@@ -33,6 +31,21 @@ vxlang acts as a software protector, providing file modulation, code modulation,
 The software protector blocks access to the encryption and runtime states, but has the weakness of exposing the source when the runtime state is dumped. Adding dummy code to the source code exposed in this static or dynamic state or modulating it with the same code is described as code obfuscation.
 
 Code virtualization is a way of representing real-world operational commands as virtual code and allowing them to operate on internal virtual machines. vxlang supports these obfuscation and virtualization services.
+
+## Latest Version
+
+- 0.8.9.hotfix-1 
+  - SDK release. 
+  - Added extension module functionality. 
+  - Add virtualization commands. 
+  - Bug fix 
+  - Features will be added through hotfix updates (ex. Packer control via extansion module)  
+  - **hotfix-1**
+  - Modify virtualization algorithms for entry points
+  - Remove forced packing
+  - Remove Beta Message Box
+  - Fix Known Bugs
+    - [Download](https://vxlang.github.io/download/Download/#/download/) 
 
 ## Step
 
