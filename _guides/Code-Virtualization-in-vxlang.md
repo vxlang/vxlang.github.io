@@ -6,21 +6,25 @@ order: 1
 
 # {{ page.title }}
 
-**Virtualization of vxlang** is a form of writing and compiling virtualization-assembly code for the source code. 
-The compiled code is then linked back to the executable.  
-  
 <div align="center">
       <img src="https://vxlang.github.io/image/vxlang-1.png" loop=infinite style="max-width: 100%; height: auto;" />
 </div>
 <br>
 
-The target code block is specified using the SDK or address. 
+This page describes code virtualization in **vxlang**.   
+  
+vxlang interprets the source assembly code as assembly code for the virtual machine. Let me describe the assembly language used in this virtual machine as **IL**. This IL is a human-readable mnemonic form that allows code writing through this language. As a result of the above process, the converted IL is output, which is converted to byte code that can be interpreted by the virtual machine through the compilation system of vxlang. Finally, virtual machines are added through linkers in vxlang, and tasks such as contextual conversion to virtual machines and data relocation are performed. 
+  
+As you can see from the above, IL can support various machine codes and linkers can support different operating system file systems. 
 
-```cpp
-    VM_START; // ***
 
-    printf("Hello, World ! \n");
 
-    VM_END; // ***
-```
+
+
+
+
+
+
+  
+
 
