@@ -41,10 +41,10 @@ Code virtualization is a way of representing real-world operational commands as 
   - Bug fix 
   - Features will be added through hotfix updates (ex. Packer control via extansion module)  
   - **hotfix-1**
-  - Modify virtualization algorithms for entry points
-  - Remove forced packing
-  - Remove Beta Message Box
-  - Fix Known Bugs
+    - Modify virtualization algorithms for entry points
+    - Remove forced packing
+    - Remove Beta Message Box
+    - Fix Known Bugs
     - [Download](https://vxlang.github.io/download/Download/#/download/) 
 
 ## Step
