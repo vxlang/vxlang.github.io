@@ -25,7 +25,7 @@ The default SDK usage is as follows:
 ```cpp
     VM_START; // ***
 	
-    printf("Hello, World ! \n");
+    printf("Hello, World ! \n");                                   
 	
     VM_END; // ***
 ```
@@ -43,7 +43,7 @@ void VirtualizationTest() {
     VM_BEGIN;
 
     for (int i = 0; i < 10; ++i) {
-        printf("Hello, World! \n");
+        printf("Hello, World! \n");                                    
     }
 
     VM_END;
