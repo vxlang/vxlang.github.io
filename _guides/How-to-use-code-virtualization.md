@@ -6,20 +6,59 @@ order: -1
 
 # {{ page.title }}
 
-The free version of vxlang virtualization features and options include:
+**vxlang virtualization** is available via the **SDK** or **option**. Virtualization-related options include:
+
+## Option
+
+`--opt-entry` The option to calculate the last point based on the entry point of the executable file and to virtualize the area. `--opt-call` Option to virtualize call codes that move by relative address. `--opt-ref-call` Option to virtualize call commands that go to the specified address. A command that primarily refers to a function of an external module. `--opt-ref-ptr` Option to virtualize data reference commands at the specified address. It may be mainly a string reference.   
+
+The sample commands are as follows:  
+
 ```
---opt-entry    : Virtualize entry point.
---opt-call     : Virtualize function calls.
---opt-ref-call : Virtualize reference calls.
---opt-ref-ptr  : Virtualize the reference pointers.
---level        : Adjust the obfuscation level.
---opt-pack     : Add packing and protection codes.
+vxlang.exe ${input-file-path} --opt-entry --opt-call --opt-ref-call --opt-ref-ptr
 ```
-  
-Detection features and options are as follows:
+However, the optional function is an option during PoC and will be stabilized until the official version.  
+
+## SDK
+
+The default SDK usage is as follows:
+```cpp
+    VM_START; // ***
+	
+    printf("Hello, World ! \n");
+	
+    VM_END; // ***
 ```
---opt-debug  : Detect process debugging. 
---opt-pause  : Detect process pause. 
---opt-patch  : Detect process memory patch.
---opt-handle : Detect read process.
+
+If SDK is used, code optimization may remove the SDK function. Therefore, you can stabilize the application function by turning off the optimization as shown below.
+
+```cpp
+#include <stdio.h>
+#include <stdint.h>
+
+#include "../lib/vxlib.h"
+
+#pragma optimize("", off) 
+void VirtualizationTest() {
+    VM_BEGIN;
+
+    for (int i = 0; i < 10; ++i) {
+        printf("Hello, World! \n");
+    }
+
+    VM_END;
+}
+
+#pragma optimize("", on)
+int main() {
+    VirtualizationTest();
+
+    return 1;
+}
 ```
+The exact sample can be found in the path below.
+- https://github.com/vxlang/vxlang-page/tree/main/src
+
+
+
+
