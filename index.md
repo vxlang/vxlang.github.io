@@ -22,11 +22,17 @@ vxlang currently targets native binary files on x86-64 and Microsoft Windows sys
 
 ## Software Protector
 
-Executable compression is a method of compressing files in an executable state. This compression state hides the source code and file information. In this state, the software protector blocks additional encryption and access in runtime state.    
+<div align="center">
+   <img src="image/protector.png" loop=infinite style="max-width: 100%; height: auto;" />
+</div>
 
-vxlang acts as a software protector, providing file modulation, code modulation, and dynamic analysis protection.   
+Executable compression is a method of compressing files in an executable state. This compression state hides the source code and file information. In this state, the software protector blocks additional encryption and access in runtime state. vxlang acts as a software protector, providing file modulation, code modulation, and dynamic analysis protection.   
 
 ## Software Code obfuscation and virtualization
+
+<div align="center">
+   <img src="image/vcpu.png" loop=infinite style="max-width: 100%; height: auto;" />
+</div>
 
 The software protector blocks access to the encryption and runtime states, but has the weakness of exposing the source when the runtime state is dumped. Adding dummy code to the source code exposed in this static or dynamic state or modulating it with the same code is described as code obfuscation.
 

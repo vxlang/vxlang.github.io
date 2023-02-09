@@ -10,7 +10,11 @@ order: -1
 
 ## Option
 
-`--opt-entry` The option to calculate the last point based on the entry point of the executable file and to virtualize the area. `--opt-call` Option to virtualize call codes that move by relative address. `--opt-ref-call` Option to virtualize call commands that go to the specified address. A command that primarily refers to a function of an external module. `--opt-ref-ptr` Option to virtualize data reference commands at the specified address. It may be mainly a string reference.   
+- `--opt-entry` The option to calculate the last point based on the entry point of the executable file and to virtualize the area. 
+- `--opt-call` Option to virtualize call codes that move by relative address. 
+- `--opt-ref-call` Option to virtualize call commands that go to the specified address. 
+  - A command that primarily refers to a function of an external module. 
+- `--opt-ref-ptr` Option to virtualize data reference commands at the specified address. It may be mainly a string reference.   
 
 The sample commands are as follows:  
 
