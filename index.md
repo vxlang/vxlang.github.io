@@ -34,18 +34,18 @@ Code virtualization is a way of representing real-world operational commands as 
 
 ## Latest Version
 
-- 0.8.9.hotfix-1 
-  - SDK release. 
-  - Added extension module functionality. 
-  - Add virtualization commands. 
-  - Bug fix 
-  - Features will be added through hotfix updates (ex. Packer control via extansion module)  
-  - **hotfix-1**
-    - Modify virtualization algorithms for entry points
-    - Remove forced packing
-    - Remove Beta Message Box
-    - Fix Known Bugs
-    - [Download](https://vxlang.github.io/download/Download/#/download/) 
+0.8.9 
+---
+- SDK release. 
+- Added extension module functionality. 
+- Add virtualization commands. 
+- Bug fix 
+- Features will be added through hotfix updates (ex. Packer control via expansion module) 
+  - **Hotfix.2023.02.23**
+    - Fix virtualization algorithms for entry points
+	- Disable Forced Packing
+	- Fix Known Bugs
+  - [Download](https://url.kr/xjvo2s) 
 
 ## Step
 

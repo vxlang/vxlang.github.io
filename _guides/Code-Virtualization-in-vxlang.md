@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Code Virtualization in vxlang
-order: 1
+order: 2
 ---
 
 # {{ page.title }}

@@ -16,13 +16,8 @@ collections:
   update:
     output: true
     permalink: "/:collection/:path/"
-    title: Update
+    title: Version History
     tab-order: 2
-  download:
-    output: true
-    permalink: "/:collection/:path/"
-    title: Download
-    tab-order: 3  
 
 highlighter: rouge
 permalink: pretty
