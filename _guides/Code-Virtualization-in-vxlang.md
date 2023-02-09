@@ -31,7 +31,6 @@ Finally, virtual machines are added through linkers in vxlang, and tasks such as
 
 <div align="center">
       <img src="https://vxlang.github.io/image/link.png" loop=infinite style="max-width: 100%; height: auto;" />      
-      <img src="https://vxlang.github.io/image/vcpu.png" loop=infinite style="max-width: 100%; height: auto;" />
 </div>
 
 As you can see from the above, IL can support various machine codes and linkers can support different operating system file systems. The mission is to update vxlang to support various file systems and system codes.
