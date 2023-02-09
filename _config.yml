@@ -18,6 +18,16 @@ collections:
     permalink: "/:collection/:path/"
     title: Version History
     tab-order: 2
+  blog:
+    output: true
+    permalink: "/:collection/:path/"
+    title: Blog
+    tab-order: 3
+  support:
+    output: true
+    permalink: "/:collection/:path/"
+    title: Contact Us
+    tab-order: 4    
 
 highlighter: rouge
 permalink: pretty
