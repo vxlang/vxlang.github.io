@@ -13,7 +13,7 @@ order: -1
 - Add virtualization commands. 
 - Bug fix 
 - Features will be added through hotfix updates (ex. Packer control via expansion module) 
-  - **Hotfix.2023.02.23**
+  - **Hotfix.2023.01.23**
     - Fix virtualization algorithms for entry points
 	- Disable Forced Packing
 	- Fix Known Bugs
