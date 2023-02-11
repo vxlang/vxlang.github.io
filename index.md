@@ -51,6 +51,8 @@ Code virtualization is a way of representing real-world operational commands as 
     - Fix virtualization algorithms for entry points
 	- Disable Forced Packing
 	- Fix Known Bugs
+  - **Hotfix.2023.02.11**
+    - Fix Known Bugs 
   - [Download](https://url.kr/xjvo2s) 
 
 ## Step
