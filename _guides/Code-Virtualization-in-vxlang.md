@@ -28,10 +28,11 @@ As a result of the process described above, the converted IL is produced, which 
 <br>
   
 Finally, virtual machines are added through linkers in vxlang, and tasks such as context conversion to virtual machines and data relocation are performed. This process enables the virtual machine to be initialized at runtime, allowing the virtual code to function properly.
-
+  
 <div align="center">
       <img src="https://vxlang.github.io/image/link.png" loop=infinite style="max-width: 100%; height: auto;" />      
 </div>
-
+<br>
+  
 As demonstrated above, IL can support various machine codes, and linkers can support different operating system file systems. The goal of vxlang is to continuously update and support various file systems and system codes.
-
+  
