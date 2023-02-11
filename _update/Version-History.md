@@ -17,6 +17,8 @@ order: -1
     - Fix virtualization algorithms for entry points
 	- Disable Forced Packing
 	- Fix Known Bugs
+  - **Hotfix.2023.02.11**
+    - Fix Known Bugs	
   - [Download](https://url.kr/xjvo2s) 
 
 ~~0.8.8~~
