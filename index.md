@@ -14,19 +14,19 @@ title: Overview
   
 ## Overview
 
-**vxlang** is an anti-tamper project to prevent static or dynamic analysis, file modification, and tampering from attackers. Software that is dependent on the system is compiled and converted into machine language code. This is represented by a human-visible mnemonic.   
-
-The mnemonic can be found through the disassembler that fits the system, and additional information can be collected and restored to higher-level code.   This software analysis and modulation process is a reverse engineering activity, and the vxlang project supports services that prevent it.   
+**vxlang** is a project designed to prevent tampering, such as static or dynamic analysis, file modification, or unauthorized access by attackers. The software that relies on the system is compiled and translated into machine language code, which is represented by a mnemonic that can be understood by humans. The mnemonic code that is generated during the compilation of software dependent on the system can be decoded using a disassembler. This process allows for the extraction of additional information and its conversion into a more readable, higher-level code representation. However, this type of analysis can also be referred to as reverse engineering, which can pose a threat to the security of the software.
    
-vxlang currently targets native binary files on x86-64 and Microsoft Windows systems(*.exe/*.dll). The target binary type will be expanded through the update.   
-
+The vxlang project offers services to counter these security risks by implementing anti-tamper measures to prevent unauthorized access or tampering. By doing so, vxlang helps to ensure that the software remains protected and secure.
+   
+The vxlang project currently targets native binary files on x86-64 systems and Microsoft Windows operating systems, including executable files with the ".exe" extension and dynamic link library files with the ".dll" extension. The target binary types supported by vxlang will be expanded in future updates.
+  
 ## Software Protector
 
 <div align="center">
    <img src="image/protector.png" loop=infinite style="max-width: 100%; height: auto;" />
 </div>
 
-Executable compression is a method of compressing files in an executable state. This compression state hides the source code and file information. In this state, the software protector blocks additional encryption and access in runtime state. vxlang acts as a software protector, providing file modulation, code modulation, and dynamic analysis protection.   
+Executable compression refers to the process of compressing a file into an executable format. This type of compression helps to hide source code and file information, making access more difficult. Software protectors such as vxlang can provide increased security by tampering with files, obfuscating code, and performing dynamic analysis protection to prevent unauthorized access or tampering.
 
 ## Software Code obfuscation and virtualization
 
@@ -34,9 +34,7 @@ Executable compression is a method of compressing files in an executable state. 
    <img src="image/vcpu.png" loop=infinite style="max-width: 100%; height: auto;" />
 </div>
 
-The software protector blocks access to the encryption and runtime states, but has the weakness of exposing the source when the runtime state is dumped. Adding dummy code to the source code exposed in this static or dynamic state or modulating it with the same code is described as code obfuscation.
-
-Code virtualization is a way of representing real-world operational commands as virtual code and allowing them to operate on internal virtual machines. vxlang supports these obfuscation and virtualization services.
+The software protector effectively blocks access to encryption and runtime states, however, it has a drawback in that it can expose the source code when the runtime state is dumped. To address this issue, code obfuscation is applied by adding dummy code or modulating the source code with similar code to the code exposed in the static or dynamic state. However, a more effective solution to protect the code is Code-Virtualization. Code virtualization represents real-world operational commands as virtual code, which can be executed on internal virtual machines. This approach provides a higher level of security compared to code obfuscation alone. Vxlang offers these advanced obfuscation and virtualization services to ensure the protection of the code.  
 
 ## Latest Version
 
@@ -55,7 +53,7 @@ Code virtualization is a way of representing real-world operational commands as 
     - Fix Known Bugs 
   - [Download](https://url.kr/xjvo2s) 
 
-## Step
+## Goal
 
 The first step is to ensure that all features supported by vxlang work reliably and support additional features.
 
