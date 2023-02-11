@@ -27,7 +27,7 @@ However, the optional function is an option during PoC and will be stabilized un
 
 The default SDK usage is as follows:
 ```cpp
-    VM_START; // ***
+    VM_BEGIN; // ***
 	
     printf("Hello, World ! \n");                                   
 	
@@ -61,7 +61,7 @@ int main() {
 }
 ```
 The exact sample can be found in the path below.
-- https://github.com/vxlang/vxlang-page/tree/main/src
+- [LINK](https://github.com/vxlang/vxlang-page/tree/main/src)
 
 
 
