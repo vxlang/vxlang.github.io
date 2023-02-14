@@ -1,14 +1,67 @@
 ---
 layout: page
-title: How to use code virtualization
+title: How to use vxlang
 order: -1
 ---
 
 # {{ page.title }}
 
-**vxlang virtualization** is available via the **SDK** or **option**. Virtualization-related options include:
+## SDK Header
 
-## Option
+```CPP
+#pragma once
+
+//
+
+#if defined( __amd64__ ) || defined( __x86_64__ ) || defined( _M_X64 ) || defined( _M_AMD64) || defined( _ia64__ ) || defined( _M_IA64 ) || defined( __itanium__ )
+#pragma comment(lib, "vxlib64.lib")
+#else
+#pragma comment(lib, "vxlib32.lib")
+#endif
+
+//
+
+void __stdcall VxObfuscationBegin();
+void __stdcall VxObfuscationEnd();
+
+void __stdcall VxVirtualizationBegin();
+void __stdcall VxVirtualizationEnd();
+
+#ifdef __clang__
+#define VM_BEGIN            VxVirtualizationBegin()
+#define VM_END              VxVirtualizationEnd()
+#elif __GNUC__
+#define VM_BEGIN            VxVirtualizationBegin()
+#define VM_END              VxVirtualizationEnd()
+#elif _MSC_VER
+#define VM_BEGIN            VxVirtualizationBegin()
+#define VM_END              VxVirtualizationEnd()
+#endif
+```
+
+## Obfuscation
+
+`Code-obfuscation` in vxlang is supported via SDK.
+
+### SDK
+
+```CPP
+void SDKObfuscate() {
+    VxObfuscationBegin();
+
+    printf("Hello, World ! \n");
+
+    VxObfuscationEnd();
+    
+    return;
+}
+```
+
+## Virtualization
+
+`Code-Virtualization` in vxlang is available via the **SDK** or **option**. Virtualization-related options include:
+
+### Option
 
 - `--opt-entry` The option to calculate the last point based on the entry point of the executable file and to virtualize the area. 
 - `--opt-call` Option to virtualize call codes that move by relative address. 
@@ -23,7 +76,7 @@ vxlang.exe ${input-file-path} --opt-entry --opt-call --opt-ref-call --opt-ref-pt
 ```
 However, the optional function is an option during PoC and will be stabilized until the official version.  
 
-## SDK
+### SDK
 
 The default SDK usage is as follows:
 ```cpp
