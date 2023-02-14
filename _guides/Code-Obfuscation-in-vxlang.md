@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Protect executable files in vxlang
+title: Code Obfuscation in vxlang
 order: 2
 ---
 
