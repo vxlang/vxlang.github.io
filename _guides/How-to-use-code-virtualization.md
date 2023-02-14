@@ -8,7 +8,7 @@ order: -1
 
 ## SDK Header
 
-```CPP
+```cpp
 #pragma once
 
 //
@@ -45,7 +45,7 @@ void __stdcall VxVirtualizationEnd();
 
 ### SDK
 
-```CPP
+```cpp
 void SDKObfuscate() {
     VxObfuscationBegin();
 
