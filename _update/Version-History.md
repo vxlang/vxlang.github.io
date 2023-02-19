@@ -19,7 +19,16 @@ order: -1
 	- Fix Known Bugs
   - **Hotfix.2023.02.11**
     - Fix Known Bugs	
-  - [Download](https://url.kr/xjvo2s) 
+  - **Hotfix.2023.02.14**
+    - Code obfuscation has been added.
+    - Adjust compilation and unpacking performance  
+  - **Hotfix.2023.02.15.pre-build**
+    - Apply code obfuscation
+    - **Performance test**
+  - **Hotfix.2023.02.19**
+    - Fixed a bug for adding DLL cores
+    - Fix Performance Issues
+ - [Download](https://url.kr/xjvo2s) 
 
 ~~0.8.8~~
 ---
