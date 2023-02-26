@@ -6,6 +6,13 @@ order: -1
 
 # {{ page.title }}
 
+0.9.0
+---
+- A random context has been applied to the virtual machine.
+- Improved deployment file structure.
+- Improved the speed of the behavior.
+  - [Download](https://github.com/vxlang/vxlang-page/releases/tag/0.9.0)
+
 0.8.9 
 ---
 - SDK release. 
