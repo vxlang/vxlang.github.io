@@ -57,6 +57,13 @@ The beta version of vxlang is free software, please request the full version via
   - Hotfix.2023.03.04
     - A bug in the code obfuscation exception handling process has been fixed.
     - The x86-64 virtualization command was added.
+  - Hotfix.2023.03.05
+    - The x86-64 virtualization command was added.
+  - Hotfix.2023.03.07
+    - Fixed a packer bug.
+    - Fixed packer to be enabled by default.
+  - Hotfix.2023.03.08
+    - Fixed to force a shutdown if a timeout occurs for the detection feature.
   - [Download](https://github.com/vxlang/vxlang-page/releases/tag/0.9.0)
   
 ## Goal
