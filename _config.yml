@@ -38,3 +38,11 @@ plugins:
   - jemoji
   - jekyll-remote-theme
 remote_theme: pixeldroid/programming-pages
+
+# Analytics
+analytics:
+  provider               : "google-gtag" 
+                          # false (default), "google", "google-universal", "google-gtag", "custom"
+  google:
+    tracking_id          : "G-QZG2KEGCVY"
+    anonymize_ip         : # true, false (default)
