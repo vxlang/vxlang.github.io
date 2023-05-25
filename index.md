@@ -7,7 +7,7 @@ title: Overview
 
 <div align="center">
    <a href="https://vxlang.github.io/">
-      <img src="https://vxlang.github.io/image/vxlang.gif" loop=infinite style="max-width: 100%; height: auto;" />
+      <img src="https://vxlang.github.io/image/vxlang.gif" loop=infinite style="width: 80%; height: 80%;" />
    </a>
 </div>
 <br>
