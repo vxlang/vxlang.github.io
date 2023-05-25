@@ -12,7 +12,7 @@ title: Overview
 </div>
 <br>
 
-- https://vxlang.github.io/
+---
 
 # Contents
 
@@ -20,21 +20,26 @@ title: Overview
 - [Software Protector](#Software-Protector)
 - [Software Code obfuscation and virtualization](#Software-Code-obfuscation-and-virtualization)
 - [Virtualization Preview](#Virtualization-Preview)
+- [Precautions](#Precautions)
+- [Add-on Module](#Add-on-Module)
+- [Option](#Option)
 - [Deploying the full version](#Deploying-the-full-version)
 - [Latest Version](#Latest-Version)
+- [TODO](#TODO)
+- [Special Thanks](#Special-Thanks)
+
+---
 
 ## What is vxlang?
 
-Software can be described as human-understandable mnemonics through disassamblers, and additional information can be used to convert to advanced languages such as C/C++, which are easier to understand. However, this type of analysis can also be referred to as reverse engineering, which can pose a threat to the security of the software. 
+**VXLANG** is a project designed to prevent reverse-engineering behaviors such as static or dynamic analysis, file tampering, and unauthorized access to memory by attackers. 
 
-**vxlang** is a project designed to prevent manipulations such as static or dynamic analysis, file modification, or unauthorized access by attackers, such as those described above. The vxlang project provides services for software security risks by implementing anti-tamper measures to prevent unauthorized access. 
-
-The vxlang project currently targets native binary files on x86-64 systems and Microsoft Windows operating systems, including executable files with the ".exe" extension and dynamic link library files with the ".dll" extension, kernel driver files with the ".sys". (The target binary types supported by vxlang will be expanded in future updates.)
+The vxlang project currently targets x86-64 system and .Net binaries, native binary files for the Microsoft Windows operating system, including executables with the ".exe" extension, dynamic link library files with the ".dll" extension, and kernel driver files with the ".sys" extension. (The types of target binaries supported by vxlang will be expanded in future updates).
 
 ## Software Protector
 
 <div align="center">
-   <img src="https://vxlang.github.io/image/protector.png" loop=infinite style="max-width: 100%; height: auto;" />
+   <img src="https://vxlang.github.io/image/protector.png" style="width: 23%; height: 23%;" />
 </div>
 
 Executable compression refers to the process of compressing a file into an executable format. This type of compression helps to hide source code and file information, making access more difficult. Software protectors such as vxlang can provide increased security by tampering with files, obfuscating code, and performing dynamic analysis protection to prevent unauthorized access or tampering.
@@ -42,7 +47,7 @@ Executable compression refers to the process of compressing a file into an execu
 ## Software Code obfuscation and virtualization
 
 <div align="center">
-   <img src="https://vxlang.github.io/image/vcpu.png" loop=infinite style="max-width: 100%; height: auto;" />
+   <img src="https://vxlang.github.io/image/vcpu.png" style="width: 23%; height: 23%;" />
 </div>
 
 The software protector effectively blocks access to encryption and runtime states, however, it has a drawback in that it can expose the source code when the runtime state is dumped. To address this issue, code obfuscation is applied by adding dummy code or modulating the source code with similar code to the code exposed in the static or dynamic state. However, a more effective solution to protect the code is Code-Virtualization. Code virtualization represents real-world operational commands as virtual code, which can be executed on internal virtual machines. This approach provides a higher level of security compared to code obfuscation alone. vxlang offers these advanced obfuscation and virtualization services to ensure the protection of the code.  
@@ -51,120 +56,50 @@ The software protector effectively blocks access to encryption and runtime state
 
 <div align="center">
    <p>Before</p>
-   <img src="https://vxlang.github.io/image/VMBegin.png" loop=infinite style="max-width: 100%; height: auto;" />
+   <img src="https://vxlang.github.io/image/VMBegin.png" style="width: 50%; height: 50%;" />
    <p>After</p>
-   <img src="https://vxlang.github.io/image/VMEnd.png" loop=infinite style="max-width: 100%; height: auto;" />
+   <img src="https://vxlang.github.io/image/VMEnd.png" style="width: 50%; height: 50%;" />
    <p>Run</p>   
-   <img src="https://vxlang.github.io/image/VMRun.gif" loop=infinite style="max-width: 100%; height: auto;" />
+   <img src="https://vxlang.github.io/image/VMRun.gif" loop=infinite style="width: 50%; height: 50%;" />
 </div>
-
+  
 ## Deploying the full version
 
-The beta version of vxlang is free software, please request the full version via email and we will respond by creating your distribution file.
+The beta version is free software, so if you request the full version via email, I will create a distribution file and respond to you.
+
+- E-Mail: 0x999h@gmail.com
+- ~~The demo message box is removed.~~
+- Support for specialized add-on modules.
+- Support for virtual CPUs with specialized CPU contexts.
+- Supports on/off for packer and engine code.
+- Add-on development allows you to develop additional features.
+- Anti-debugging and anti-tamper features are adjustable.
 
 ## Latest Version
 
-0.9.2
+0.9.5
 ---
-- Added code virtualization for kernel drivers.
-- Removed the message box from the beta version.
+- 2023.05.23.Hotfix
+  - Remove the demo message box.
+  - Call a message box about a program malfunction.
+- Fixed a bug in the process of sandboxing code.   
+- Improved the process of escaping a virtual machine.
+- Fixed a bug where EFL was calculated extra during virtualization escape.
+- Improved the entry point virtualization algorithm.
+- End support for the add-on in the demo version.
 - [Download](https://github.com/vxlang/vxlang-page/)
 
-0.9.1
+## TODO
+
+- `0.9.6`
+  - Improve code obfuscation and code virtualization
+- `Task`
+  - Add ELF32/64 format for x86-64
+  - Add code obfuscation methods for x86-64
+    - Once the above steps are complete, add the ARM system for the ELF file format.
+    
 ---
-- 2023.04.12.hotfix
-  - A bug has been fixed for detection.
-  - A bug has been fixed for the ADD-ON module.
-- Change the core to [Capstone Engine](http://www.capstone-engine.org/) for ARM research.
-  ```cpp
-  ...
-  return cs_disasm_iter(cs_handle, (const uint8_t **)&buffer, &size, &address, insn);
-  ```
-- Users can add extension modules (add-ons). Extension modules allow users to take control of the `vxlang` core and add specialized functionality.
-- Example
-  ```cpp
-  #include <windows.h>
-  #include <stdio.h>
-  
-  #define VXLANG_ADDON_MODULE
-  #include "vxlib.h"
-  
-  BOOL WINAPI DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved) {
-      BOOL result = TRUE;
-  
-      switch (fdwReason) {
-      case DLL_PROCESS_ATTACH:
-          break;
-      case DLL_THREAD_ATTACH:
-          break;
-      case VXLANG_LOAD_ADDON_EVENT:
-          break;
-      case VXLANG_DETECTED_DEBUG:
-      case VXLANG_DETECTED_PATCH:
-      case VXLANG_DETECTED_PATCH_SHELL:
-      case VXLANG_DETECTED_PATCH_IMAGE:
-      case VXLANG_DETECTED_PAUSE:
-      case VXLANG_DETECTED_HANDLE:
-      case VXLANG_DETECTED_SHELL:
-      case VXLANG_DETECTED_DLL:
-          break;
-      case VXLANG_START_EVENT:
-          break;
-      case VXLANG_TERMINATE_EVENT:
-          break;
-      default:
-          break;
-      }
-  
-      return result;
-  }
-  
-  /**
-   * 
-   */
-  
-  void NTAPI TlsCallback1(PVOID DllHandle, DWORD dwReason, PVOID) {
-      if (dwReason == DLL_PROCESS_ATTACH) {
-      }
-      else if (dwReason == DLL_THREAD_ATTACH) {
-      }
-  }
-  
-  void NTAPI TlsCallback2(PVOID DllHandle, DWORD dwReason, PVOID) {
-      if (dwReason == DLL_PROCESS_ATTACH) {
-      }
-      else if (dwReason == DLL_THREAD_ATTACH) {
-      }
-  }
-  
-  #ifdef _WIN64
-  #pragma comment (linker, "/INCLUDE:_tls_used") 
-  #pragma comment (linker, "/INCLUDE:_tls_callback_list")
-  #else
-  #pragma comment (linker, "/INCLUDE:__tls_used") 
-  #pragma comment (linker, "/INCLUDE:__tls_callback_list")
-  #endif
-  
-  #ifdef _WIN64
-  #pragma const_seg(".CRT$XLC")
-  EXTERN_C const
-  #else
-  #pragma data_seg(".CRT$XLC")
-  EXTERN_C
-  #endif
-  PIMAGE_TLS_CALLBACK _tls_callback_list[] = { TlsCallback1, TlsCallback2 };
-  #ifdef _WIN64
-  #pragma const_seg()
-  #else
-  #pragma data_seg()
-  #endif 
-  ```
-  ```
-  vxlang.exe ${target-path} --add-on ${add-on-path}
-  ```
-- If the return value of the extension module `DllMain` is `FALSE`, the Terminate event is fired.
-- [Download](https://github.com/vxlang/vxlang-page/releases/tag/0.9.1)
-  
+
 ## Special Thanks
 
 Thank you to everyone who helped with the development.
