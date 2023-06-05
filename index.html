@@ -6,7 +6,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 70vh;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
   }
 
   .fade-in-text {
@@ -84,6 +89,23 @@
     animation: fade-in 2s linear forwards;
     animation-delay: 1s;
   } 
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #gif {
+    max-width: 70%;
+	height: auto;
+    opacity: 0;
+    animation: fadeIn 1s ease-in 2s forwards;
+    animation-delay: 2s;	
+  }
   </style>
   
   <!-- Google tag (gtag.js) -->
@@ -115,9 +137,14 @@
 	     <div class="box"><h3>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h3></div>		 
 	     <div class="box"><a href="#" class="shining-text"><h3>D o w n l o a d</h3></a></div>
 	  </div>
-	  	  
     </div>				
   </div>    
+  
+  <div class="container">  
+  <div class="sub-container">
+    <img id="gif" src="./image/vxlang.gif" alt="GIF"/>
+  </div>
+  </div>
 </body>
 
 </html>
