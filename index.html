@@ -6,7 +6,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
   }
 
   .fade-in-text {
@@ -17,13 +16,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;	  
+    position: relative;
   }
 
   .box {
-  	width: auto;
+    width: auto;
   }
-	
+
   @import url('https://fonts.googleapis.com/css2?family=Segoe+Script&display=swap');
 
   @keyframes fade-in {
@@ -38,44 +37,44 @@
 
   h1 {
     font-family: 'Segoe Script', cursive;
-    font-weight: bold;  
+    font-weight: bold;
     position: relative;
     overflow: hidden;
     color: transparent;
     animation: fade-in 2s linear forwards;
     animation-delay: 1s;
   }
-  
+
   h2 {
     font-family: 'Segoe Script', cursive;
-    font-weight: bold;  
+    font-weight: bold;
     position: relative;
     overflow: hidden;
     color: transparent;
     animation: fade-in 2s linear forwards;
     animation-delay: 1s;
   }
-  
+
   h3 {
     font-family: 'Segoe Script', cursive;
-    font-weight: bold;  
+    font-weight: bold;
     position: relative;
     overflow: hidden;
     color: transparent;
     animation: fade-in 2s linear forwards;
     animation-delay: 1s;
   }
-  
+
   .shining-text {
     color: #000;
     transition: text-shadow 0.3s ease-in-out;
-    text-decoration: none;	
+    text-decoration: none;
   }
-  
+
   .shining-text:hover {
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   }
-  
+
   h4 {
     font-family: 'Segoe Script', cursive;
     position: relative;
@@ -83,8 +82,8 @@
     color: transparent;
     animation: fade-in 2s linear forwards;
     animation-delay: 1s;
-  } 
-  
+  }
+
   @keyframes fadeIn {
     0% {
       opacity: 0;
@@ -95,14 +94,34 @@
   }
 
   #gif {
-    max-width: 70%;
-	height: auto;
+    max-width: 100%;
+    height: auto;
     opacity: 0;
     animation: fadeIn 1s ease-in 2s forwards;
-    animation-delay: 2s;	
+    animation-delay: 2s;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      height: auto;
+    }
+    
+    .fade-in-text {
+      text-align: center;
+    }
+    
+    .sub-container {
+      margin-bottom: 20px;
+    }
+    
+    #gif {
+      max-width: 90%;
+      height: auto;
+    }
   }
   </style>
-  
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZG2KEGCVY"></script>
   <script>
@@ -117,30 +136,41 @@
 <body>
   <div class="container">
     <div class="fade-in-text">
-	  <h1>V x L a n g - P r o j e c t</h1>	
-	  
-	  <div class="sub-container">
-          <h2>: V i r t u a l M a c h i n e &nbsp; x &nbsp; I n t e r m e d i a t e L a n g u a g e</h2>	
-	  </div>
-	  
-	  <div class="sub-container">
-	     <div class="box"><h4>L a t e s t &nbsp; V e r s i o n : 0 . 9 . 5</h4></div>
-	  </div>
-	  
-	  <div class="sub-container">
-	     <div class="box"><a href="#" class="shining-text"><h3>O v e r v i e w</h3></a></div>
-	     <div class="box"><h3>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h3></div>		 
-	     <div class="box"><a href="#" class="shining-text"><h3>D o w n l o a d</h3></a></div>
-	  </div>
-    </div>				
-  </div>    
-  
-  <div class="container">  
-  <div class="sub-container">
-    <img id="gif" src="https://vxlang.github.io/image/vxlang.gif" alt="GIF"/>
+      <h1>V x L a n g - P r o j e c t</h1>
+
+      <div class="sub-container">
+        <h2>: V i r t u a l M a c h i n e &nbsp; x &nbsp; I n t e r m e d i a t e L a n g u a g e</h2>
+      </div>
+
+      <div class="sub-container">
+        <div class="box">
+          <h4>L a t e s t &nbsp; V e r s i o n : 0 . 9 . 5</h4>
+        </div>
+      </div>
+
+      <div class="sub-container">
+        <div class="box">
+          <a href="#" class="shining-text">
+            <h3>O v e r v i e w</h3>
+          </a>
+        </div>
+        <div class="box">
+          <h3>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h3>
+        </div>
+        <div class="box">
+          <a href="#" class="shining-text">
+            <h3>D o w n l o a d</h3>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <div class="container">
+    <div class="sub-container">
+      <img id="gif" src="https://vxlang.github.io/image/index.gif" alt="GIF" />
+    </div>
   </div>
 </body>
 
 </html>
-
