@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .fade-in-text {
+    position: relative;
+  }
+
+  .sub-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;	  
+  }
+
+  .text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;	  
+    margin-right: 200px;
+    margin-left: 200px;
+  }
+
+  .box {
+    width: auto;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Segoe+Script&display=swap');
+
+  @keyframes fade-in {
+    0% {
+      width: 0;
+    }
+    100% {
+      color: #000;
+      width: 100%;
+    }
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Segoe Script', cursive;
+    font-weight: bold;  
+    position: relative;
+    overflow: hidden;
+    color: transparent;
+    animation: fade-in 2s linear forwards;
+    animation-delay: 1s;
+  }
+
+  h5 {
+    font-family: "Cascadia Code", cursive;
+    font-weight: bold;  
+    position: relative;
+    overflow: hidden;
+    color: transparent;
+    animation: fade-in 2s linear forwards;
+    animation-delay: 1s;
+  }
+  
+  .shining-text {
+    color: #000;
+    transition: text-shadow 0.3s ease-in-out;
+    text-decoration: none;	
+  }
+
+  .shining-text:hover {
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  #gif {
+    max-width: 70%;
+    height: auto;
+    opacity: 0;
+    animation: fadeIn 1s ease-in 2s forwards;
+    animation-delay: 2s;	
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      height: auto;
+    }
+    
+    .sub-container {
+      margin-top: 20px;
+    }
+    
+    h1, h2, h3, h4 {
+      font-size: calc(12px + 4vw);
+    }
+    
+    #gif {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  
+  .bordered-div {
+    border: 1px solid black;
+      margin-right: 200px;
+      margin-left: 200px;
+    transform-origin: center;
+    opacity: 0;
+    animation: borderExpand 1s ease-in-out forwards;
+    animation-delay: 2s;
+  }
+
+  @keyframes borderExpand {
+    0% {
+      transform: scaleX(0);
+  	opacity: 0;
+    }
+    100% {
+      transform: scaleX(1);
+      opacity: 1;		
+    }
+  }  
+  
+  </style>
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZG2KEGCVY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QZG2KEGCVY');
+  </script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="fade-in-text">
+	  <h1>V x L a n g - P r o j e c t</h1>		  
+	  <div class="sub-container">
+          <h2>: V i r t u a l M a c h i n e &nbsp; x &nbsp; I n t e r m e d i a t e L a n g u a g e</h2>	
+	  </div>
+    </div>				
+  </div>    
+
+  <div class="container">
+	  <div class="sub-container">
+	     <div class="box"><a href="https://vxlang.github.io" class="shining-text"><h4>H o m e</h4></a></div>
+	     <div class="box"><h4>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h4></div>		 
+	     <div class="box"><a href="https://vxlang.github.io/document/index.html" class="shining-text"><h4>O v e r v i e w</h4></a></div>
+	  </div>
+  </div>
+
+  <div class="bordered-div"> </div>
+
+  <div class="container">
+	  <div class="sub-container">
+	     <div class="box"><a href="#" class="shining-text"><h4>P r o t e c t o r</h4></a></div>		 
+	     <div class="box"><h4>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h4></div>		 
+	     <div class="box"><a href="#" class="shining-text"><h4>A d d - O n</h4></a></div>		 		 
+	     <div class="box"><h4>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h4></div>		 		 
+	     <div class="box"><a href="#" class="shining-text"><h4>O b f u s c a t o r</h4></a></div>
+	     <div class="box"><h4>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h4></div>		 
+	     <div class="box"><a href="#" class="shining-text"><h4>V i r t u a l i z e r</h4></a></div>
+	  </div>
+  </div>
+
+  <div class="bordered-div"> </div>
+
+  <div class="container">  
+  	  <div class="sub-container">
+	     <div class="box"><h3>: O v e r v i e w</h3></div>
+	  </div>  
+  </div>
+  
+  <!-- 
+  -->
+  <div class="container">
+	  <div class="text-container ">
+	     <h4>What is VxLang Project ?</h4>
+	  </div>
+  </div>
+  
+  <div class="container">
+	  <div class="text-container ">
+        <img id="gif" src="https://vxlang.github.io/image/vxlang.gif" loop="infinite"/>
+	  </div>
+  </div>
+
+  <div class="container">
+	  <div class="text-container ">
+	     <h5>
+		  &nbsp; 
+		  VxLang is a code or binary obfuscation project that prevents attackers from performing reverse engineering actions such as static or dynamic analysis, 
+		  file tampering, and unauthorized access to memory. It currently targets Microsoft Windows PE executables (*.exe/*.dll/*.sys) on x86-64,
+		  with future support for Linux ELF and ARM.
+		 </h5>
+	  </div>
+  </div>
+  
+  <!-- 
+  -->
+  <div class="container">
+	  <div class="text-container ">
+	     <h4>Software Protector</h4>
+	  </div>
+  </div>
+ 
+  <div class="container">
+	  <div class="text-container ">
+        <img id="gif" src="https://vxlang.github.io/image/protector2.png" />
+	  </div>
+  </div>
+ 
+  <div class="container">
+	  <div class="text-container ">
+	     <h5>
+		  &nbsp; 
+		  VxLang changes and encrypts the original file into the file format it uses internally, and executes the original binary with protection through its security engine. 
+		  The security engine is a flexible structure that can be augmented and enhanced with extension modules. Users are free to extend the functionality and control the engine.
+		 </h5>
+	  </div>
+  </div>
+  
+  <!-- 
+  -->
+  <div class="container">
+	  <div class="text-container ">
+	     <h4>Code Obfuscator</h4>
+	  </div>
+  </div>
+  
+  <div class="container">
+	  <div class="text-container ">
+        <img id="gif" src="https://vxlang.github.io/image/obfuscate.png" />
+	  </div>
+  </div>
+  
+  <div class="container">
+	  <div class="text-container ">
+	     <h5>
+		  &nbsp; 
+		  While the security engine changes the format of the file itself and triggers detection, the code obfuscator tampers with the original code and changes it into a form that is harder to trace. 
+		  Code obfuscation is done through the SDK and patches are applied in the file state, which can protect the original code and delay static analysis.		 </h5>
+	  </div>
+  </div>
+  
+  <!-- 
+  -->
+  <div class="container">
+	  <div class="text-container ">
+	     <h4>Code Virtualizer</h4>
+	  </div>
+  </div>
+  
+  <div class="container">
+	  <div class="text-container ">
+        <img id="gif" src="https://vxlang.github.io/image/vcpu.png" />
+	  </div>
+  </div>
+  
+  <div class="container">
+	  <div class="text-container ">
+	     <h5>
+		  &nbsp; 
+		  Unlike code obfuscation, code virtualization does not operate on a physical CPU, but on a virtual CPU inside VxLang. Actual assembly code is replaced with VxLang assembly language, which is then recompiled and linked into an executable file to run.
+		  This makes it difficult to restore the original code and can delay analysis time.
+	  </div>
+  </div>
+  
+  <div class="bordered-div"> </div>  
+  
+</body>
+</html>
+
+

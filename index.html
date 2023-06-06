@@ -35,7 +35,7 @@
     }
   }
 
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5 {
     font-family: 'Segoe Script', cursive;
     font-weight: bold;  
     position: relative;
@@ -70,6 +70,7 @@
     opacity: 0;
     animation: fadeIn 1s ease-in 2s forwards;
     animation-delay: 2s;	
+	loop: false;
   }
   
   @media (max-width: 768px) {
@@ -82,16 +83,34 @@
       margin-top: 20px;
     }
     
-    h1, h2, h3, h4 {
+    h1, h2, h3, h4, h5 {
       font-size: calc(12px + 4vw);
     }
     
-    #gif {
-      max-width: 100%;
-      height: auto;
-    }
   }
-  </style>
+  
+  .bordered-div {
+    border: 1px solid black;
+      margin-right: 200px;
+      margin-left: 200px;
+    transform-origin: center;
+    opacity: 0;
+    animation: borderExpand 1s ease-in-out forwards;
+    animation-delay: 2s;
+  }
+
+  @keyframes borderExpand {
+    0% {
+      transform: scaleX(0);
+  	opacity: 0;
+    }
+    100% {
+      transform: scaleX(1);
+      opacity: 1;		
+    }
+  }  
+
+</style>
   
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZG2KEGCVY"></script>
@@ -107,28 +126,38 @@
 <body>
   <div class="container">
     <div class="fade-in-text">
-	  <h1>V x L a n g - P r o j e c t</h1>	
-	  
+	  <h1>V x L a n g - P r o j e c t</h1>		  
 	  <div class="sub-container">
           <h2>: V i r t u a l M a c h i n e &nbsp; x &nbsp; I n t e r m e d i a t e L a n g u a g e</h2>	
-	  </div>
-	  
-	  <div class="sub-container">
-	     <div class="box"><h4>L a t e s t &nbsp; V e r s i o n : 0 . 9 . 5</h4></div>
-	  </div>
-	  
-	  <div class="sub-container">
-	     <div class="box"><a href="#" class="shining-text"><h3>O v e r v i e w</h3></a></div>
-	     <div class="box"><h3>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h3></div>		 
-	     <div class="box"><a href="#" class="shining-text"><h3>D o w n l o a d</h3></a></div>
 	  </div>
     </div>				
   </div>    
   
+  <div class="container">
+	  <div class="sub-container">
+	     <div class="box"><a href="https://vxlang.github.io" class="shining-text"><h4>H o m e</h4></a></div>
+	     <div class="box"><h4>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h4></div>		 
+	     <div class="box"><a href="https://vxlang.github.io/document/index.html" class="shining-text"><h4>D o c u m e n t</h4></a></div>
+	     <div class="box"><h4>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h4></div>		 
+	     <div class="box"><a href="#" class="shining-text"><h4>D o w n l o a d</h4></a></div>		 
+	  </div>	  
+  </div>
+    
+  <div class="bordered-div"> </div>
+	
   <div class="container">  
+  	  <div class="sub-container">
+	     <div class="box"><h4>L a t e s t &nbsp; V e r s i o n : 0 . 9 . 5</h4></div>
+	  </div>  
+  </div>
+
+    <div class="container">  
     <div class="sub-container">
-      <img id="gif" src="https://vxlang.github.io/image/index.gif" alt="GIF"/>
+      <img id="gif" src="https://vxlang.github.io/image/index.gif" loop="false"/>
     </div>
   </div>
+  
+  <div class="bordered-div"> </div>
+  
 </body>
 </html>
