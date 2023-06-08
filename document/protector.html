@@ -194,113 +194,67 @@
 
   <div class="container">  
   	  <div class="sub-container">
-	     <div class="box"><h3>: O v e r v i e w</h3></div>
+	     <div class="box"><h3>: Protector</h3></div>
 	  </div>  
   </div>
   
   <!-- 
-  -->
-  <div class="container">
-	  <div class="text-container ">
-	     <h4>What is VxLang Project ?</h4>
-	  </div>
-  </div>
-  
-  <div class="container">
-	  <div class="text-container ">
-        <img id="gif" src="https://vxlang.github.io/image/vxlang.gif" loop="infinite"/>
-	  </div>
-  </div>
-
-  <div class="container">
-	  <div class="text-container ">
-	     <p>
-		  &nbsp; 
-		  VxLang is a code or binary obfuscation project that prevents attackers from performing reverse engineering actions such as static or dynamic analysis, 
-		  file tampering, and unauthorized access to memory. It currently targets Microsoft Windows PE executables (*.exe/*.dll/*.sys) on x86-64,
-		  with future support for Linux ELF and ARM.
-		 </p>
-	  </div>
-  </div>
-  
-  <div class="bordered-div"> </div>
-  
-  <!-- 
-  -->
-  <div class="container">
-	  <div class="text-container ">
-	     <h4>Software Protector</h4>
-	  </div>
-  </div>
- 
+  -->  
   <div class="container">
 	  <div class="text-container ">
         <img id="img" src="https://vxlang.github.io/image/overview_1.PNG" />
 	  </div>
   </div>
- 
+
   <div class="container">
 	  <div class="text-container ">
 	     <p>
 		  &nbsp; 
-		  VxLang changes and encrypts the original file into the file format it uses internally, and executes the original binary with protection through its security engine. 
-		  The security engine is a flexible structure that can be augmented and enhanced with extension modules. Users are free to extend the functionality and control the engine.
+		 
+		 <b>VxLang</b> supports packer functionality for user-mode modules (*.EXE/*.DLL/.NET). 
+		 A packer is a structure that converts an executable to a VxLang file system at pack-time and restores it at run-time.
+		 The packer engine provides anti-debugging and patch tampering surveillance by default, and can be customized for your use through extension modules.
+         Up to seven extension modules can be packaged simultaneously, and they can act before the original restore, giving you full control over the packer through events (e.g. adding detections, controlling detections, changing detection messages, etc.). This allows you to easily and freely add more powerful features to develop specialized packers.
 		 </p>
 	  </div>
   </div>
-
-  <div class="bordered-div"> </div>
   
   <!-- 
-  -->
+  -->  
   <div class="container">
 	  <div class="text-container ">
-	     <h4>Code Obfuscator</h4>
+	     <p>
+		 <b>Here's how to use it: </b><br>
+		 vxlang.exe ${file-path} --detect-debug --detect-patch --add-on ${ADD-ON}<br>
+	     <b>--detect-debug:</b> Detect debugging status. <br>
+		 <b>--detect-patch:</b> Detect memory tampering. <br>
+		 <b>--add-on:</b> Add the Add-on module.
+		 <br>
+		 <b>--disable-packer:</b> Disable the packer. In this case, only the obfuscation feature is enabled.		 
+		 </p>		 
 	  </div>
   </div>
-  
-  <div class="container">
-	  <div class="text-container ">
-        <img id="img" src="https://vxlang.github.io/image/overview_2.PNG" />
-	  </div>
-  </div>
-  
-  <div class="container">
-	  <div class="text-container ">
-	      <p>
-		  &nbsp; 
-		  While the security engine changes the format of the file itself and triggers detection, the code obfuscator tampers with the original code and changes it into a form that is harder to trace. 
-		  Code obfuscation is done through the SDK and patches are applied in the file state, which can protect the original code and delay static analysis.		 
-		  </p>
-	  </div>
-  </div>
-
-  <div class="bordered-div"> </div>
+  	
   
   <!-- 
-  -->
+  -->  		
   <div class="container">
 	  <div class="text-container ">
-	     <h4>Code Virtualizer</h4>
+	     <p>
+		 &nbsp; 
+		 
+		 The following describes how to write an add-on module.	
+		 Add-On modules in VxLang are developed as DLLs and are notified of packer events through DllMain.	 
+		 </p>
 	  </div>
   </div>
   
   <div class="container">
 	  <div class="text-container ">
-        <img id="img" src="https://vxlang.github.io/image/overview_3.PNG" />
+        <img id="img" src="https://vxlang.github.io/image/exts-1.PNG" />
 	  </div>
-  </div>
-  
-  <div class="container">
-	  <div class="text-container ">
-	      <p>
-		  &nbsp; 
-		  Unlike code obfuscation, code virtualization does not operate on a physical CPU, but on a virtual CPU inside VxLang. Actual assembly code is replaced with VxLang assembly language, which is then recompiled and linked into an executable file to run.
-		  This makes it difficult to restore the original code and can delay analysis time.
-		  </p>
-	  </div>
-  </div>
-  
+  </div>	  
+  	
   <div class="bordered-div"> </div>  
   
 </body>
