@@ -65,6 +65,14 @@
     margin-bottom: 10px;	
   }
 
+  p {
+    position: relative;
+    overflow: hidden;
+    color: transparent;
+    animation: fade-in 2s linear forwards;
+    animation-delay: 1s;
+  }
+
   .shining-text {
     color: #000;
     transition: text-shadow 0.3s ease-in-out;
@@ -207,12 +215,12 @@
 
   <div class="container">
 	  <div class="text-container ">
-	     <h5>
+	     <p>
 		  &nbsp; 
 		  VxLang is a code or binary obfuscation project that prevents attackers from performing reverse engineering actions such as static or dynamic analysis, 
 		  file tampering, and unauthorized access to memory. It currently targets Microsoft Windows PE executables (*.exe/*.dll/*.sys) on x86-64,
 		  with future support for Linux ELF and ARM.
-		 </h5>
+		 </p>
 	  </div>
   </div>
   
@@ -234,11 +242,11 @@
  
   <div class="container">
 	  <div class="text-container ">
-	     <h5>
+	     <p>
 		  &nbsp; 
 		  VxLang changes and encrypts the original file into the file format it uses internally, and executes the original binary with protection through its security engine. 
 		  The security engine is a flexible structure that can be augmented and enhanced with extension modules. Users are free to extend the functionality and control the engine.
-		 </h5>
+		 </p>
 	  </div>
   </div>
 
@@ -260,10 +268,11 @@
   
   <div class="container">
 	  <div class="text-container ">
-	     <h5>
+	      <p>
 		  &nbsp; 
 		  While the security engine changes the format of the file itself and triggers detection, the code obfuscator tampers with the original code and changes it into a form that is harder to trace. 
-		  Code obfuscation is done through the SDK and patches are applied in the file state, which can protect the original code and delay static analysis.		 </h5>
+		  Code obfuscation is done through the SDK and patches are applied in the file state, which can protect the original code and delay static analysis.		 
+		  </p>
 	  </div>
   </div>
 
@@ -285,10 +294,11 @@
   
   <div class="container">
 	  <div class="text-container ">
-	     <h5>
+	      <p>
 		  &nbsp; 
 		  Unlike code obfuscation, code virtualization does not operate on a physical CPU, but on a virtual CPU inside VxLang. Actual assembly code is replaced with VxLang assembly language, which is then recompiled and linked into an executable file to run.
 		  This makes it difficult to restore the original code and can delay analysis time.
+		  </p>
 	  </div>
   </div>
   

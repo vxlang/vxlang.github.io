@@ -64,6 +64,14 @@
     margin-top: 10px;
     margin-bottom: 10px;	
   }
+  
+  p {
+    position: relative;
+    overflow: hidden;
+    color: transparent;
+    animation: fade-in 2s linear forwards;
+    animation-delay: 1s;
+  }
 
   .shining-text {
     color: #000;
@@ -196,7 +204,7 @@
   <div class="container">  
     <div class="text-container ">
       <div class="box">
-	    <h5>
+	    <p>
 	    2023.06.03.Hotfix: <br>
 		- Fixed a bug that caused the EFlags register to be set incorrectly. <br>
 		- Disabled kernel module support in the demo version. <br>
@@ -222,7 +230,7 @@
 		- Fixed a bug where EFL was calculated extra during virtualization escape. <br>
 		- Improved the entry point virtualization algorithm. <br>
 		- End support for the add-on in the demo version. <br>
-		</h5>
+		</p>
 	  </div>
     </div>  
   </div>
