@@ -225,15 +225,18 @@
 	  <div class="text-container ">
 	     <p>
 		 <b>Here's how to use it: </b><br>
-		 vxlang.exe ${file-path} <br><br>
+		 vxlang.exe ${file-path} <br>
+		 vxlang.exe ${file-path} --add-on ${add-on-path} --add-key ${key-string}<br>
+		 vxlang.exe ${file-path} --add-data ${raw-data-path} --add-key ${key-string}<br>		 
+		 <br>
 		 
 		 <b>--add-on:</b> Compresses the Add-on Module, encrypts it, and includes it in the packing. <br>
-		 > vxlang.exe ${file-path} --add-on ${add-on-path} <br>
 		 <b>--add-data:</b> Compresses the raw data, encrypts it, and includes it in the packing. <br>		
-		 > vxlang.exe ${file-path} --add-data ${raw-data-path} <br>		 
-		 <b>--add-key:</b> This command assigns an ID to the add-on module and raw data. This allows the add-on to get information about the data. <br>		 		 
-		 > vxlang.exe ${file-path} --add-on ${add-on-path} --add-key ${key-string} --add-data ${raw-data-path} --add-key ${key-string} <br>		 
-		 <b>--disable-packer:</b> Disable the packer. In this case, only the obfuscation feature is enabled. <br>		 
+		 <b>--add-key:</b> This command assigns an ID to the add-on module and raw data. <br>
+		 <b>--disable-packer:</b> Disable the packer. In this case, only the obfuscation feature is enabled. <br>		
+		 
+		 <br>
+         Add-on modules or raw data can be used by calling them through the key value in the add-on.		 
 		 </p>		 
 	  </div>
   </div>
