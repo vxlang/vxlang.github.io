@@ -211,10 +211,9 @@
 	     <p>
 		  &nbsp; 
 		 
-		 <b>VxLang</b> supports packer functionality for user-mode modules (*.EXE/*.DLL/.NET). 
-		 A packer is a structure that converts an executable to a VxLang file system at pack-time and restores it at run-time.
-		 The packer engine provides anti-debugging and patch tampering surveillance by default, and can be customized for your use through extension modules.
-         Up to seven extension modules can be packaged simultaneously, and they can act before the original restore, giving you full control over the packer through events (e.g. adding detections, controlling detections, changing detection messages, etc.). This allows you to easily and freely add more powerful features to develop specialized packers.
+         <b>VxLang</b> supports packer functionality for user-mode modules (*.EXE/*.DLL/.NET). 
+		 A packer is a structure that converts an executable to a VxLang file system at pack-time and restores it at run-time. 
+		 The packer engine provides Up to seven extension modules can be packaged simultaneously, and they can act before the original restore, giving you full control over the packer through events (e.g. adding detections, controlling detections, changing detection messages, etc.). This allows you to easily and freely add more powerful features to develop specialized packers.		 
 		 </p>
 	  </div>
   </div>
@@ -225,17 +224,29 @@
 	  <div class="text-container ">
 	     <p>
 		 <b>Here's how to use it: </b><br>
-		 vxlang.exe ${file-path} --detect-debug --detect-patch --add-on ${ADD-ON}<br>
-	     <b>--detect-debug:</b> Detect debugging status. <br>
-		 <b>--detect-patch:</b> Detect memory tampering. <br>
-		 <b>--add-on:</b> Add the Add-on module.
-		 <br>
-		 <b>--disable-packer:</b> Disable the packer. In this case, only the obfuscation feature is enabled.		 
+		 vxlang.exe ${file-path} <br><br>
+		 
+		 <b>--add-on:</b> Compresses the Add-on Module, encrypts it, and includes it in the packing. <br>
+		 > vxlang.exe ${file-path} --add-on ${add-on-path} <br>
+		 <b>--add-data:</b> Compresses the raw data, encrypts it, and includes it in the packing. <br>		
+		 > vxlang.exe ${file-path} --add-data ${raw-data-path} <br>		 
+		 <b>--add-key:</b> This command assigns an ID to the add-on module and raw data. This allows the add-on to get information about the data. <br>		 		 
+		 > vxlang.exe ${file-path} --add-on ${add-on-path} --add-key ${key-string} --add-data ${raw-data-path} --add-key ${key-string} <br>		 
+		 <b>--disable-packer:</b> Disable the packer. In this case, only the obfuscation feature is enabled. <br>		 
 		 </p>		 
 	  </div>
   </div>
   	
-  
+  <div class="bordered-div"> </div>
+
+  <!-- 
+  -->  		
+  <div class="container">  
+  	  <div class="sub-container">
+	     <div class="box"><h3>: ADD-ON(Packer-Plugin)</h3></div>
+	  </div>  
+  </div>
+
   <!-- 
   -->  		
   <div class="container">
@@ -243,8 +254,13 @@
 	     <p>
 		 &nbsp; 
 		 
-		 The following describes how to write an add-on module.	
-		 Add-On modules in VxLang are developed as DLLs and are notified of packer events through DllMain.	 
+		 The following describes how to write an add-on module.	<br>
+		 
+		 &nbsp; 
+		 Add-On modules in VxLang are developed as DLLs and are notified of packer events through DllMain.
+		 <b>Note that add-ons are extensions to the packer shell code, not actual DLL modules. Unlike regular DLLs, there are caveats.</b>
+		 <br><br>
+		 The basic form of DllMain is shown below.
 		 </p>
 	  </div>
   </div>
@@ -254,7 +270,110 @@
         <img id="img" src="https://vxlang.github.io/image/exts-1.PNG" />
 	  </div>
   </div>	  
-  	
+  
+   <!-- 
+  -->  		
+  <div class="container">
+	  <div class="text-container ">
+	     <p>
+		 &nbsp; 
+		 Each event represents the following meanings. <br><br>
+		 
+		 <b>VXLANG_LOAD_ADDON_EVENT:</b> The event that is notified when the add-on module is loaded for the first time. <br>
+		 <b>VXLANG_START_EVENT:</b> An event that is notified when the packer's source file is ready to run. <br>
+		 <b>VXLANG_TERMINATE_EVENT:</b>The event that is notified when the packer is signaled to terminate (packing failure and add-on termination). <br>
+
+		 <br>	
+         &nbsp;
+          		 
+		 If you set <b> the return value to FALSE </b> when each event comes in, the packer will terminate and the <b>VXLANG_TERMINATE_EVENT</b> event will be raised.
+		 
+		 <br>		 
+		 <br>
+		 &nbsp; 
+		 These events will be added through updates.
+
+		 </p>
+	  </div>
+  </div>
+  
+  <div class="bordered-div"> </div>  
+
+  <!-- 
+  -->  		
+  <div class="container">  
+  	  <div class="sub-container">
+	     <div class="box"><h3>: Sample Add-on Module(Simple Anti-Debugging)</h3></div>
+	  </div>  
+  </div>
+  
+   <!-- 
+  -->  		
+  <div class="container">
+	  <div class="text-container ">
+	     <p>
+		 &nbsp; 
+		 This example add-on implements very simple anti-debugging and outputs a message box. <br>
+		 </p>
+	  </div>
+  </div>
+  
+  <div class="container">
+	  <div class="text-container ">
+        <img id="img" src="https://vxlang.github.io/image/exts-2.PNG" />
+	  </div>
+  </div>	  
+  
+  <div class="container">
+	  <div class="text-container ">
+	     <p>
+		 &nbsp; 
+		 The behavior is as follows: <br>
+		 </p>
+	  </div>
+  </div>
+  
+  <div class="container">  
+    <div class="sub-container">
+      <img id="gif" src="https://vxlang.github.io/image/anti-debug-exts.gif" loop="false"/>
+	  
+	  <br>
+	  <br>
+    </div>
+  </div>
+      	
+  <div class="bordered-div"> </div>  
+  
+  <!-- 
+  -->  		
+  <div class="container">  
+  	  <div class="sub-container">
+	     <div class="box"><h3>: Axion Add-on Module</h3></div>
+	  </div>  
+  </div>
+  
+  <div class="container">
+	  <div class="text-container ">
+        <img id="img" src="https://vxlang.github.io/image/AXION.PNG" />
+	  </div>
+  </div>	  
+  
+  <div class="container">
+	  <div class="text-container ">
+	     <p>
+		 &nbsp; 
+		 The Axion module is an add-on module to the anti-temper functionality natively supported by VxLang. 
+		 It includes anti-debugging, detects memory tampering, and performs behaviors such as read protection and pause protection.
+		 <br>
+		 <br>
+		 
+		 &nbsp; 
+		 This module is enabled by default for the free version.
+		 </p>
+	  </div>
+  </div>
+  
+  
   <div class="bordered-div"> </div>  
   
 </body>
