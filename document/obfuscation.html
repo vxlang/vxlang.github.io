@@ -192,117 +192,119 @@
   </div>
 
   <div class="bordered-div"> </div>
-
+  
+  <!-- 
+  -->  		
   <div class="container">  
   	  <div class="sub-container">
-	     <div class="box"><h3>: O v e r v i e w</h3></div>
+	     <div class="box"><h3>: Code Obfuscation</h3></div>
 	  </div>  
-  </div>
-  
-  <!-- 
-  -->
-  <div class="container">
-	  <div class="text-container ">
-	     <h4>What is VxLang Project ?</h4>
-	  </div>
-  </div>
-  
-  <div class="container">
-	  <div class="text-container ">
-        <img id="gif" src="https://vxlang.github.io/image/vxlang.gif" loop="infinite"/>
-	  </div>
-  </div>
-
-  <div class="container">
-	  <div class="text-container ">
-	     <p>
-		  &nbsp; 
-		  VxLang is a code or binary obfuscation project that prevents attackers from performing reverse engineering actions such as static or dynamic analysis, 
-		  file tampering, and unauthorized access to memory. It currently targets Microsoft Windows PE executables (*.exe/*.dll/*.sys) on x86-64,
-		  with future support for Linux ELF and ARM.
-		 </p>
-	  </div>
-  </div>
-  
-  <div class="bordered-div"> </div>
-  
-  <!-- 
-  -->
-  <div class="container">
-	  <div class="text-container ">
-	     <h4>Software Protector</h4>
-	  </div>
-  </div>
- 
-  <div class="container">
-	  <div class="text-container ">
-        <img id="img" src="https://vxlang.github.io/image/overview_1.PNG" />
-	  </div>
-  </div>
- 
-  <div class="container">
-	  <div class="text-container ">
-	     <p>
-		  &nbsp; 
-		  VxLang changes and encrypts the original file into the file format it uses internally, and executes the original binary with protection through its security engine. 
-		  The security engine is a flexible structure that can be augmented and enhanced with extension modules. Users are free to extend the functionality and control the engine.
-		 </p>
-	  </div>
-  </div>
-
-  <div class="bordered-div"> </div>
-  
-  <!-- 
-  -->
-  <div class="container">
-	  <div class="text-container ">
-	     <h4>Code Obfuscator</h4>
-	  </div>
   </div>
   
   <div class="container">
 	  <div class="text-container ">
         <img id="img" src="https://vxlang.github.io/image/overview_2.PNG" />
 	  </div>
-  </div>
+  </div>	  
   
   <div class="container">
 	  <div class="text-container ">
-	      <p>
-		  &nbsp; 
-		  While the security engine changes the format of the file itself and triggers detection, the code obfuscator tampers with the original code and changes it into a form that is harder to trace. 
-		  Code obfuscation is done through the SDK and patches are applied in the file state, which can protect the original code and delay static analysis.		 
-		  </p>
-	  </div>
-  </div>
-
-  <div class="bordered-div"> </div>
-  
-  <!-- 
-  -->
-  <div class="container">
-	  <div class="text-container ">
-	     <h4>Code Virtualizer</h4>
-	  </div>
-  </div>
-  
-  <div class="container">
-	  <div class="text-container ">
-        <img id="img" src="https://vxlang.github.io/image/overview_3.PNG" />
-	  </div>
-  </div>
-  
-  <div class="container">
-	  <div class="text-container ">
-	      <p>
-		  &nbsp; 
-		  Unlike code obfuscation, code virtualization does not operate on a physical CPU, but on a virtual CPU inside VxLang. Actual assembly code is replaced with VxLang assembly language, which is then recompiled and linked into an executable file to run.
-		  This makes it difficult to restore the original code and can delay analysis time.
-		  </p>
+	     <p>
+		 &nbsp; 
+         Code obfuscation is a technique for making source code more complex and therefore harder to understand.
+		 Through the SDK, VxLang modifies the code in user-specified regions to make it harder to understand.
+		 </p>
 	  </div>
   </div>
   
   <div class="bordered-div"> </div>  
+  
+  <!-- 
+  -->  		
+  <div class="container">  
+  	  <div class="sub-container">
+	     <div class="box"><h3>: How to use obfuscation </h3></div>
+	  </div>  
+  </div>  
+  
+  <div class="container">
+	  <div class="text-container ">
+	     <p>
+		 &nbsp; 
+         Code Obfuscation can be positioned and scoped as desired by the user using the VxLang SDK.	<br>
+		 
+		 &nbsp; 
+         The default code obfuscation is bounded by <b>VL_OBFUSCATION_BEGIN</b> and <b>VL_OBFUSCATION_END</b>.
+         This method adds dummy code in between your code, making it harder to track your code.		 
+		 </p>
+	  </div>
+  </div>  
+  
+  <div class="container">
+	  <div class="text-container ">
+        <p>
+		Before:
+		</p>
+	  </div>
+	  <div class="text-container ">
+        <img id="img" src="https://vxlang.github.io/image/obfuscate-1.png" />
+	  </div>
+  </div>	  
+
+  <div class="container">
+	  <div class="text-container ">
+        <p>
+		After:
+		</p>
+	  </div>
+	  <div class="text-container ">
+        <img id="img" src="https://vxlang.github.io/image/obfuscate-2.png" />
+	  </div>
+  </div>	  
+
+  <div class="bordered-div"> </div>  
+  
+  <div class="container">
+	  <div class="text-container ">
+	     <p>
+         This method adds dummy code in between your code, making it harder to track your code. 
+         The following method uses code plotting to create code nodes, and then traverses all of them to make them work.
+         <br><br>
+         Code flattening is bounded by <b>VL_CODE_FLATTENING_BEGIN</b> and <b>VL_CODE_FLATTENING_END</b>. 		 
+		 </p>
+	  </div>
+  </div>  
+  
+  <div class="container">
+	  <div class="text-container ">
+        <p>
+		Before:
+		</p>
+	  </div>
+	  <div class="text-container ">
+        <img id="img" src="https://vxlang.github.io/image/bef.PNG" />
+	  </div>
+  </div>	  
+
+  <div class="container">
+	  <div class="text-container ">
+        <p>
+		After:
+		</p>
+	  </div>
+	  <div class="text-container ">
+        <img id="img" src="https://vxlang.github.io/image/aft.PNG" />
+	  </div>
+	  <div class="text-container ">
+        <img id="img" src="https://vxlang.github.io/image/aft2.PNG" />
+	  </div>
+	  <div class="text-container ">
+        <img id="img" src="https://vxlang.github.io/image/aft3.PNG" />
+	  </div>
+  </div>	    
+  
+  <br>
+  <div class="bordered-div"> </div>    
   
 </body>
 
