@@ -4,140 +4,151 @@
   <title>VxLang-Project</title>
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <link rel="icon" href="https://vxlang.github.io/image/web-icon.ico">
   <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #f5f5f5;
+  
+  <!-- -->
+  
+  .fade-in-header-div {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 25px; /* 폰트 크기 설정 */
+    color: #383838; /* 폰트 색상을 회색으로 설정 */	
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
   }
   
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  .fade-in-sub-header-div {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 17px; /* 폰트 크기 설정 */
+    color: #383838; /* 폰트 색상을 회색으로 설정 */	
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
   }
 
-  .fade-in-text {
-    position: relative;
+  .fade-in-footer-div {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 13px; /* 폰트 크기 설정 */
+    color: #383838; /* 폰트 색상을 회색으로 설정 */	
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
   }
 
-  .sub-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;	  
-    flex-wrap: wrap;
+  .fade-in-body-div {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 15px; /* 폰트 크기 설정 */
+    color: #383838; /* 폰트 색상을 회색으로 설정 */	
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
+  }
+  
+  .fade-in-image-gif-div {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 17px; /* 폰트 크기 설정 */
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
   }
 
-  .text-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;	  
+  .fade-in-image-gif-div img {
+    max-width: 50%; /* 이미지의 최대 너비를 부모 요소에 맞게 설정 */
+    max-height: 50%; /* 이미지의 최대 높이를 부모 요소에 맞게 설정 */
+    display: block; /* 이미지를 블록 요소로 설정하여 가로 중앙 정렬 */
+    margin: 0 auto; /* 가로 중앙 정렬을 위한 자동 마진 설정 */
+  }
+  
+  .fade-in-image-img-div {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 17px; /* 폰트 크기 설정 */
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
+  }
+
+  .fade-in-image-img-div img {
+    max-width: 30%; /* 이미지의 최대 너비를 부모 요소에 맞게 설정 */
+    max-height: 30%; /* 이미지의 최대 높이를 부모 요소에 맞게 설정 */
+    display: block; /* 이미지를 블록 요소로 설정하여 가로 중앙 정렬 */
+    margin: 0 auto; /* 가로 중앙 정렬을 위한 자동 마진 설정 */
+  }  
+
+  .fade-in-title-div {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 17px; /* 폰트 크기 설정 */
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
+  }
+
+  .fade-in-sub-title-div {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 17px; /* 폰트 크기 설정 */
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
+  }
+
+  .fade-in-contents-div {
+    margin-right: 50px;
+    margin-left: 50px;	
+  
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 17px; /* 폰트 크기 설정 */
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
+  }
+  
+  .fade-in-contents-div p {
     margin-right: 200px;
-    margin-left: 200px;
+    margin-left: 200px;	
+    
+    text-align: left;
+    /*font-family: Arial, sans-serif;*/ /* 글꼴 설정 */
+    font-size: 16px; /* 글자 크기 설정 */
   }
-
-  .box {
-    width: auto;
-    margin: 5px;
-  }
-
+  
+  <!-- -->
+        
   @keyframes fade-in {
     0% {
-      width: 0;
+      opacity: 0; /* 시작 시 투명합니다. */
     }
     100% {
-      color: #000;
-      width: 100%;
+      opacity: 1; /* 끝나면 완전히 표시됩니다. */
     }
   }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;  
-    position: relative;
-    overflow: hidden;
-    color: transparent;
-    animation: fade-in 2s linear forwards;
-    animation-delay: 1s;
-    margin-top: 10px;
-    margin-bottom: 10px;	
-  }
-  
-  p {
-    position: relative;
-    overflow: hidden;
-    color: transparent;
-    animation: fade-in 2s linear forwards;
-    animation-delay: 1s;
-	line-height: 1.5;
-  }
-
-  .shining-text {
-    color: #000;
-    transition: text-shadow 0.3s ease-in-out;
-    text-decoration: none;	
-  }
-
-  .shining-text:hover {
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  }
-
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  #gif {
-    max-width: 70%;
-    height: auto;
-    opacity: 0;
-    animation: fadeIn 1s ease-in 2s forwards;
-    animation-delay: 2s;	
-    loop: false;
-  }
-  
-  #img {
-    max-width: 45%;
-    height: auto;
-    opacity: 0;
-    animation: fadeIn 1s ease-in 2s forwards;
-    animation-delay: 2s;	
-    loop: false;
-  }  
-  
-  @media (max-width: 768px) {
-    h1, h2, h3, h4, h5 {
-      font-size: calc(12px + 4vw);
-    }
-    
-    .sub-container {
-      margin-top: 20px;
-    }
-    
-    .box {
-      width: 100%;
-    }
-  }
-  
-  .bordered-div {
+ 
+  <!-- -->
+ 
+  .border-main-div {
     border: 1px solid black;
     transform-origin: center;
     opacity: 0;
-    animation: borderExpand 1s ease-in-out forwards;
-    animation-delay: 2s;
+    animation: border-expand 2s ease-in-out forwards;
+    animation-delay: 1s;
 	
-    margin-right: 200px;
-    margin-left: 200px;	
+    margin-right: 150px;
+    margin-left: 150px;	
   }
 
-  @keyframes borderExpand {
+  .border-menu-div {
+    border: 1px solid black;
+    transform-origin: center;
+    opacity: 0;
+    animation: border-expand 2s ease-in-out forwards;
+    animation-delay: 1s;
+	
+    margin-right: 250px;
+    margin-left: 250px;	
+  }
+
+  .border-sub-div {
+    border: 1px solid black;
+    transform-origin: center;
+    opacity: 0;
+    animation: border-expand 2s ease-in-out forwards;
+    animation-delay: 1s;
+	
+    margin-right: 450px;
+    margin-left: 450px;	
+  }
+
+  @keyframes border-expand {
     0% {
       transform: scaleX(0);
       opacity: 0;
@@ -148,8 +159,29 @@
     }
   }  
 
-  </style>
+  <!-- -->
+
+  .shining-text {
+    color: #000;
+    transition: text-shadow 0.3s ease-in-out;
+    text-decoration: none;	
+  }
+
+  .shining-text:hover {
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  }  
   
+  <!-- -->
+	
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  </style>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZG2KEGCVY"></script>
   <script>
@@ -159,102 +191,269 @@
 
     gtag('config', 'G-QZG2KEGCVY');
   </script>
+  
+  <!-- HEADER -->  
+  <div class="fade-in-header-div">
+    <p><b>Virtual Machine x Intermediate Language Project</b></p>
+  </div> 
+
+  <div class="border-main-div"></div>
+  <div class="border-main-div"></div>
+  
+  <div class="fade-in-sub-header-div">
+    <p>
+      <a href="https://vxlang.github.io" class="shining-text">Overview</a>
+	  &nbsp; / &nbsp;
+      <a href="#" class="shining-text">Document</a>	  
+	  &nbsp; / &nbsp;
+      <a href="https://vxlang.github.io/download.html" class="shining-text">Download</a>	  	  
+	  &nbsp; / &nbsp;
+      <a href="#" class="shining-text">About</a>	  	  
+	</p>
+  </div> 
+  
+  <div class="border-menu-div"></div>
+  <p></p>
+  
 </head>
 
+<!-- HEADER -->  
+
 <body>
-  <div class="container">
-    <div class="fade-in-text">
-      <h1>V x L a n g - P r o j e c t</h1>		  
-      <div class="sub-container">
-        <h2>: V i r t u a l M a c h i n e &nbsp; x &nbsp; I n t e r m e d i a t e L a n g u a g e</h2>	
-      </div>
-    </div>				
-  </div>    
-  
-  <div class="container">
-    <div class="sub-container">
-      <div class="box"><a href="https://vxlang.github.io" class="shining-text"><h4>H o m e</h4></a></div>
-      <div class="box"><h4>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h4></div>		 
-      <div class="box"><a href="https://vxlang.github.io/document/index.html" class="shining-text"><h4>D o c u m e n t</h4></a></div>
-      <div class="box"><h4>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h4></div>		 
-      <div class="box"><a href="#" class="shining-text"><h4>D o w n l o a d</h4></a></div>		 
-      <div class="box"><h4>&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;</h4></div>		 	  
-      <div class="box"><a href="https://vxlang.github.io/special-thanks.html" class="shining-text"><h4>S p e c i a l &nbsp; T h a n k s</h4></a></div>		 	  
-    </div>	  
+
+  <div class="fade-in-title-div">
+    <b>Latest Version : 0.9.8</b>
   </div>
-    
-  <div class="bordered-div"></div>
-	
-  <div class="container">  
-    <div class="sub-container">
-      <div class="box"><h4>V e r s i o n : 0 . 9 . 8</h4></div>
-    </div>  
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+
+  <div class="fade-in-image-img-div">
+    <img id="img" src="https://vxlang.github.io/image/win-logo.PNG" />
   </div>
-  
-  <div class="container">
-	  <div class="text-container ">
-        <img id="img" src="https://vxlang.github.io/image/win-logo.PNG" />
-	  </div>
-  </div>  
-  
-  <div class="container">
-    <div class="sub-container">
-      <div class="box"><h4>FREE Version: </h4></div>		 
-      <div class="box"><a href="https://vxil.tistory.com/category/Download" class="shining-text"><h4>Download</h4></a></div>	  
-    </div>	  
+
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->  
+
+  <div class="fade-in-sub-title-div">
+    <b>Free Beta Version : </b>
+	<b>
+      <a href="#" class="shining-text">Download</a>
+	</b>
   </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
   
-  <div class="bordered-div"></div>  
+  <div class="border-sub-div"></div>
   
-  <div class="container">  
-    <div class="sub-container">
-      <div class="box"><h4>V e r s i o n - I n f o r m a t i o n</h4></div>
-    </div>  
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+
+  <div class="fade-in-contents-div">
+    <p>
+	 &nbsp; 
+     <b>The Free Beta Version</b> is a working version, which means that features needed for testing are forced to be enabled. 
+	 <br>
+	</p>
   </div>
   
-  <div class="container">  
-    <div class="text-container ">
-      <div class="box">
-	    <p>
-		<b>The demo version</b> has limited functionality, some plugins are forced to be enabled, and a message box is output will be output. 
-		<b>The free version</b> offers a full version that is currently under development. All features are open, and you are free to tweak the options.
-		This version is only available during beta testing. <br><br>
-		
-		<b>The full version of the VxLang beta is free software, so let me know what you want to use it for and I'll send you a download link and a password for the archive.</b>
-		<br><br>
-        Contact: 0x999h@gmail.com
-		</p>
-	  </div>
-    </div>  
-  </div>  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
   
-  <div class="bordered-div"></div>
+  <div class="fade-in-sub-title-div">
+    <b>Hotfix : 20230913</b>
+  </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
   
-  <div class="container">  
-    <div class="text-container ">
-      <div class="box">
-	    <p>
-		Thank you for your interest in VxLang-Project :) <br> 
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;		
-		- 0x999h
-		</p>
-	  </div>
-    </div>  
-  </div>  
+  <div class="border-sub-div"></div>
   
-  <div class="bordered-div"></div>  
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+
+  <div class="fade-in-contents-div">
+    <p>
+     + Fixed dumping protection for .NET applications.
+	</p>
+  </div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
+  
+  <div class="fade-in-sub-title-div">
+    <b>Hotfix : 20230912</b>
+  </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+  
+  <div class="border-sub-div"></div>
+  
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+
+  <div class="fade-in-contents-div">
+    <p>
+     + Added default protection for .NET dumps; <br>
+	 - additional protection will be added in AXION mode.
+	</p>
+  </div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
+  
+  <div class="fade-in-sub-title-div">
+    <b>Hotfix : 20230911</b>
+  </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+  
+  <div class="border-sub-div"></div>
+  
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+
+  <div class="fade-in-contents-div">
+    <p>
+     + Stop test AXION mode until new features are added.  <br>
+	 - Can be enabled via `--mode-axion` in the free version.
+	</p>
+  </div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
+  
+  <div class="fade-in-sub-title-div">
+    <b>Hotfix : 20230910</b>
+  </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+  
+  <div class="border-sub-div"></div>
+  
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+
+  <div class="fade-in-contents-div">
+    <p>
+     + Improved code virtualization speed.
+	</p>
+  </div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
+  
+  <div class="fade-in-sub-title-div">
+    <b>Hotfix : 20230906</b>
+  </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+  
+  <div class="border-sub-div"></div>
+  
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+
+  <div class="fade-in-contents-div">
+    <p>
+     + Axion: Added code to prevent the creation of abnormal threads.
+	</p>
+  </div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
+  
+  <div class="fade-in-sub-title-div">
+    <b>Hotfix : 20230903</b>
+  </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+  
+  <div class="border-sub-div"></div>
+  
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+
+  <div class="fade-in-contents-div">
+    <p>
+      + Fixed a bug in .NET mode. <br>
+      + Fixed a bug with Axion mode.
+	</p>
+  </div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
+  
+  <div class="fade-in-sub-title-div">
+    <b>Hotfix : 20230902</b>
+  </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+  
+  <div class="border-sub-div"></div>
+  
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+
+  <div class="fade-in-contents-div">
+    <p>
+      + Unified the free and demo versions. <br>
+      + The default plugin module has been integrated into vxlang (axion/extsdn). <br>
+      - Enable axion: --mode-axion <br>
+      - In the free version, AXION is automatically activated. <br>
+      + Fixed a bug with the obfuscation hash table. <br>
+      + Fixed a bug where relocations were incorrectly registered during code virtualization. <br>
+      + Fixed AXION 32-bit bug.	
+    </p>
+  </div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
   
 </body>
 
+<!-- FOOTER -->  
+
 <footer>
-  <div class="container">
-    <div class="sub-container">
-      <h6>V x L a n g &nbsp; p r o j e c t &nbsp; a t &nbsp; 0 x 9 9 9 h</h6>
-    </div>
-  </div>
+  <p></p>  
+  <div class="border-main-div"></div>
+  <div class="border-main-div"></div>
+  <div class="fade-in-footer-div">
+    <p>VxLang Project at 0x999h</p>
+  </div> 
 </footer>
 
 </html>
