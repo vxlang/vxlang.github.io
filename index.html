@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
   <title>VxLang-Project</title>
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
@@ -137,6 +136,17 @@
     margin-left: 250px;	
   }
 
+  .border-sub-menu-div {
+    border: 1px solid black;
+    transform-origin: center;
+    opacity: 0;
+    animation: border-expand 1s ease-in-out forwards;
+    animation-delay: 0.2s;
+	
+    margin-right: 350px;
+    margin-left: 350px;	
+  }
+
   .border-sub-div {
     border: 1px solid black;
     transform-origin: center;
@@ -170,6 +180,28 @@
   .shining-text:hover {
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
   }  
+  <!-- -->
+  
+  /* 서브 메뉴를 숨김 */
+  .submenu {
+    display: none;
+    opacity: 0; /* 초기에는 투명합니다. */
+    animation: fade-in-submenu 0.5s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
+  }
+
+  /* 메뉴에 호버 시 서브 메뉴를 나타나게 함 */
+  .menu-item:hover .submenu {
+    display: block;
+  }
+  
+  @keyframes fade-in-submenu {
+    0% {
+      opacity: 0; /* 시작 시 투명합니다. */
+    }
+    100% {
+      opacity: 1; /* 끝나면 완전히 표시됩니다. */
+    }
+  }  
   
   <!-- -->
 	
@@ -200,7 +232,7 @@
   <div class="border-main-div"></div>
   <div class="border-main-div"></div>
   
-  <div class="fade-in-sub-header-div">
+  <div class="menu-item fade-in-sub-header-div">
     <p>
       <a href="https://vxlang.github.io" class="shining-text">Overview</a>
 	  &nbsp; / &nbsp;
@@ -210,6 +242,17 @@
 	  &nbsp; / &nbsp;
       <a href="#" class="shining-text">About</a>	  	  
 	</p>
+	
+    <!-- 서브 메뉴 -->
+    <ul class="submenu">
+      <div class="border-sub-menu-div"></div>
+	  <p></p>
+	  <a href="#" class="shining-text">Protector</a>
+	  &nbsp; / &nbsp;
+	  <a href="#" class="shining-text">Obfuscator</a>
+	  &nbsp; / &nbsp;
+	  <a href="#" class="shining-text">Virtualizer</a>
+    </ul>	
   </div> 
   
   <div class="border-menu-div"></div>

@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
 <head>
   <title>VxLang-Project</title>
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
@@ -55,6 +54,20 @@
     margin: 0 auto; /* 가로 중앙 정렬을 위한 자동 마진 설정 */
   }
   
+  .fade-in-image-title-div {
+    text-align: center; /* 텍스트 가운데 정렬 */
+    opacity: 0; /* 초기에는 투명합니다. */
+	font-size: 17px; /* 폰트 크기 설정 */
+    animation: fade-in 2s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
+  }
+  
+  .fade-in-image-title-div img {
+    max-width: 30%; /* 이미지의 최대 너비를 부모 요소에 맞게 설정 */
+    max-height: 30%; /* 이미지의 최대 높이를 부모 요소에 맞게 설정 */
+    display: block; /* 이미지를 블록 요소로 설정하여 가로 중앙 정렬 */
+    margin: 0 auto; /* 가로 중앙 정렬을 위한 자동 마진 설정 */
+  }  
+  
   .fade-in-image-img-div {
     text-align: center; /* 텍스트 가운데 정렬 */
     opacity: 0; /* 초기에는 투명합니다. */
@@ -63,8 +76,8 @@
   }
 
   .fade-in-image-img-div img {
-    max-width: 30%; /* 이미지의 최대 너비를 부모 요소에 맞게 설정 */
-    max-height: 30%; /* 이미지의 최대 높이를 부모 요소에 맞게 설정 */
+    max-width: 13%; /* 이미지의 최대 너비를 부모 요소에 맞게 설정 */
+    max-height: 13%; /* 이미지의 최대 높이를 부모 요소에 맞게 설정 */
     display: block; /* 이미지를 블록 요소로 설정하여 가로 중앙 정렬 */
     margin: 0 auto; /* 가로 중앙 정렬을 위한 자동 마진 설정 */
   }  
@@ -137,6 +150,17 @@
     margin-left: 250px;	
   }
 
+  .border-sub-menu-div {
+    border: 1px solid black;
+    transform-origin: center;
+    opacity: 0;
+    animation: border-expand 1s ease-in-out forwards;
+    animation-delay: 0.2s;
+	
+    margin-right: 350px;
+    margin-left: 350px;	
+  }
+
   .border-sub-div {
     border: 1px solid black;
     transform-origin: center;
@@ -172,6 +196,29 @@
   }  
   
   <!-- -->
+  
+  /* 서브 메뉴를 숨김 */
+  .submenu {
+    display: none;
+    opacity: 0; /* 초기에는 투명합니다. */
+    animation: fade-in-submenu 0.5s ease-in-out forwards; /* 페이드 인 애니메이션 적용 */
+  }
+
+  /* 메뉴에 호버 시 서브 메뉴를 나타나게 함 */
+  .menu-item:hover .submenu {
+    display: block;
+  }
+  
+  @keyframes fade-in-submenu {
+    0% {
+      opacity: 0; /* 시작 시 투명합니다. */
+    }
+    100% {
+      opacity: 1; /* 끝나면 완전히 표시됩니다. */
+    }
+  }  
+  
+  <!-- -->
 	
   body {
     margin: 0;
@@ -200,7 +247,7 @@
   <div class="border-main-div"></div>
   <div class="border-main-div"></div>
   
-  <div class="fade-in-sub-header-div">
+  <div class="menu-item fade-in-sub-header-div">
     <p>
       <a href="https://vxlang.github.io" class="shining-text">Overview</a>
 	  &nbsp; / &nbsp;
@@ -210,6 +257,17 @@
 	  &nbsp; / &nbsp;
       <a href="#" class="shining-text">About</a>	  	  
 	</p>
+	
+    <!-- 서브 메뉴 -->
+    <ul class="submenu">
+      <div class="border-sub-menu-div"></div>
+	  <p></p>
+	  <a href="#" class="shining-text">Protector</a>
+	  &nbsp; / &nbsp;
+	  <a href="#" class="shining-text">Obfuscator</a>
+	  &nbsp; / &nbsp;
+	  <a href="#" class="shining-text">Virtualizer</a>
+    </ul>	
   </div> 
   
   <div class="border-menu-div"></div>
@@ -229,7 +287,7 @@
   <p></p>
   <!-- --- -->  
 
-  <div class="fade-in-image-img-div">
+  <div class="fade-in-image-title-div">
     <img id="img" src="https://vxlang.github.io/image/win-logo.PNG" />
   </div>
 
