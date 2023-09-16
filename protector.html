@@ -294,26 +294,23 @@
 <body>
 
   <div class="fade-in-title-div">
-    <b>Latest Version : 0.9.8</b>
+    <b>: Protector</b>
   </div>
 
   <!-- --- -->  
   <p></p>
   <!-- --- -->  
 
-  <div class="fade-in-image-title-div">
-    <img id="img" src="https://vxlang.github.io/image/win-logo.PNG" />
+  <div class="fade-in-image-img-div">
+    <img id="img" src="https://vxlang.github.io/image/overview_1.PNG" />
   </div>
-
+  
   <!-- -------------------------------------------------------- -->  
   <p></p>
-  <!-- -------------------------------------------------------- -->  
-
+  <!-- -------------------------------------------------------- -->    
+  
   <div class="fade-in-sub-title-div">
-    <b>Free Beta Version : </b>
-	<b>
-      <a href="https://blog.kakaocdn.net/dn/NLJYX/btstQTTgCjt/g93hJIjkWPfFU1kQKfuGR1/vxlang.free.0.9.8.20230913.7z?attach=1&knm=tfile.7z" class="shining-text">Download</a>
-	</b>
+    <b>VxLang Packer</b>
   </div>
 
   <!-- --- -->  
@@ -328,9 +325,15 @@
 
   <div class="fade-in-contents-div">
     <p>
-	 &nbsp; 
-     <b>The Free Beta Version</b> is a working version, which means that features needed for testing are forced to be enabled. 
-	 <br>
+	  &nbsp;
+      <b>VxLang</b> supports packer functionality for user-mode modules <b>(*.EXE/*.DLL/.NET)</b>. 
+	  A packer is a structure that converts an executable to a VxLang file system at pack-time and restores it at run-time.  
+	  <br><br>
+	  &nbsp;
+	  The packer engine provides Up to <b>seven extension modules</b> can be packaged simultaneously, 
+	  and they can act before the original restore, giving you full control over the packer through events 
+	  (e.g. adding detections, controlling detections, changing detection messages, etc.). 
+	  This allows you to easily and freely add more powerful features to develop specialized packers.    
 	</p>
   </div>
   
@@ -339,7 +342,7 @@
   <!-- -------------------------------------------------------- -->    
   
   <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230913</b>
+    <b>How to use VxLang Packer ?</b>
   </div>
 
   <!-- --- -->  
@@ -351,10 +354,34 @@
   <!-- --- -->  
   <p></p>
   <!-- --- -->  
+  
+  <div class="fade-in-image-50p-div">
+    <img id="img" src="https://vxlang.github.io/image/options.PNG" />
+  </div>  
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
 
   <div class="fade-in-contents-div">
     <p>
-     + Fixed dumping protection for .NET applications.
+	  &nbsp;
+	  <b>VxLang's packer</b> is enabled by default.<br> 
+	  &nbsp;
+	  (To disable the packer, you must use the <b>`--disable-packer`</b> option.)
+	  <br>
+	  <br>
+	  
+	  &nbsp;	  
+	  <b>Here's how to apply vxlang:</b><br>
+	  &nbsp;	  
+	  vxlang.exe ${file-path}
+	  <br>
+	  <br>
+
+	  &nbsp;
+      <b>VxLang supports extension modules(add-on)</b> that can make packers special. 
+	  These are in the form of DLLs, converted to VxLang's own file format and enclosed.	  
 	</p>
   </div>
   
@@ -363,7 +390,83 @@
   <!-- -------------------------------------------------------- -->    
   
   <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230912</b>
+    <b>VxLang Add-on Module</b>
+  </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+  
+  <div class="border-sub-div"></div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
+  
+  <div class="fade-in-contents-div">
+    <p>
+	  &nbsp;
+	  The following describes how to write an add-on module. 
+	  VxLang's extension modules are developed as DLLs for ease of development. 
+	  (This is an extension of the packer shell code, not an actual DLL module.)
+	  <br>
+	  <br>
+	  &nbsp;
+	  Extension modules are developed the same way as regular DLLs. 
+	  All events, callbacks, etc. will work the same. 
+	  (However, if you make a `static` reference, you will be referencing the original TLS object, so be careful with that).
+	  
+	  The packer's state or <b>special events can be notified via DllMain</b>, so you can develop behaviors for the state.
+	  
+	  <br>
+	  <br>
+	  
+	  &nbsp;	  
+	  The basic form of DllMain is shown below:
+	</p>
+  </div>
+  
+  <div class="fade-in-image-50p-div">
+    <img id="img" src="https://vxlang.github.io/image/exts-1.PNG" />
+  </div>  
+
+  <div class="fade-in-contents-div">
+    <p>
+      Each event represents the following meanings:
+	  <br>
+      <b>VXLANG_LOAD_ADDON_EVENT</b> : <br>
+	  - The event that is notified when the add-on module is loaded for the first time.
+	  <br>
+	  
+      <b>VXLANG_START_EVENT</b> : <br>
+	  - An event that is notified when the packer's source file is ready to run.
+	  <br>
+	  
+	  <b>VXLANG_TERMINATE_EVENT</b> : <br>	  
+	  - The event that is notified when the packer is signaled to terminate. 
+	  <br>
+	  &nbsp;
+	  (packing failure and add-on termination)
+	  <br>
+	  <br>
+	  
+	  If the return value of DllMain is <b>`FALSE`</b>, the packer terminates the behavior and calls <b>`VXLANG_TERMINATE_EVENT`</b>.
+	  <br>
+	  <br>
+	  These add-on modules can be applied via the <b>`vxlang.exe $src-path} --add-on ${dll-path}`</b> command.
+	  
+	  <br>
+	  <br>
+	  These events will be added through updates.
+	</p>
+  </div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
+
+  <div class="fade-in-sub-title-div">
+    <b>Sample Add-on Module(Simple Anti-Debugging)</b>
   </div>
 
   <!-- --- -->  
@@ -375,11 +478,50 @@
   <!-- --- -->  
   <p></p>
   <!-- --- -->  
+  
+  <div class="fade-in-contents-div">
+    <p>
+	  &nbsp;
+	  This example add-on implements very simple anti-debugging and outputs a message box.
+	</p>
+  </div>
+  
+  <div class="fade-in-image-50p-div">
+    <img id="img" src="https://vxlang.github.io/image/exts-2.PNG" />
+  </div>  
 
   <div class="fade-in-contents-div">
     <p>
-     + Added default protection for .NET dumps; <br>
-	 - additional protection will be added in AXION mode.
+	&nbsp;
+    The behavior is as follows:
+	</p>
+  </div>
+
+  <div class="fade-in-image-gif-div">
+    <img src="https://vxlang.github.io/image/anti-debug-exts.gif" loop="infinite"/>
+  </div>
+  
+  <!-- -------------------------------------------------------- -->  
+  <p></p>
+  <!-- -------------------------------------------------------- -->    
+  
+  <div class="fade-in-sub-title-div">
+    <b>Anti-Temper Mode</b>
+  </div>
+
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+  
+  <div class="border-sub-div"></div>
+  
+  <!-- --- -->  
+  <p></p>
+  <!-- --- -->  
+  
+  <div class="fade-in-contents-div">
+    <p>
+	  &nbsp;
 	</p>
   </div>
   
@@ -388,7 +530,7 @@
   <!-- -------------------------------------------------------- -->    
   
   <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230911</b>
+    <b>AXION-Mode</b>
   </div>
 
   <!-- --- -->  
@@ -400,117 +542,13 @@
   <!-- --- -->  
   <p></p>
   <!-- --- -->  
-
+  
   <div class="fade-in-contents-div">
     <p>
-     + Stop test AXION mode until new features are added.  <br>
-	 - Can be enabled via `--mode-axion` in the free version.
+	  &nbsp;
 	</p>
   </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230910</b>
-  </div>
 
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-     + Improved code virtualization speed.
-	</p>
-  </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230906</b>
-  </div>
-
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-     + Axion: Added code to prevent the creation of abnormal threads.
-	</p>
-  </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230903</b>
-  </div>
-
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-      + Fixed a bug in .NET mode. <br>
-      + Fixed a bug with Axion mode.
-	</p>
-  </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230902</b>
-  </div>
-
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-      + Unified the free and demo versions. <br>
-      + The default plugin module has been integrated into vxlang (axion/extsdn). <br>
-      - Enable axion: --mode-axion <br>
-      - In the free version, AXION is automatically activated. <br>
-      + Fixed a bug with the obfuscation hash table. <br>
-      + Fixed a bug where relocations were incorrectly registered during code virtualization. <br>
-      + Fixed AXION 32-bit bug.	
-    </p>
-  </div>
-  
   <!-- -------------------------------------------------------- -->  
   <p></p>
   <!-- -------------------------------------------------------- -->    
