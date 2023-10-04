@@ -294,7 +294,7 @@
 <body>
 
   <div class="fade-in-title-div">
-    <b>Latest Version : 0.9.8</b>
+    <b>Latest Version : 0.9.9</b>
   </div>
 
   <!-- --- -->  
@@ -312,7 +312,7 @@
   <div class="fade-in-sub-title-div">
     <b>Free Beta Version : </b>
 	<b>
-      <a href="https://github.com/vxlang/vxlang-page/releases/download/vxlang.0.9.9/vxlang.free.0.9.9.20231001.zip" class="shining-text">Download</a>
+      <a href="https://github.com/vxlang/vxlang-page/releases/download/vxlang.0.9.9/vxlang.free.0.9.9.20231004.zip" class="shining-text">Download</a>
 	</b>
   </div>
 
@@ -337,9 +337,9 @@
   <!-- -------------------------------------------------------- -->  
   <p></p>
   <!-- -------------------------------------------------------- -->    
-  
+    
   <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230916</b>
+    <b>Hotfix : 20231004</b>
   </div>
 
   <!-- --- -->  
@@ -351,19 +351,20 @@
   <!-- --- -->  
   <p></p>
   <!-- --- -->  
-  
+
   <div class="fade-in-contents-div">
     <p>
-     + Fixed an intermittent crash during code obfuscation.
+     + Remove unnecessary logs. <br>
+	 + Added import table protection method.  <br>
 	</p>
   </div>
   
   <!-- -------------------------------------------------------- -->  
   <p></p>
-  <!-- -------------------------------------------------------- -->    
+  <!-- -------------------------------------------------------- -->      
   
   <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230913</b>
+    <b>Hotfix : 20231001</b>
   </div>
 
   <!-- --- -->  
@@ -378,161 +379,14 @@
 
   <div class="fade-in-contents-div">
     <p>
-     + Fixed dumping protection for .NET applications.
+     + Changed the way packers parse import tables. <br>
+	 + Fixed to allow plugin to modify import table settings. <br>
+	 + Added the option to code-virtualize for code that calls import-referenced functions. <br>
+	 - Option: `--opt-ref-call` <br>
+	 - It is automatically enabled in the free version. <br>
+	 + For testing purposes, axion-mode and modifications are automatically enabled. <br>
+	 + Fixed a bug with plugin loading. <br>
 	</p>
-  </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230912</b>
-  </div>
-
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-     + Added default protection for .NET dumps; <br>
-	 - additional protection will be added in AXION mode.
-	</p>
-  </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230911</b>
-  </div>
-
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-     + Stop test AXION mode until new features are added.  <br>
-	 - Can be enabled via `--mode-axion` in the free version.
-	</p>
-  </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230910</b>
-  </div>
-
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-     + Improved code virtualization speed.
-	</p>
-  </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230906</b>
-  </div>
-
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-     + Axion: Added code to prevent the creation of abnormal threads.
-	</p>
-  </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230903</b>
-  </div>
-
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-      + Fixed a bug in .NET mode. <br>
-      + Fixed a bug with Axion mode.
-	</p>
-  </div>
-  
-  <!-- -------------------------------------------------------- -->  
-  <p></p>
-  <!-- -------------------------------------------------------- -->    
-  
-  <div class="fade-in-sub-title-div">
-    <b>Hotfix : 20230902</b>
-  </div>
-
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-  
-  <div class="border-sub-div"></div>
-  
-  <!-- --- -->  
-  <p></p>
-  <!-- --- -->  
-
-  <div class="fade-in-contents-div">
-    <p>
-      + Unified the free and demo versions. <br>
-      + The default plugin module has been integrated into vxlang (axion/extsdn). <br>
-      - Enable axion: --mode-axion <br>
-      - In the free version, AXION is automatically activated. <br>
-      + Fixed a bug with the obfuscation hash table. <br>
-      + Fixed a bug where relocations were incorrectly registered during code virtualization. <br>
-      + Fixed AXION 32-bit bug.	
-    </p>
   </div>
   
   <!-- -------------------------------------------------------- -->  
