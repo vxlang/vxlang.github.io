@@ -123,7 +123,7 @@
             font-size: 16px;
             color: #f0f0f0;
         }
-
+		
         .main-content a {
             color: #61dafb;
             text-decoration: none;
@@ -209,39 +209,6 @@
     </aside>
 
     <section class="main-content">
-        <h1 id="vxlang-overview">Overview</h1>
-        <img src="https://vxlang.github.io/image/vxlang_logo.gif" width="80%" height="auto" />
-
-        <p>
-		&nbsp; 	
-        The <b>VxLang Project</b> is a code or binary obfuscation project that prevents attackers from performing reverse engineering actions such as static or dynamic analysis, file tampering, and unauthorized access to memory. 
-		It consists of a packer/protector, code obfuscation tools, and code virtualization tools. It currently targets <b>Microsoft Windows PE executables (*.exe/*.dll/*.sys and UEFI) on x86-64</b>, with future support for Linux ELF and ARM.		
-		
-        <h2 id="software-protector">Binary Protector</h2>
-        <p>
-		&nbsp; 			
-		The <b>Binary Protector</b> modifies, compresses, and encrypts the original executable into a file format used internally. It incorporates VxLang core code, which can be reinforced and extended with additional modules. 
-		This flexible structure allows users to freely expand functionality and control the VxLang core.
-		</p>
-
-        <h2 id="code-obfuscator">Code Obfuscator</h2>
-        <p>
-        <img src="https://vxlang.github.io/image/bef.PNG" width="80%" height="auto" /><br>		
-        <img src="https://vxlang.github.io/image/cff-1-1.png" width="80%" height="auto" /><br>
-		&nbsp; 			
-		
-		The <b>Code Obfuscation tool</b> alters native code to obstruct analysis, either by breaking code blocks or flattening code to the same depth. 
-		Additional obfuscation methods will be added in the future. 
-		</p>
-
-        <h2 id="code-virtualizer">Code Virtualizer</h2>
-        <p>
-        <img src="https://vxlang.github.io/image/vxlang-vm-2.png" width="80%" height="auto" /><br>
-		&nbsp; 			
-		
-		The <b>Code Virtualization tool</b> transforms the code into an internal assembly language. 
-		This language is converted to bytecode and executed by an internal compiler.		
-		</p>
     </section>
 </div>
 
