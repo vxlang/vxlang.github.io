@@ -246,39 +246,41 @@
 
 		<div class="code-block">
 			<div>
-			{
-			   "input": "test.exe",
-			   "output": "",
-			   "backup": false,
-			   "use-data-section": false,
-			   "base-section-name": "",
-			   "map-file-path": "",
-			   "virtualizer": {
-				  "entry-point": false,
-				  "virtualization-by-map": []
-			   },
-			   "obfuscator": {
-				  "entry-point": false,
-				  "obfuscation-by-map": [],
-				  "flattening-by-map": []
-			   },
-			   "protector": {
-				  "compress": true,
-				  "symbol-data": true,
-				  "mutate-import-table": true,
-				  "vxlang-link-event": false,
-				  "anti-tamper": {
-					 "enable": false,
-					 "message": ""
-				  },
-				  "extension": [],
-				  "raw-data" : [],
-				  "reflection": {
-					 "enable": false,
-					 "ldr-update": true
-				  }
-			   }
-			}			
+			{                                         
+			   "input": "test.exe",                     
+			   "output": "",                    
+			   "backup": false,                        
+			   "use-data-section": false,           
+			   "base-section-name": "",         
+			   "map-file-path": "",             
+			   "virtualizer": {                     
+				  "entry-point": false,                
+				  "virtualization-by-map": []       
+			   },                                     
+			   "obfuscator": {                      
+				  "entry-point": false,                
+				  "obfuscation-by-map": [],		   
+				  "flattening-by-map": []           
+			   },                                     
+			   "protector": {                       
+				  "compress": true,                   
+				  "symbol-data": false,                
+				  "mutate-import-table": true,        
+				  "vxlang-link-event": false,       
+				  "anti-tamper": {                  
+					 "enable": true,                  
+					 "hide-unused-memory": true,      
+					 "pause-protection": true,        
+					 "message": ""              
+				  },                                  
+				  "extension": [],                  
+				  "raw-data" : [],                  
+				  "reflection": {                   
+					 "enable": false,                  
+					 "ldr-update": true               
+				  }                                   
+			   }                                      
+			}
 			</div>
 		</div>
 	
@@ -397,6 +399,18 @@
 			<span class="type"><b>anti-tamper:enable</b></span>
 			&nbsp; : &nbsp; 
 			Enable the anti-tamper feature included with VxLang.
+			</div>
+
+			<div>
+			<span class="type"><b>anti-tamper:hide-unused-memory</b></span>
+			&nbsp; : &nbsp; 
+			Delete memory that is not referenced by the protected memory.
+			</div>
+
+			<div>
+			<span class="type"><b>anti-tamper:pause-protection</b></span>
+			&nbsp; : &nbsp; 
+			Detect thread pauses.
 			</div>
 			
 			<div>
