@@ -573,7 +573,29 @@
 			}
 			</div>
 		</div>
-						
+				
+        <!-- -->
+        <h2 id="disable-the-vxlang-core">Disable the VxLang-Core</h2>
+		
+		<p>
+		&nbsp;		
+		VxLang performs additional binary protection behavior through VxLang-Core. 
+		However, sometimes users only need code protection without additional protection behavior.
+		In this case, you can enter a command like the one below to exclude the core.
+		</p>
+
+		<div class="code-block">
+			<div>
+			:\> <span class="keyword">vxlang.exe</span> ${PE-Binary} <span class="parameter"><b>--disable-core</b></span>
+			</div>
+		</div>
+		<div class="code-block">
+			<div>
+			:\> <span class="keyword">vxlang.exe</span> temp.json <span class="parameter"><b>--disable-core</b></span>
+			</div>
+		</div>
+
+
     </section>
 </div>
 
