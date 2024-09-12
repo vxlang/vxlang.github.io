@@ -576,6 +576,96 @@
 		</div>
 				
         <!-- -->
+        <h2 id="protecting-user-code-with-the-MAP">Protecting user code with the MAP-File</h2>
+				
+		<p>
+		&nbsp;				
+		VxLang can perform function-level obfuscation by utilizing the binary's MAP-file.<br>
+		&nbsp;
+		The MAP file looks something like this:<br>		
+		</p>
+		<div class="code-block">
+			<div>
+			map64<br><br>
+
+			Timestamp is 66d39ebe (Sun Sep  1 07:52:46 2024)<br><br>
+
+			Preferred load address is 0000000140000000<br><br>
+
+			Start         Length     Name                   Class<br>
+			...<br>
+			0001:00000000
+			&nbsp;&nbsp;&nbsp;
+			__local_stdio_printf_options
+			&nbsp;
+			0000000140001000 <b>f</b> i sample.obj<br>
+			0001:00000010
+			&nbsp;&nbsp;&nbsp;
+			_vfprintf_l
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;
+			0000000140001010 <b>f</b> i sample.obj<br>
+			0001:00000060
+			&nbsp;&nbsp;&nbsp;
+			printf
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			0000000140001060 <b>f</b> i sample.obj<br>
+			...<br>
+			</div>
+		</div>
+		
+		<p>
+        In the MAP file, the function is represented by <b>f</b>, as shown in the example above.<br>
+		Find the function you need to obfuscate in the list above and enter it into your project JSON, and it will be obfuscated per function.
+		</p>
+		
+		<div class="code-block">
+			<div>
+			  <b>"virtualization-by-map"</b>: [<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "__local_stdio_printf_options",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "_vfprintf_l",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "printf"<br>
+			  ]<br>
+			</div>
+		</div>
+		<div class="code-block">
+			<div>
+			  <b>"obfuscation-by-map"</b>: [<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "__local_stdio_printf_options",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "_vfprintf_l",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "printf"<br>
+			  ]<br>
+			</div>
+		</div>
+		<div class="code-block">
+			<div>
+			  <b>"flattening-by-map"</b>: [<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "__local_stdio_printf_options",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "_vfprintf_l",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "printf"<br>
+			  ]<br>
+			</div>
+		</div>
+		
+        <!-- -->
+        <h2 id="protecting-user-code-with-the-PDB">Protecting user code with the PDB-File</h2>
+		<p>
+		...
+		</p>
+		
+        <!-- -->
         <h2 id="disable-the-vxlang-core">Disable the VxLang-Core</h2>
 		
 		<p>
@@ -595,7 +685,6 @@
 			:\> <span class="keyword">vxlang.exe</span> temp.json <span class="parameter"><b>--disable-core</b></span>
 			</div>
 		</div>
-
 
     </section>
 </div>
