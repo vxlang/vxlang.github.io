@@ -241,231 +241,238 @@
         </ul>		
 		</p>
 
-		<!-- -->
-        <h1 id="project-json">VxLang Project JSON</h1>
-		<p></p>
+        <!-- -->
+        <h1 id="how-to-protect-user-code">How to Protect User Code</h1>
 		
-        <h2 id="gen_json">Generating a Project JSON</h2>
+        <h2 id="precautions">Precautions</h2>
 		<p>
-		<b>Target Version: 1.6.1.1</b><br>
-        This page provides instructions on how to use VxLang. <br>
+		&nbsp;
+	    When using code obfuscation and virtualization, be mindful of the following situations:	
+		<br>		
 		</p>
+		
+		<p>
+		&nbsp;
+		<b>1. Compiler Optimization Considerations:</b><br>
+		&nbsp;
+        If you're using the VxLang SDK to obfuscate or virtualize your code, ensure that you check the compiler optimization settings.
+		When compiler optimization is enabled, your code might be merged in ways that differ from how you originally wrote it. 
+		
+		If VxLang SDK functions are referenced within this merged code, the Begin/End positions might change, resulting in less obfuscation than intended.				
+		</p>
+		
+		<p>
+		&nbsp;		
+		Here's how to fix the problem: <br>
+		<div class="code-block">
+			<span class="keyword">1.</span> Turn off compiler optimization. <br>
+			<span class="keyword">2.</span> Disable code optimization for specific functions or pages at the code level. <br>
+			<span class="keyword">3.</span> Use MAP/PDB-based obfuscation/virtualization. <br>		
+        </div>		
 
 		<p>
-        VxLang supports JSON files to adjust protection options at the binary level. To obtain the latest version of the JSON file, use the CMD options. Below is an example command:
+		&nbsp;
+		<b>2. Potential Code Generation:</b><br>
+		&nbsp;
+        Be aware of the following code pattern that may occur during the obfuscation and virtualization process:			
 		</p>
-		
+
 		<div class="code-block">
 			<div>
-			:\> <span class="keyword">vxlang.exe</span> <span class="parameter"><b>${PE-Binary}</b></span>
+			...<br>
+			<span class="keyword">call</span> _VXLANG_BEGIN <br>
+			<span class="keyword">jmp</span> L1 <br><br>
+
+			<span class="parameter">L0:</span><br>
+			<span class="keyword">jmp</span> EXIT <br><br>
+
+			<span class="parameter">L1:</span><br>
+			<span class="keyword">lea</span> rax, $L0 <br>
+			<span class="keyword">jmp</span> rax <br><br>
+			
+			<span class="parameter">EXIT:</span><br>
+			<span class="keyword">call</span> _VXLANG_END <br>
+			
+			... <br>
 			</div>
 		</div>
 		
 		<p>
-		This will create a <b>temp.json</b> file.
+		&nbsp;		
+        In this example, the <b>jmp rax</b> instruction causes a jump from the VxLang region back to the original code. 
+		This type of code can occur when table-based operations are used in a <b>switch-case</b> statement.		
 		</p>
 
+		<p>
+		&nbsp;
+		<b>3. Exception Handling:</b><br>
+		&nbsp;
+        VxLang currently only supports SEH (Structured Exception Handling). Therefore, be cautious when using it in conjunction with try-catch blocks.		
+		</p>
+
+
+        <!-- -->
+        <h2 id="protecting-user-code-with-the-SDK">Protecting user code with the SDK</h2>
+		
+		<p>
+		&nbsp;
+		Let's check out the VxLang SDK functions. <br>		
+        &nbsp; - Link: <a href="https://github.com/vxlang/sdklib/blob/main/test/vxlib.h#L21">vxlib.h</a> <br>
+        &nbsp; - Link: <a href="https://github.com/vxlang/sdklib/blob/main/vxlib/vxlib.cpp#L5">vxlib.cpp</a><br>
+		</p>
+		
 		<div class="code-block">
 			<div>
-			{                                         
-			   "input": "test.exe",                     
-			   "output": "",                    
-			   "backup": false,                        
-			   "use-data-section": false,           
-			   "base-section-name": "",         
-			   "map-file-path": "",             
-			   "virtualizer": {                     
-				  "entry-point": false,                
-				  "virtualization-by-map": []       
-			   },                                     
-			   "obfuscator": {                      
-				  "entry-point": false,                
-				  "obfuscation-by-map": [],		   
-				  "flattening-by-map": []           
-			   },                                     
-			   "protector": {                       
-				  "compress": true,                   
-				  "symbol-data": false,                
-				  "mutate-import-table": true,        
-				  "vxlang-link-event": false,       
-				  "anti-tamper": {                  
-					 "enable": true,                  
-					 "hide-unused-memory": true,      
-					 "pause-protection": true,        
-					 "message": ""              
-				  },                                  
-				  "extension": [],                  
-				  "raw-data" : [],                  
-				  "reflection": {                   
-					 "enable": false,                  
-					 "ldr-update": true               
-				  }                                   
-			   }                                      
+			<span class="annotation">// Code Obfuscation Macros</span><br>
+			<span class="keyword">#define</span><span class="define"> VL_OBFUSCATION_BEGIN</span><br>
+			<span class="keyword">#define</span><span class="define"> VL_OBFUSCATION_END</span><br>
+			</div>
+		</div>
+		<div class="code-block">
+			<div>
+			<span class="annotation">// Code Flattening Macros</span><br>			
+			<span class="keyword">#define</span><span class="define"> VL_CODE_FLATTENING_BEGIN</span><br>
+			<span class="keyword">#define</span><span class="define"> VL_CODE_FLATTENING_END</span><br>
+			</div>
+		</div>
+		<div class="code-block">
+			<div>
+			<span class="annotation">// Code Virtualization Macros</span><br>			
+			<span class="keyword">#define</span><span class="define"> VL_VIRTUALIZATION_BEGIN</span><br>
+			<span class="keyword">#define</span><span class="define"> VL_VIRTUALIZATION_END</span><br>
+			</div>
+		</div>
+		
+		<p>
+		&nbsp;		
+		To protect specific code sections, you can insert these macros as follows:<br>
+		&nbsp;
+		Link: <a href="https://github.com/vxlang/vxlang-page/blob/main/src/01/sample/sample.cpp#L86">sample.cpp</a>
+
+		</p>
+		<div class="code-block">
+			<div>
+			<span class="keyword">void</span> func() {<br>
+			
+			&nbsp;&nbsp;&nbsp;<span class="define">VL_OBFUSCATION_BEGIN</span>;<br>
+			&nbsp;&nbsp;&nbsp;<span class="annotation">// Your code to be obfuscated</span><br>
+			&nbsp;&nbsp;&nbsp;<span class="define">VL_OBFUSCATION_END</span>;<br>
+			&nbsp;&nbsp;&nbsp;return;<br>
 			}
 			</div>
 		</div>
-	
-	    <p>
-		The generated JSON can be used as shown below.
+				
+        <!-- -->
+        <h2 id="protecting-user-code-with-the-MAP">Protecting user code with the MAP-File</h2>
+				
+		<p>
+		&nbsp;				
+		VxLang can perform function-level obfuscation by utilizing the binary's MAP-file.<br>
+		&nbsp;
+		The MAP file looks something like this:<br>		
+		</p>
+		<div class="code-block">
+			<div>
+			map64<br><br>
+
+			Timestamp is 66d39ebe (Sun Sep  1 07:52:46 2024)<br><br>
+
+			Preferred load address is 0000000140000000<br><br>
+
+			Start         Length     Name                   Class<br>
+			...<br>
+			0001:00000000
+			&nbsp;&nbsp;&nbsp;
+			__local_stdio_printf_options
+			&nbsp;
+			0000000140001000 <b>f</b> i sample.obj<br>
+			0001:00000010
+			&nbsp;&nbsp;&nbsp;
+			_vfprintf_l
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;
+			0000000140001010 <b>f</b> i sample.obj<br>
+			0001:00000060
+			&nbsp;&nbsp;&nbsp;
+			printf
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			0000000140001060 <b>f</b> i sample.obj<br>
+			...<br>
+			</div>
+		</div>
+		
+		<p>
+        In the MAP file, the function is represented by <b>f</b>, as shown in the example above.<br>
+		Find the function you need to obfuscate in the list above and enter it into your project JSON, and it will be obfuscated per function.
 		</p>
 		
 		<div class="code-block">
 			<div>
-			:\> <span class="keyword">vxlang.exe</span> <span class="parameter"><b>temp.json</b></span>
+			  <b>"virtualization-by-map"</b>: [<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "__local_stdio_printf_options",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "_vfprintf_l",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "printf"<br>
+			  ]<br>
 			</div>
 		</div>
-
-        <h2 id="json_desc">JSON Description</h2>
 		<div class="code-block">
 			<div>
-			<span class="type"><b>input</b></span>
-			&nbsp; : &nbsp; 
-			The input file.
+			  <b>"obfuscation-by-map"</b>: [<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "__local_stdio_printf_options",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "_vfprintf_l",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "printf"<br>
+			  ]<br>
 			</div>
-			
+		</div>
+		<div class="code-block">
 			<div>
-			<span class="type"><b>output</b></span>
-			&nbsp; : &nbsp; 
-			The output file.
-			</div>
-			
-			<div>
-			<span class="type"><b>backup</b></span>
-			&nbsp; : &nbsp; 
-			Decide whether to back up the original file.
-			</div>
-
-			<div>
-			<span class="type"><b>use-data-section</b></span>
-			&nbsp; : &nbsp; 
-            This flag recycles the data section instead of creating a VxLang section.
-			</div>
-
-			<div>
-			<span class="type"><b>base-section-name</b></span>
-			&nbsp; : &nbsp; 
-            Sets the default section name for VxLang data or code. <b>If empty, generate a random name.</b>
-			</div>
-
-			<div>
-			<span class="type"><b>map-file-path</b></span>
-			&nbsp; : &nbsp; 
-			Use a MAP file to map binary information.
+			  <b>"flattening-by-map"</b>: [<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "__local_stdio_printf_options",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "_vfprintf_l",<br>
+			  &nbsp;&nbsp;&nbsp;
+			  "printf"<br>
+			  ]<br>
 			</div>
 		</div>
 		
-		<p><b>virtualizer:</b></p>
-		<div class="code-block">
-			<div>
-			<span class="type"><b>entry-point</b></span>
-			&nbsp; : &nbsp; 
-			Virtualizes the program entry point.
-			</div>
-
-			<div>
-			<span class="type"><b>virtualization-by-map</b></span>
-			&nbsp; : &nbsp; 
-			Based on the function name written in the MAP file, virtualizes the entire function.
-			</div>			
-		</div>
-
-		<p><b>obfuscator:</b></p>
-		<div class="code-block">
-			<div>
-			<span class="type"><b>entry-point</b></span>
-			&nbsp; : &nbsp; 
-			Flattening the program entry point.
-			</div>
-
-			<div>
-			<span class="type"><b>obfuscation-by-map</b></span>
-			&nbsp; : &nbsp; 
-			Based on the function name written in the MAP file, obfuscation the entire function.
-			</div>			
-
-			<div>
-			<span class="type"><b>flattening-by-map</b></span>
-			&nbsp; : &nbsp; 
-			Based on the function name written in the MAP file, flattening the entire function.
-			</div>			
-		</div>
-
-		<p><b>protector:</b></p>
-		<div class="code-block">
-			<div>
-			<span class="type"><b>compress</b></span>
-			&nbsp; : &nbsp; 
-			Compress the binary. If this flag is not set, only the VxLang core is added.
-			</div>
-			
-			<div>
-			<span class="type"><b>symbol-data</b></span>
-			&nbsp; : &nbsp; 
-			Decide if you want to keep the debug symbols.
-			</div>
-
-			<div>
-			<span class="type"><b>mutate-import-table</b></span>
-			&nbsp; : &nbsp; 
-			Obfuscate the import table.
-			</div>
-
-			<div>
-			<span class="type"><b>vxlang-link-event</b></span>
-			&nbsp; : &nbsp; 
-			SDK to route obfuscated or virtualized blocks through the VxLang core. This is freely controllable via VxLang extension modules.
-			</div>
-
-			<div>
-			<span class="type"><b>anti-tamper:enable</b></span>
-			&nbsp; : &nbsp; 
-			Enable the anti-tamper feature included with VxLang.
-			</div>
-
-			<div>
-			<span class="type"><b>anti-tamper:hide-unused-memory</b></span>
-			&nbsp; : &nbsp; 
-			Delete memory that is not referenced by the protected memory.
-			</div>
-
-			<div>
-			<span class="type"><b>anti-tamper:pause-protection</b></span>
-			&nbsp; : &nbsp; 
-			Detect thread pauses.
-			</div>
-			
-			<div>
-			<span class="type"><b>anti-tamper:message</b></span>
-			&nbsp; : &nbsp; 
-			The message that is output when detected by the anti-tamper. If it is empty, the program will exit.
-			</div>
-
-			<div>
-			<span class="type"><b>extension</b></span>
-			&nbsp; : &nbsp; 
-			VxLang extension modules developed by users. 
-			</div>
-			
-			<div>
-			<span class="type"><b>raw-data</b></span>
-			&nbsp; : &nbsp; 
-			Enclose (compress) RAW data, such as other binaries (DLL/SYS), in the target binary. This can be freely controlled by the extension module.
-			</div>
-
-			<div>
-			<span class="type"><b>reflection:enable</b></span>
-			&nbsp; : &nbsp; 
-			Reflex load the target binary. 
-			</div>
-
-			<div>
-			<span class="type"><b>reflection:ldr-update</b></span>
-			&nbsp; : &nbsp; 
-			Determines whether to update the target binaries in the PEB!LDR.
-			</div>
-			
-		</div>
+        <!-- -->
+        <h2 id="protecting-user-code-with-the-PDB">Protecting user code with the PDB-File</h2>
+		<p>
+		...
+		</p>
 		
+        <!-- -->
+        <h2 id="disable-the-vxlang-core">Disable the VxLang-Core</h2>
+		
+		<p>
+		&nbsp;		
+		VxLang performs additional binary protection behavior through VxLang-Core. 
+		However, sometimes users only need code protection without additional protection behavior.
+		In this case, you can enter a command like the one below to exclude the core.
+		</p>
+
+		<div class="code-block">
+			<div>
+			:\> <span class="keyword">vxlang.exe</span> ${PE-Binary} <span class="parameter"><b>--disable-core</b></span>
+			</div>
+		</div>
+		<div class="code-block">
+			<div>
+			:\> <span class="keyword">vxlang.exe</span> temp.json <span class="parameter"><b>--disable-core</b></span>
+			</div>
+		</div>
+
     </section>
 </div>
 
