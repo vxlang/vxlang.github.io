@@ -234,181 +234,25 @@
 
     <section class="main-content">
         <h1 id="task-list">Task List</h1>
-        <h2 id="2024.08.28">2024.08~ </h2>
-		<div class="code-block">
-           I'm currently working on a COFF parser and an ELF parser, which will be combined with a PE parser. <br> 
-		   (I will be adding ELF code obfuscation first, followed by ELF packer, then COFF code obfuscation.) <br><br>
-
-		   ELF 0. SRC File<br>		   
-		   <img src="https://vxlang.github.io/image/elf_0.png" width="80%" height="auto" /><br>
-
-		   ELF 1. Added Segments<br>		   
-		   <img src="https://vxlang.github.io/image/elf_1.png" width="80%" height="auto" /><br>
-
-		   ELF 2. Added Sections<br>		   
-		   <img src="https://vxlang.github.io/image/elf_2.png" width="80%" height="auto" /><br>
-
-		   ELF 3. Check Segment and Sections(; image dump sections)<br>		   
-		   <img src="https://vxlang.github.io/image/elf_3.png" width="80%" height="auto" /><br>
-
-		   ELF 4. Check Section Data<br>		   
-		   <img src="https://vxlang.github.io/image/elf_4.png" width="80%" height="auto" /><br>
-		   
-		   [2024.09.22.update] <br>
-           I added a disassembler for elf-format, and now I can compute the function to be obfuscated via SDK or symbols.<br>
-		   Now, i'm started porting the code obfuscation tools. <br>
-		   --- <br>
-
-		   ELF 5. Disassemble `main` func<br>
-		   <img src="https://vxlang.github.io/image/elf_5.png" width="80%" height="auto" /><br>
-
-		   ELF 6. Simple Obfuscation `main` func<br>
-		   <img src="https://vxlang.github.io/image/elf_6.png" width="80%" height="auto" /><br>
-		   <img src="https://vxlang.github.io/image/elf_7.png" width="80%" height="auto" /><br>
-		   <img src="https://vxlang.github.io/image/elf_8.png" width="80%" height="auto" /><br>
-
-		   [2024.09.30.update] <br>
-		   VxLang can now easily manipulate ELF relocation data.<br>
-
-		   ELF 6. Before the patch<br>
-		   <img src="https://vxlang.github.io/image/elf_9.png" width="80%" height="auto" /><br>
-		   <img src="https://vxlang.github.io/image/elf_10.png" width="80%" height="auto" /><br>
-
-		   ELF 7. Patching ELF Relocation Data<br>
-		   <img src="https://vxlang.github.io/image/elf_11.png" width="80%" height="auto" /><br>
-		   <img src="https://vxlang.github.io/image/elf_12.png" width="80%" height="auto" /><br>
-		   <img src="https://vxlang.github.io/image/elf_13.png" width="80%" height="auto" /><br>
-
-		   ELF 8. `main` func flattening<br>
-		   <img src="https://vxlang.github.io/image/elf_15.png" width="80%" height="auto" /><br>
-		   <img src="https://vxlang.github.io/image/elf_17.png" width="80%" height="auto" /><br>
-		   <img src="https://vxlang.github.io/image/elf_14.png" width="80%" height="auto" /><br>
-		   <img src="https://vxlang.github.io/image/elf_16.png" width="80%" height="auto" /><br>
-		   
-		</div>
+		...
 		
 		<!-- -->		
 
         <h1 id="vxlang-overview">News</h1>
 
-        <h2 id="1.7.4.0">1.7.4.0</h2>
+        <h2 id="1.7.5.0">1.7.5.0</h2>
 		<div class="code-block">
            <ul>		   
                <li><b>Windows Version Patch</b></li>
                <ul>
-                  <li>Fixed a bug that prevented SEH processing during function unit obfuscation.</li>
-                  <li>Fixed all obfuscation entry points to be virtualized.</i>
+                  <li>Fixed bug for function size calculation.</li>
+                  <li>Fixed bug with 32bit SEH.</i>
                </ul>   
            </ul>
 		</div>
-		
-		<!-- -->
-
-        <h2 id="1.7.3.0">1.7.3.0</h2>
-		<div class="code-block">
-           <ul>		   
-               <li><b>Windows Version Patch</b></li>
-               <ul>
-                  <li>PDB/MAP related bug fixes</li>
-                  <ol>Fixed bug with virtualize/obfuscate specification</ol>
-                  <ol>Fixed bug with nested obfuscation</ol>
-               </ul>   
-           </ul>
-		</div>
-		
-		<!-- -->
-
-        <h2 id="1.7.2.0">1.7.2.0</h2>
-		<div class="code-block">
-           <ul>		   
-               <li><b>Windows Version Patch</b></li>
-           	   <ul>			   
-                  <li>Added support for `Tail Call Optimization (TCO)`</li>
-                  <ol>
-                     If SDK-End is a `jump-link`, returns.
-                  </ol>
-                  <li>Fixed VM compilation bug for `SDK call-link`</li>
-                  <ol>
-                     SDK flag issues, clang/gcc/rust/etc.
-                  </ol>
-                  <li>Fixed Packer bug</li>
-                  <ol>
-                     Resource table issues
-                  </ol>		   
-           	   </ul>
-           </ul>
-		</div>
-		
-		<!-- -->
-
-        <h2 id="1.7.1.0">1.7.1.0</h2>
-		<div class="code-block">
-           <ul>
-               <li><b>Windows Version Patch</b></li>
-           	   <ul>
-                 <li>Fixed a bug where enabling the `reflection` option caused a conflict with `vxlang-link-event`.</li>
-                 <li>Fixed to allow loading of extension modules even if their section alignment value is not 0x10000.</li>
-           	     <ol>
-           	        In such cases, testing and updates are planned to exception handling and TLS settings for extension modules.			
-           	     </ol>
-           	   </ul>
-           </ul>
-		</div>
-		
-		<!-- -->
-
-        <h2 id="1.7.0.0">1.7.0.0</h2>
-		<div class="code-block">
-			<div>
-			   <span class="annotation">Added beta code for the ELF file format.</span><br> 
-			   <span class="annotation">- The beta version only supports general code flattening.</span><br> 			   
-			   <span class="annotation">- Beta features require users to specify target code.</span><br> 
-			   <span class="annotation">- VxLang recommends using the `-fno-pic` option in ELF 32bit binary builds.</span><br><br> 			   
-			</div>
-			<div>
-			   <span class="annotation">A sample usage is shown below:</span><br>
-			   <img src="https://vxlang.github.io/image/elf_opt_json.PNG" width="50%" height="auto" /><br>
-			</div>
-		</div>
-
-        <h2 id="1.6.9.0">1.6.9.0</h2>
-		<div class="code-block">
-			<div>
-			   <span class="annotation">Fixed extension module load timing, now loads faster than before.</span> 
-			   <span class="annotation">Fixed Critical bug.</span> 			   
-			</div>
-			<div>
-			   <span class="annotation">From now on, the general obfuscation/flattening technique will also have handlers added to specific commands.</span> 
-			</div>
-		</div>
-
-        <h2 id="1.6.8.0">1.6.8.0</h2>
-		<div class="code-block">
-			<div>
-			   <span class="annotation">A new CFG has been added to the code flattening process.</span> 
-			   <span class="annotation">I was able to add this method because the branch table setting is now available in the VxLang internal x86-64 assembler.</span> 
-			   <span class="annotation">This method is randomized with the existing method.</span> 			   
-			   <span class="annotation">Binary expiration is extended to the end of October.</span> 	
-     		   <img src="https://vxlang.github.io/image/cfg_1.png" width="80%" height="auto" /><br>
-			   
-			</div>
-			<div>
-			   <span class="annotation">From now on, the general obfuscation/flattening technique will also have handlers added to specific commands.</span> 
-			</div>
-		</div>
-
-        <h2 id="1.6.7.0">1.6.7.0</h2>
-		<div class="code-block">
-			<div>
-			   <span class="annotation">Fixed bug where obfuscation patterns were not applied randomly.</span> 
-			</div>
-			<div>
-			   <span class="annotation">Updated License-File.</span> 
-			</div>
-		</div>
-		
+				
         <h2 id="next">
-		<a href="https://vxlang.github.io/news/news-4.html">Next</a>
+		<a href="https://vxlang.github.io/news/news-5.html">Next</a>
 		</h2>
     </section>
 </div>
