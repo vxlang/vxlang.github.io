@@ -14,6 +14,9 @@ Download: [Link](https://www.patreon.com/posts/full-version-110576267)
 
 The purchasing methods for VxLang are as follows.
 
+- [Individual Sales](https://www.patreon.com/c/vxlang/shop)
+  - `3-Year` Long-Term Sponsorship: **30% Off**
+
 ## Patreon
 
 > ##### Patreon
