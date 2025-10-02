@@ -6,7 +6,7 @@ permalink: /
 
 <div align="center">
    <a href="https://vxlang.github.io/">
-      <img src="https://vxlang.github.io/image/vxlang-logo-3.png" loop=infinite style="max-width: 100%; height: auto;" />
+      <img src="https://vxlang.github.io/image/VxLang_4.png" loop=infinite style="max-width: 100%; height: auto;" />
    </a>
 </div>
 <br>
