@@ -1,0 +1,19 @@
+/* Paper — bright editorial reading experience, spacious layout */
+:root {color-scheme:light;
+ --bg:#fffefa;--sidebar:#f8f8f3;--surface:#f4f6f4;--surface2:#ebeeeb;
+ --border:#dce1dd;--text:#23343a;--head:#192d32;--bodycopy:#465359;
+ --sub:#64787a;--muted:#7e9191;--accent:#0b766d;--accent-hover:#064e49;
+ --accent-soft:#e1f3eb;--header-bg:rgba(255,254,250,.97);
+ --code-bg:#f6f8f7;--code-toolbar:#edf1ee;--code-border:#d3ddda;
+ --input-bg:#f5f7f5;--search-dialog:#ffffff;--search-overlay:rgba(30,54,54,.36);
+ --inline-code:#eef3ef;--logo-bg:#eff7f2;--logo-border:#c5d9d0;
+ --radius:8px;--heading-font:Georgia,"Times New Roman",serif;}
+.docs-content h1{font-size:42px;letter-spacing:-.035em;font-weight:720}
+.docs-content h2{border-top:0;padding-top:0;font-size:27px;margin-top:58px}
+.docs-content h3{font-size:19px}
+.article-container{max-width:955px;padding-top:62px}
+.brand{font-weight:760}
+.brand-icon{border-radius:7px}
+.doc-link.is-active{box-shadow:inset 3px 0 #128077}
+.code-label{color:#37615e}
+.json-tree .string{color:#247052}.json-tree .number{color:#985b3d}.json-tree .boolean,.json-tree .null{color:#7652a0}

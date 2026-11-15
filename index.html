@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" data-root="" data-theme="paper">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VxLang developer documentation">
+  <meta name="theme-color" content="#fffefa">
+  <title>Overview · VxLang Docs</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/theme.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <button class="menu-button" id="menu-toggle" type="button" aria-label="Toggle menu">☰</button>
+    <a class="brand" href="index.html" aria-label="VxLang documentation home">
+      <span class="brand-icon"><img class="brand-image" src="assets/logo.png" alt="VxLang logo"></span>
+      <span class="brand-wordmark">VxLang <span class="brand-light">Docs</span></span>
+    </a>
+    <span class="version-tag">Developer documentation</span>
+    <div class="topbar-actions">
+      <button id="search-toggle" class="search-top" type="button"><span>Search documentation</span><kbd>Ctrl K</kbd></button>
+      <a class="github-link" href="https://github.com/vxlang" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"><div class="sidebar-scroll"><div class="nav-group-title">DOCUMENTATION</div>
+<a class="doc-link is-active" href="index.html"><span class="doc-position">01</span>Overview</a>
+<div class="section-links">
+<a class="section-link" href="#1-key-features">1. Key Features</a>
+<a class="section-link level-three" href="#packer-protector">Packer &amp; Protector</a>
+<a class="section-link level-three" href="#code-obfuscation">Code Obfuscation</a>
+<a class="section-link level-three" href="#code-virtualization">Code Virtualization</a>
+<a class="section-link level-three" href="#code-flattening">Code Flattening</a>
+<a class="section-link level-three" href="#runtime-code-encryption">Runtime Code Encryption</a>
+<a class="section-link" href="#2-how-vxlang-works">2. How VxLang Works</a>
+<a class="section-link" href="#3-vxlang-core">3. VxLang-Core</a>
+<a class="section-link" href="#4-protection-methods">4. Protection Methods</a>
+<a class="section-link" href="#5-supported-platforms">5. Supported Platforms</a>
+<a class="section-link" href="#6-ways-to-use-vxlang">6. Ways to Use VxLang</a>
+<a class="section-link" href="#7-limitations-considerations">7. Limitations &amp; Considerations</a>
+<a class="section-link" href="#8-next-steps">8. Next Steps</a>
+</div>
+<a class="doc-link" href="page_1.html"><span class="doc-position">02</span>Getting Started</a>
+<a class="doc-link" href="page_2.html"><span class="doc-position">03</span>Protection Features</a>
+<a class="doc-link" href="page_3.html"><span class="doc-position">04</span>VxLang SDK Tutorial — Precautions</a>
+<a class="doc-link" href="page_4.html"><span class="doc-position">05</span>VxLang SDK Tutorial — Linking with VxLang-Core</a></div></aside>
+    <main class="main-area"><div class="article-container">
+      <div class="breadcrumbs">VxLang <span class="breadcrumb-divider">/</span> Documentation</div>
+      <article class="docs-content"><h1 id="overview">Overview</h1>
+<blockquote>
+<p><strong>VxLang</strong> — Windows Binary Protection, Code Obfuscation &amp; Virtualization</p>
+</blockquote>
+<p>VxLang is a binary protection solution designed to make reverse engineering and tampering with Windows executables more difficult. It combines technologies such as executable packing, code obfuscation, code virtualization, control-flow flattening, and Runtime Code Encryption to protect important code and data.</p>
+<p>VxLang supports both <strong>protecting existing compiled binaries</strong> and <strong>selecting code regions for protection directly through its SDK</strong>. Users can choose the protection methods that best suit their applications and performance requirements.</p>
+<blockquote>
+<p><strong>Note:</strong> VxLang is designed to increase the difficulty of analysis and tampering. It does not guarantee complete prevention of every form of reverse engineering or memory dumping. Protection effectiveness and compatibility depend on the target application, configuration, and runtime environment.</p>
+</blockquote>
+<hr/>
+<h2 id="1-key-features">1. Key Features</h2>
+<h3 id="packer-protector">Packer &amp; Protector</h3>
+<p>Protects the distribution format and loading process of an executable.</p>
+<ul>
+<li>Executable packing and optional compression</li>
+<li>Entry point protection</li>
+<li>Import table mutation</li>
+<li>Anti-tamper checks and memory protection options</li>
+<li>Integration of protected code and runtime features through <strong>VxLang-Core</strong></li>
+</ul>
+<p>Packing helps conceal the original executable structure and complicate analysis. However, <strong>unpacking an executable does not necessarily mean recovering its original code</strong>. Obfuscation, virtualization, and Runtime Code Encryption provide additional, independent layers of protection.</p>
+<h3 id="code-obfuscation">Code Obfuscation</h3>
+<p>Transforms instruction representations and code structures while preserving the original behavior.</p>
+<ul>
+<li>Instruction and code-pattern transformations</li>
+<li>Arithmetic and logic obfuscation, including MBA techniques</li>
+<li>Protection of individual functions or selected code regions</li>
+<li>Protection core selection (<code>phobos</code> / <code>deimos</code>, depending on version and compatibility)</li>
+</ul>
+<p>Obfuscation is intended to increase the difficulty of static analysis and automated code understanding.</p>
+<h3 id="code-virtualization">Code Virtualization</h3>
+<p>Converts selected native code into a form executed by the VxLang virtual machine (VM).</p>
+<ul>
+<li>Execution through a virtual instruction set and VM handlers</li>
+<li>Function-level or region-based virtualization</li>
+<li><strong>Dual-Mode</strong> protection combining obfuscation and virtualization</li>
+<li>Advanced configurations such as multiple VMs and TMA Virtualization (in supported versions)</li>
+</ul>
+<p>Virtualization is suitable for protecting critical logic, but it may affect execution speed and binary size. For performance-sensitive applications, it is generally better to apply virtualization selectively to critical code rather than to the entire program.</p>
+<h3 id="code-flattening">Code Flattening</h3>
+<p>Transforms a program's control flow to make branches and execution paths more difficult to trace.</p>
+<ul>
+<li>Transformation of branch structures and control-flow graphs (CFGs)</li>
+<li>Selective application to functions and code regions</li>
+<li>Supported methods such as REpsych Code Flattening</li>
+</ul>
+<h3 id="runtime-code-encryption">Runtime Code Encryption</h3>
+<p>Decrypts selected code regions only when they are needed at runtime, then re-encrypts them after execution of the protected region is complete.</p>
+<ul>
+<li>Keeps protected code encrypted in the distributed binary</li>
+<li>Decrypts code when entering a protected region and re-encrypts it upon exit</li>
+<li>Reference-counted operation to handle overlapping access from multiple threads</li>
+<li>Makes collecting plaintext code through memory dumps more difficult</li>
+</ul>
+<p><strong>VxLang-Core must be loaded for code protected with Runtime Code Encryption to execute.</strong> As a result, removing the packer shell alone does not mean that the original code in encrypted regions can be successfully restored or executed.</p>
+<p>However, decrypted code is present in memory while it is executing. Runtime Code Encryption therefore does not completely eliminate the possibility of dynamic analysis during that interval.</p>
+<hr/>
+<h2 id="2-how-vxlang-works">2. How VxLang Works</h2>
+<p>VxLang takes a target binary and its protection configuration as input, then generates an output file with the selected protection features applied.</p>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">TEXT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code>[Original EXE / DLL / PE]
+            |
+            v
+ [Protection Configuration]
+     |       |       |
+     |       |       +-- SDK Markers / Function Selection
+     |       +---------- JSON / CLI Options
+     +------------------ Obscurion (GUI)
+            |
+            v
+        [VxLang]
+     |      |       |
+     |      |       +-- Code Virtualization / Dual-Mode
+     |      +---------- Obfuscation / Code Flattening
+     +----------------- Packer / Protector / Runtime Code Encryption*
+            |
+            v
+     [Protected Binary]
+            |
+            v
+ [Execution with VxLang-Core*]
+
+* Requirements depend on the selected features and configuration.
+</code></pre><div class="json-tree" hidden=""></div></div>
+<p>Different protection layers may be applied to different parts of a protected executable.</p>
+<table>
+<thead>
+<tr>
+<th>Protection Method</th>
+<th>Primary Purpose</th>
+<th>Example Target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Packer / Protector</td>
+<td>Protect file structure and loading behavior</td>
+<td>Entire executable</td>
+</tr>
+<tr>
+<td>Obfuscation</td>
+<td>Transform instructions and code representation</td>
+<td>Functions and code regions</td>
+</tr>
+<tr>
+<td>Virtualization</td>
+<td>Convert code to a VM instruction set</td>
+<td>License checks, critical algorithms</td>
+</tr>
+<tr>
+<td>Code Flattening</td>
+<td>Complicate control flow</td>
+<td>Functions with important branching logic</td>
+</tr>
+<tr>
+<td>Runtime Code Encryption</td>
+<td>Reduce the time code is exposed in plaintext</td>
+<td>Sensitive code sections</td>
+</tr>
+</tbody>
+</table>
+<p>Multiple methods can be used together, but it is important to balance <strong>protection strength, performance, and compatibility</strong>.</p>
+<hr/>
+<h2 id="3-vxlang-core">3. VxLang-Core</h2>
+<p><strong>VxLang-Core</strong> is a core component that supports packing and runtime protection features in protected executables. Depending on the configuration, it is used to execute protected code and support certain SDK integrations and extended protection features.</p>
+<ul>
+<li>Supports the execution process of protected binaries</li>
+<li>Integrates with VxLang runtime protection features</li>
+<li>Works with relevant SDK events and protected regions</li>
+<li>Is required for runtime code decryption when using Runtime Code Encryption</li>
+</ul>
+<p>Some obfuscation and virtualization configurations can be evaluated without VxLang-Core by using <code>disable-core</code>. However, <strong>features that depend on VxLang-Core may not function correctly in this configuration</strong>. In particular, when Runtime Code Encryption is used, removing VxLang-Core prevents the expected decryption and execution of encrypted code regions.</p>
+<blockquote>
+<p>Refer to the configuration reference for your VxLang version for the exact behavior and supported combinations of <code>disable-core</code>.</p>
+</blockquote>
+<hr/>
+<h2 id="4-protection-methods">4. Protection Methods</h2>
+<p>The main VxLang protection technologies have different purposes and operating principles.</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Packer</th>
+<th>Obfuscator</th>
+<th>Virtualizer</th>
+<th>Runtime Code Encryption</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main Role</td>
+<td>Protect files and loading</td>
+<td>Transform code representation</td>
+<td>Convert native execution to VM-based execution</td>
+<td>Decrypt code when needed at runtime</td>
+</tr>
+<tr>
+<td>Typical Scope</td>
+<td>Entire binary</td>
+<td>Selected regions</td>
+<td>Selected regions</td>
+<td>Selected regions</td>
+</tr>
+<tr>
+<td>Analysis Resistance</td>
+<td>Conceals original file structure</td>
+<td>Increases the difficulty of understanding static code</td>
+<td>Increases the difficulty of recovering native logic</td>
+<td>Reduces plaintext code exposure time</td>
+</tr>
+<tr>
+<td>Considerations</td>
+<td>Loading and compatibility</td>
+<td>Code size and performance</td>
+<td>Execution performance</td>
+<td>Concurrent execution and VxLang-Core dependency</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommended approach:</strong> Apply an appropriate level of packing protection to the executable, selectively use obfuscation or virtualization for critical algorithms, and consider Runtime Code Encryption for regions where plaintext exposure during execution should be minimized.</p>
+<hr/>
+<h2 id="5-supported-platforms">5. Supported Platforms</h2>
+<p>VxLang primarily targets <strong>Microsoft Windows PE (Portable Executable) files</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows EXE</td>
+<td>Protection for standard executable files</td>
+</tr>
+<tr>
+<td>Windows DLL</td>
+<td>Protection for dynamic-link libraries</td>
+</tr>
+<tr>
+<td>Windows SYS</td>
+<td>Features for kernel drivers; available protection methods may be restricted</td>
+</tr>
+<tr>
+<td>UEFI</td>
+<td>Features for UEFI PE binaries; environment-specific limitations may apply</td>
+</tr>
+<tr>
+<td>.NET EXE</td>
+<td>Protection through a separate extension module such as ExtsDN</td>
+</tr>
+</tbody>
+</table>
+<p>The primary target architectures are <strong>x86 and x64</strong>. Windows ARM64 and Linux ELF are under consideration for development or expansion, so support should be verified against the version currently in use.</p>
+<p>Even when a file type is supported, not all protection features are necessarily available for it. Kernel, UEFI, and .NET environments have different requirements from standard Windows user-mode applications.</p>
+<hr/>
+<h2 id="6-ways-to-use-vxlang">6. Ways to Use VxLang</h2>
+<p>VxLang offers three main ways to configure and apply protection.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>Recommended For</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Obscurion (GUI)</strong></td>
+<td>Visually configure the target binary, functions, and protection options</td>
+<td>First-time users</td>
+</tr>
+<tr>
+<td><strong>VxLang CLI</strong></td>
+<td>Run protection tasks with command-line options or JSON configuration files</td>
+<td>Automation and build pipelines</td>
+</tr>
+<tr>
+<td><strong>VxLang SDK</strong></td>
+<td>Select protected code regions directly in source code</td>
+<td>C/C++ application developers</td>
+</tr>
+</tbody>
+</table>
+<p>For example, the SDK can be used to mark a code region inside a function:</p>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">CPP</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="kt">void</span><span class="w"> </span><span class="nf">ProtectedFunction</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">VL_VIRTUALIZATION_BEGIN</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Protect this code region.</span>
+<span class="w">    </span><span class="n">ImportantOperation</span><span class="p">();</span>
+
+<span class="w">    </span><span class="n">VL_VIRTUALIZATION_END</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre><div class="json-tree" hidden=""></div></div>
+<p>This example illustrates the SDK marker syntax. Actual compilation and protection require the appropriate SDK headers and libraries, as well as the VxLang build step. The final boundaries of a protected region may also be affected by compiler optimizations.</p>
+<hr/>
+<h2 id="7-limitations-considerations">7. Limitations &amp; Considerations</h2>
+<p>Before applying protection, review the following considerations.</p>
+<ol>
+<li><strong>Compatibility testing is necessary.</strong> Exception handling (C++ EH/SEH), compiler optimizations, threading, and runtime characteristics may require adjustments to the protected regions.</li>
+<li><strong>Performance overhead is possible.</strong> Virtualization and intensive obfuscation should generally be applied selectively to critical regions.</li>
+<li><strong>SDK boundaries may not exactly match source-code boundaries.</strong> Verify the final binary with compiler optimizations, inlining, and function merging in mind.</li>
+<li><strong>Plaintext exposure during execution remains possible.</strong> Even with Runtime Code Encryption, analysis may target the moments when protected code is decrypted and running.</li>
+<li><strong>Feature support depends on the version and environment.</strong> Check the selected plugins, architecture, target file format, and any dependencies on VxLang-Core.</li>
+</ol>
+<hr/>
+<h2 id="8-next-steps">8. Next Steps</h2>
+<p>If you are new to VxLang, we recommend following these steps:</p>
+<ol>
+<li><strong>Getting Started</strong> — Prepare the application components and license.</li>
+<li><strong>Using Obscurion (GUI)</strong> — Apply protection settings to your first executable.</li>
+<li><strong>Protection Features</strong> — Choose the most suitable method for each part of your application.</li>
+<li><strong>SDK Integration</strong> — Define protected regions directly in critical functions.</li>
+<li><strong>Advanced Configuration</strong> — Fine-tune performance, compatibility, and advanced protection options.</li>
+</ol>
+<hr/>
+<p><strong>Official resources</strong></p>
+<ul>
+<li><a href="https://vxlang.github.io/">VxLang Documentation</a></li>
+<li><a href="https://github.com/vxlang/vxlang-page">VxLang GitHub</a></li>
+</ul>
+</article>
+      <nav class="page-pagination" aria-label="Page navigation"><a class="page-step next" href="page_1.html"><small>Next →</small><strong>Getting Started</strong></a></nav>
+      <footer class="page-footer">VxLang Documentation · Generated from Markdown</footer>
+    </div></main>
+    <aside class="right-toc"><div class="toc-sticky"><div class="toc-heading">ON THIS PAGE</div><a class="toc-link" href="#1-key-features">1. Key Features</a>
+<a class="toc-link toc-indent" href="#packer-protector">Packer &amp; Protector</a>
+<a class="toc-link toc-indent" href="#code-obfuscation">Code Obfuscation</a>
+<a class="toc-link toc-indent" href="#code-virtualization">Code Virtualization</a>
+<a class="toc-link toc-indent" href="#code-flattening">Code Flattening</a>
+<a class="toc-link toc-indent" href="#runtime-code-encryption">Runtime Code Encryption</a>
+<a class="toc-link" href="#2-how-vxlang-works">2. How VxLang Works</a>
+<a class="toc-link" href="#3-vxlang-core">3. VxLang-Core</a>
+<a class="toc-link" href="#4-protection-methods">4. Protection Methods</a>
+<a class="toc-link" href="#5-supported-platforms">5. Supported Platforms</a>
+<a class="toc-link" href="#6-ways-to-use-vxlang">6. Ways to Use VxLang</a>
+<a class="toc-link" href="#7-limitations-considerations">7. Limitations &amp; Considerations</a>
+<a class="toc-link" href="#8-next-steps">8. Next Steps</a></div></aside>
+  </div>
+  <div id="search-modal" class="search-overlay" hidden>
+    <div class="search-dialog" role="dialog" aria-modal="true" aria-label="Search documentation">
+      <div class="search-input-wrap"><span>⌕</span><input id="search-input" type="search" placeholder="Search documentation..." autocomplete="off"><button id="search-close" type="button">Esc</button></div>
+      <div id="search-results" class="search-results"><p class="search-help">Search titles and text in all documentation pages.</p></div>
+    </div>
+  </div>
+</body>
+</html>
