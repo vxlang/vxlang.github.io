@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-root="" data-theme="paper">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VxLang developer documentation">
+  <meta name="theme-color" content="#fffefa">
+  <title>VxLang SDK Tutorial — Linking with VxLang-Core · VxLang Docs</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="assets/theme.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <button class="menu-button" id="menu-toggle" type="button" aria-label="Toggle menu">☰</button>
+    <a class="brand" href="index.html" aria-label="VxLang documentation home">
+      <span class="brand-icon"><img class="brand-image" src="assets/logo.png" alt="VxLang logo"></span>
+      <span class="brand-wordmark">VxLang <span class="brand-light">Docs</span></span>
+    </a>
+    <span class="version-tag">Developer documentation</span>
+    <div class="topbar-actions">
+      <button id="search-toggle" class="search-top" type="button"><span>Search documentation</span><kbd>Ctrl K</kbd></button>
+      <a class="github-link" href="https://github.com/vxlang" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"><div class="sidebar-scroll"><div class="nav-group-title">DOCUMENTATION</div>
+<a class="doc-link" href="index.html"><span class="doc-position">01</span>Overview</a>
+<a class="doc-link" href="page_1.html"><span class="doc-position">02</span>Purchase</a>
+<a class="doc-link" href="page_2.html"><span class="doc-position">03</span>Getting Started</a>
+<a class="doc-link" href="page_3.html"><span class="doc-position">04</span>Protection Features</a>
+<a class="doc-link" href="page_4.html"><span class="doc-position">05</span>VxLang SDK Tutorial — Precautions</a>
+<a class="doc-link is-active" href="page_5.html"><span class="doc-position">06</span>VxLang SDK Tutorial — Linking with VxLang-Core</a>
+<div class="section-links">
+<a class="section-link" href="#overview">Overview</a>
+<a class="section-link" href="#1-how-runtime-code-encryption-works">1. How Runtime Code Encryption Works</a>
+<a class="section-link" href="#2-sdk-example">2. SDK Example</a>
+<a class="section-link" href="#3-protection-benefits">3. Protection Benefits</a>
+<a class="section-link" href="#4-important-considerations">4. Important Considerations</a>
+<a class="section-link" href="#5-summary">5. Summary</a>
+</div></div></aside>
+    <main class="main-area"><div class="article-container">
+      <div class="breadcrumbs">VxLang <span class="breadcrumb-divider">/</span> Documentation</div>
+      <article class="docs-content"><h1 id="vxlang-sdk-tutorial-linking-with-vxlang-core">VxLang SDK Tutorial — Linking with VxLang-Core</h1>
+<h2 id="overview">Overview</h2>
+<p><strong>Runtime Code Encryption</strong> is a VxLang protection feature that decrypts the code of a designated function only when it is needed for execution and re-encrypts it when the protected region is no longer in use.</p>
+<p>This tutorial explains how to link function-level code protection with <strong>VxLang-Core (the packer core)</strong> using the SDK markers <code>VL_ENCRYPT_OBFUSCATION_BEGIN</code> and <code>VL_ENCRYPT_OBFUSCATION_END</code>.</p>
+<p>This approach is designed to make it harder to recover the original protected code in a single operation, even if the packer shell is removed through static unpacking or the running process is dumped from memory. Because the decrypted state depends on execution timing and VxLang-Core operation, AI-assisted dynamic analysis also requires additional steps to collect and reconstruct the code.</p>
+<blockquote>
+<p><strong>Important:</strong> The goal is not to make analysis impossible. It is to reduce the duration and scope of plaintext code exposure and increase the difficulty of collecting code through static and dynamic analysis.</p>
+</blockquote>
+<h2 id="1-how-runtime-code-encryption-works">1. How Runtime Code Encryption Works</h2>
+<p>With conventional executable packing, it may be possible to inspect or dump executable code from memory after unpacking. Runtime Code Encryption reduces this exposure by <strong>decrypting code when it is needed and re-encrypting it afterward</strong>.</p>
+<ol>
+<li><strong>Distribution:</strong> The designated protected code is stored in encrypted form.</li>
+<li><strong>Execution preparation:</strong> When a protected function is needed, its code is decrypted in coordination with VxLang-Core.</li>
+<li><strong>Protected code execution:</strong> The decrypted code executes within the required region.</li>
+<li><strong>Completion:</strong> Once the protected region is no longer in use, the code is encrypted again.</li>
+</ol>
+<p><strong>VxLang-Core dependency:</strong> VxLang-Core must be loaded and operating for protected code to be decrypted and executed correctly. Removing only the packer shell does not automatically recover the original code or make it independently executable.</p>
+<h2 id="2-sdk-example">2. SDK Example</h2>
+<p>First, include the VxLang SDK header in your project and enable SDK markers.</p>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">CPP</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="cp">#define USE_VL_MACRO</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">"vxlib.h"</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">LinkTest</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">VL_ENCRYPT_OBFUSCATION_BEGIN</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// Code to protect in conjunction with VxLang-Core</span>
+<span class="w">    </span><span class="k">volatile</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<span class="w">    </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">value</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">VL_ENCRYPT_OBFUSCATION_END</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre><div class="json-tree" hidden=""></div></div>
+<p>When <code>USE_VL_MACRO</code> is enabled, the two markers are defined in the provided SDK header as follows:</p>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">CPP</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="cp">#define VL_ENCRYPT_OBFUSCATION_BEGIN VxObfuscationBegin(); VxLinkExtsBegin()</span>
+<span class="cp">#define VL_ENCRYPT_OBFUSCATION_END   VxLinkExtsEnd(); VxObfuscationEnd()</span>
+</code></pre><div class="json-tree" hidden=""></div></div>
+<p>These markers designate both an <strong>Obfuscation protection region</strong> and a <strong>Runtime Code Encryption protection region</strong>. The example demonstrates how to place the SDK markers; the actual protection transformation is performed during the VxLang build process.</p>
+<blockquote>
+<p>If <code>USE_VL_MACRO</code> is not defined, these markers expand to empty macros. Make sure the SDK markers are enabled in your protection build.</p>
+</blockquote>
+<h2 id="3-protection-benefits">3. Protection Benefits</h2>
+<table>
+<thead>
+<tr>
+<th>Analysis scenario</th>
+<th>Expected benefit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Static Unpacking</strong></td>
+<td>Removing the packer shell alone does not readily expose the original code in the Runtime Code Encryption region.</td>
+</tr>
+<tr>
+<td><strong>Memory Dumping</strong></td>
+<td>Because protected code is not continuously present in plaintext form, collecting all of it through a single memory snapshot becomes more difficult.</td>
+</tr>
+<tr>
+<td><strong>AI-Assisted Dynamic Analysis</strong></td>
+<td>Automated code collection and analysis become more complex because the decrypted execution state and its interaction with VxLang-Core must be tracked.</td>
+</tr>
+<tr>
+<td><strong>Static Analysis</strong></td>
+<td>Encrypting protected regions in the distributed binary makes direct analysis of their original machine instructions more difficult.</td>
+</tr>
+</tbody>
+</table>
+<p>These benefits vary depending on the analysis environment and the code being protected. <strong>Decrypted code may still be observed dynamically while it is executing.</strong> This feature does not guarantee that all dumping, tracing, or reconstruction attempts will be blocked.</p>
+<h2 id="4-important-considerations">4. Important Considerations</h2>
+<ul>
+<li><strong>VxLang-Core is required.</strong> Do not assume that code protected with Runtime Code Encryption can be decrypted and executed independently without VxLang-Core.</li>
+<li><strong>Place BEGIN/END markers correctly.</strong> Both markers should clearly enclose the intended code region within the same function.</li>
+<li><strong>Be careful with exceptions and abnormal control flow.</strong> Code that exits the protected region unexpectedly through <code>return</code>, an exception, or a long jump requires additional testing.</li>
+<li><strong>Test multithreaded behavior.</strong> The feature is designed with reference-count-based thread safety in mind, but concurrent calls and reentrancy must still be tested in the actual application.</li>
+<li><strong>Watch for compiler optimization and function inlining.</strong> Verify that the intended SDK protection boundaries remain intact in the compiled binary. Limit optimization for the affected function when necessary.</li>
+<li><strong>Measure compatibility and performance.</strong> Decryption and re-encryption introduce runtime costs as well as protection benefits. Benchmark functions that are called very frequently before enabling this feature.</li>
+</ul>
+<h2 id="5-summary">5. Summary</h2>
+<p><code>VL_ENCRYPT_OBFUSCATION_BEGIN</code> / <code>VL_ENCRYPT_OBFUSCATION_END</code> are SDK markers that designate <strong>both code obfuscation and Runtime Code Encryption</strong>.</p>
+<p>By working with VxLang-Core to decrypt the original code only when needed, they add a layer of defense against <strong>attempts to recover code through static unpacking alone</strong>, <strong>bulk memory dumping</strong>, and <strong>AI-assisted automated dynamic analysis</strong>.</p>
+<p>The central principle is:</p>
+<blockquote>
+<p><strong>Unpacking the executable does not mean recovering the original code.</strong></p>
+</blockquote>
+<hr/>
+<p><em>VxLang SDK Tutorial · Runtime Code Encryption</em></p>
+</article>
+      <nav class="page-pagination" aria-label="Page navigation"><a class="page-step prev" href="page_4.html"><small>← Previous</small><strong>VxLang SDK Tutorial — Precautions</strong></a></nav>
+      <footer class="page-footer">VxLang Documentation · Generated from Markdown</footer>
+    </div></main>
+    <aside class="right-toc"><div class="toc-sticky"><div class="toc-heading">ON THIS PAGE</div><a class="toc-link" href="#overview">Overview</a>
+<a class="toc-link" href="#1-how-runtime-code-encryption-works">1. How Runtime Code Encryption Works</a>
+<a class="toc-link" href="#2-sdk-example">2. SDK Example</a>
+<a class="toc-link" href="#3-protection-benefits">3. Protection Benefits</a>
+<a class="toc-link" href="#4-important-considerations">4. Important Considerations</a>
+<a class="toc-link" href="#5-summary">5. Summary</a></div></aside>
+  </div>
+  <div id="search-modal" class="search-overlay" hidden>
+    <div class="search-dialog" role="dialog" aria-modal="true" aria-label="Search documentation">
+      <div class="search-input-wrap"><span>⌕</span><input id="search-input" type="search" placeholder="Search documentation..." autocomplete="off"><button id="search-close" type="button">Esc</button></div>
+      <div id="search-results" class="search-results"><p class="search-help">Search titles and text in all documentation pages.</p></div>
+    </div>
+  </div>
+</body>
+</html>
