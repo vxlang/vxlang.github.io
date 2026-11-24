@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="VxLang developer documentation">
   <meta name="theme-color" content="#fffefa">
-  <title>Protection Features · VxLang Docs</title>
+  <title>Getting Started · VxLang Docs</title>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="assets/style.css">
   <link rel="stylesheet" href="assets/theme.css">
@@ -27,628 +27,517 @@
   <div class="layout">
     <aside class="sidebar" id="sidebar"><div class="sidebar-scroll"><div class="nav-group-title">DOCUMENTATION</div>
 <a class="doc-link" href="index.html"><span class="doc-position">01</span>Overview</a>
-<a class="doc-link" href="page_1.html"><span class="doc-position">02</span>Getting Started</a>
-<a class="doc-link is-active" href="page_2.html"><span class="doc-position">03</span>Protection Features</a>
+<a class="doc-link" href="page_1.html"><span class="doc-position">02</span>Purchase</a>
+<a class="doc-link is-active" href="page_2.html"><span class="doc-position">03</span>Getting Started</a>
 <div class="section-links">
-<a class="section-link" href="#1-sdk-protection-markers">1. SDK Protection Markers</a>
-<a class="section-link level-three" href="#11-overview">1.1. Overview</a>
-<a class="section-link level-three" href="#12-sdk-header-and-macro-activation">1.2. SDK Header and Macro Activation</a>
-<a class="section-link level-three" href="#13-code-protection-example">1.3. Code Protection Example</a>
-<a class="section-link level-three" href="#14-runtime-code-encryption-markers">1.4. Runtime Code Encryption Markers</a>
-<a class="section-link level-three" href="#15-string-link-events">1.5. String Link Events</a>
-<a class="section-link level-three" href="#16-usage-notes">1.6. Usage Notes</a>
-<a class="section-link" href="#2-protection-methods-overview">2. Protection Methods Overview</a>
-<a class="section-link" href="#3-packer-protector">3. Packer &amp; Protector</a>
-<a class="section-link level-three" href="#31-overview">3.1. Overview</a>
-<a class="section-link level-three" href="#32-executable-packing">3.2. Executable Packing</a>
-<a class="section-link level-three" href="#33-compression">3.3. Compression</a>
-<a class="section-link level-three" href="#34-import-table-protection">3.4. Import Table Protection</a>
-<a class="section-link level-three" href="#35-entry-point-protection">3.5. Entry Point Protection</a>
-<a class="section-link level-three" href="#36-anti-tamper-protection">3.6. Anti-Tamper Protection</a>
-<a class="section-link level-three" href="#37-reflection">3.7. Reflection</a>
-<a class="section-link" href="#4-code-obfuscation">4. Code Obfuscation</a>
-<a class="section-link level-three" href="#41-overview">4.1. Overview</a>
-<a class="section-link level-three" href="#42-instruction-transformation">4.2. Instruction Transformation</a>
-<a class="section-link level-three" href="#43-mba-obfuscation">4.3. MBA Obfuscation</a>
-<a class="section-link level-three" href="#44-function-level-obfuscation">4.4. Function-Level Obfuscation</a>
-<a class="section-link level-three" href="#45-protection-core-selection">4.5. Protection Core Selection</a>
-<a class="section-link" href="#5-code-virtualization">5. Code Virtualization</a>
-<a class="section-link level-three" href="#51-overview">5.1. Overview</a>
-<a class="section-link level-three" href="#52-virtual-machine-based-protection">5.2. Virtual Machine-Based Protection</a>
-<a class="section-link level-three" href="#53-multiple-virtual-machines">5.3. Multiple Virtual Machines</a>
-<a class="section-link level-three" href="#54-dual-mode-protection">5.4. Dual-Mode Protection</a>
-<a class="section-link level-three" href="#55-tma-virtualization-super-operators">5.5. TMA Virtualization (Super Operators)</a>
-<a class="section-link level-three" href="#56-performance-considerations">5.6. Performance Considerations</a>
-<a class="section-link" href="#6-code-flattening">6. Code Flattening</a>
-<a class="section-link level-three" href="#61-overview">6.1. Overview</a>
-<a class="section-link level-three" href="#62-control-flow-transformation">6.2. Control Flow Transformation</a>
-<a class="section-link level-three" href="#63-usage-considerations">6.3. Usage Considerations</a>
-<a class="section-link" href="#7-runtime-code-encryption">7. Runtime Code Encryption</a>
-<a class="section-link level-three" href="#71-overview">7.1. Overview</a>
-<a class="section-link level-three" href="#72-encryption-lifecycle">7.2. Encryption Lifecycle</a>
-<a class="section-link level-three" href="#73-vxlang-core-dependency">7.3. VxLang-Core Dependency</a>
-<a class="section-link level-three" href="#74-protected-code-types">7.4. Protected Code Types</a>
-<a class="section-link level-three" href="#75-thread-safe-execution">7.5. Thread-Safe Execution</a>
-<a class="section-link level-three" href="#76-protection-benefits">7.6. Protection Benefits</a>
-<a class="section-link" href="#8-choosing-a-protection-method">8. Choosing a Protection Method</a>
-<a class="section-link" href="#9-important-considerations">9. Important Considerations</a>
-<a class="section-link" href="#10-related-documentation">10. Related Documentation</a>
+<a class="section-link" href="#contents">Contents</a>
+<a class="section-link" href="#1-download-purchase">1. Download &amp; Purchase</a>
+<a class="section-link level-three" href="#purchase-and-download-steps">Purchase and Download Steps</a>
+<a class="section-link" href="#2-installation-file-structure">2. Installation &amp; File Structure</a>
+<a class="section-link level-three" href="#main-components">Main Components</a>
+<a class="section-link level-three" href="#example-working-directory">Example Working Directory</a>
+<a class="section-link" href="#3-license-setup">3. License Setup</a>
+<a class="section-link level-three" href="#verify-startup">Verify Startup</a>
+<a class="section-link" href="#4-quick-start-protecting-your-first-exe">4. Quick Start — Protecting Your First EXE</a>
+<a class="section-link level-three" href="#41-prepare-a-test-file">4.1. Prepare a Test File</a>
+<a class="section-link level-three" href="#42-run-protection-from-the-command-line">4.2. Run Protection from the Command Line</a>
+<a class="section-link level-three" href="#43-check-the-output">4.3. Check the Output</a>
+<a class="section-link level-three" href="#44-run-the-protected-executable">4.4. Run the Protected Executable</a>
+<a class="section-link" href="#5-project-configuration-json">5. Project Configuration (JSON)</a>
+<a class="section-link level-three" href="#51-example-project-json">5.1. Example Project JSON</a>
+<a class="section-link level-three" href="#52-general-project-settings">5.2. General Project Settings</a>
+<a class="section-link level-three" href="#53-virtualizer-code-virtualization-settings">5.3. virtualizer — Code Virtualization Settings</a>
+<a class="section-link level-three" href="#54-obfuscator-code-obfuscation-settings">5.4. obfuscator — Code Obfuscation Settings</a>
+<a class="section-link level-three" href="#55-protector-packer-and-executable-protection-settings">5.5. protector — Packer and Executable Protection Settings</a>
+<a class="section-link level-three" href="#56-address-range-address-range-settings">5.6. address-range — Address Range Settings</a>
+<a class="section-link level-three" href="#57-project-file-guidelines">5.7. Project File Guidelines</a>
 </div>
-<a class="doc-link" href="page_3.html"><span class="doc-position">04</span>VxLang SDK Tutorial — Precautions</a>
-<a class="doc-link" href="page_4.html"><span class="doc-position">05</span>VxLang SDK Tutorial — Linking with VxLang-Core</a></div></aside>
+<a class="doc-link" href="page_3.html"><span class="doc-position">04</span>Protection Features</a>
+<a class="doc-link" href="page_4.html"><span class="doc-position">05</span>VxLang SDK Tutorial — Precautions</a>
+<a class="doc-link" href="page_5.html"><span class="doc-position">06</span>VxLang SDK Tutorial — Linking with VxLang-Core</a></div></aside>
     <main class="main-area"><div class="article-container">
       <div class="breadcrumbs">VxLang <span class="breadcrumb-divider">/</span> Documentation</div>
-      <article class="docs-content"><h1 id="protection-features">Protection Features</h1>
-<p>VxLang provides <strong>Code Obfuscation</strong>, <strong>Code Virtualization</strong>, <strong>Code Flattening</strong>, <strong>Runtime Code Encryption</strong>, and <strong>Packer &amp; Protector</strong> to protect code and data in Windows executables.</p>
-<p>This document first explains the <strong>SDK markers</strong> used to designate protected regions in C/C++ source code, then introduces the purpose and characteristics of each protection method. For detailed JSON settings, see <strong>Project Configuration (JSON)</strong>.</p>
+      <article class="docs-content"><h1 id="getting-started">Getting Started</h1>
+<blockquote>
+<p><strong>Getting Started with VxLang</strong> — From downloading VxLang to protecting your first Windows executable</p>
+</blockquote>
+<p>This guide is intended for first-time VxLang users. It explains how to prepare VxLang, select an EXE file, create a protected executable, and verify that it runs correctly.</p>
+<p>VxLang can protect already compiled Windows binaries, so <strong>you do not need to integrate an SDK or modify source code for your first test.</strong> Function-level obfuscation, virtualization, and Runtime Code Encryption are covered in subsequent guides.</p>
+<h2 id="contents">Contents</h2>
+<ol>
+<li>Download &amp; Purchase — Purchasing and downloading VxLang</li>
+<li>Installation &amp; File Structure — Installation and file layout</li>
+<li>License Setup — Preparing your license</li>
+<li>Quick Start — Protecting your first EXE</li>
+<li>Project Configuration (JSON) — Project file structure and settings</li>
+</ol>
 <hr/>
-<h2 id="1-sdk-protection-markers">1. SDK Protection Markers</h2>
-<h3 id="11-overview">1.1. Overview</h3>
-<p>The VxLang SDK provides BEGIN/END markers for designating regions of C/C++ code to protect. By placing markers around the intended code, VxLang can identify the corresponding region during protection.</p>
-<p>The supplied <code>vxlib.h</code> declares the following markers:</p>
+<h2 id="1-download-purchase">1. Download &amp; Purchase</h2>
+<p>VxLang is distributed through Patreon. You can purchase and download the product from the following page.</p>
+<p><strong>Official purchase page:</strong> <a href="https://www.patreon.com/c/vxlang/shop">VxLang Patreon Shop</a></p>
+<h3 id="purchase-and-download-steps">Purchase and Download Steps</h3>
+<ol>
+<li>Open the VxLang Shop using the link above.</li>
+<li>Select the product or license type you need.</li>
+<li>Review the terms and included items on the product page before purchasing.</li>
+<li>Follow the instructions for your purchased product to obtain the VxLang distribution files and relevant license materials.</li>
+<li>Save the downloaded files in your working directory.</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> License duration, update availability, license type, and delivery methods may differ by product. Check the <strong>specific product page</strong> before purchasing. Do not assume that Patreon memberships and individual Shop purchases are identical products.</p>
+</blockquote>
+<hr/>
+<h2 id="2-installation-file-structure">2. Installation &amp; File Structure</h2>
+<p>To get started, extract the distributed files into your preferred working directory. VxLang is a Windows application and should be run in a Windows environment.</p>
+<h3 id="main-components">Main Components</h3>
 <table>
 <thead>
 <tr>
-<th>Protection method</th>
-<th>Begin marker</th>
-<th>End marker</th>
+<th>Component</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Code Obfuscation</td>
-<td><code>VL_OBFUSCATION_BEGIN</code></td>
-<td><code>VL_OBFUSCATION_END</code></td>
-<td>General code obfuscation</td>
+<td><code>VxLang.exe</code></td>
+<td>Applies protection such as packing, code obfuscation, and code virtualization to executables.</td>
 </tr>
 <tr>
-<td>Lite Obfuscation</td>
-<td><code>VL_LITE_OBFUSCATION_BEGIN</code></td>
-<td><code>VL_LITE_OBFUSCATION_END</code></td>
-<td>Region for lightweight obfuscation</td>
+<td><code>Obscurion.exe</code></td>
+<td>GUI tool used to configure projects and protection regions.</td>
 </tr>
 <tr>
-<td>Code Flattening</td>
-<td><code>VL_CODE_FLATTENING_BEGIN</code></td>
-<td><code>VL_CODE_FLATTENING_END</code></td>
-<td>Control-flow obfuscation</td>
+<td><code>vxlang.vxm</code></td>
+<td>Example license filename (based on the earlier official guide).</td>
 </tr>
 <tr>
-<td>Code Virtualization</td>
-<td><code>VL_VIRTUALIZATION_BEGIN</code></td>
-<td><code>VL_VIRTUALIZATION_END</code></td>
-<td>VM-based virtualization</td>
+<td><code>Extensions</code></td>
+<td>VxLang-Core extension code that may be included in the distribution.</td>
 </tr>
 <tr>
-<td>Dual-Mode</td>
-<td><code>VL_DUAL_MODE_BEGIN</code></td>
-<td><code>VL_DUAL_MODE_END</code></td>
-<td>Combined protection mode</td>
+<td><code>Plugins</code></td>
+<td>Plugin modules used by the GUI and VxLang.</td>
 </tr>
 <tr>
-<td>TMA Virtualization / Super Operators</td>
-<td><code>VL_TMA_VIRTUALIZATION_BEGIN</code></td>
-<td><code>VL_TMA_VIRTUALIZATION_END</code></td>
-<td>TMA virtualization using Super Operators</td>
-</tr>
-<tr>
-<td>Runtime Code Encryption</td>
-<td><code>VL_ENCRYPT_BEGIN</code></td>
-<td><code>VL_ENCRYPT_END</code></td>
-<td>User code section encryption</td>
-</tr>
-<tr>
-<td>Runtime Encryption + Obfuscation</td>
-<td><code>VL_ENCRYPT_OBFUSCATION_BEGIN</code></td>
-<td><code>VL_ENCRYPT_OBFUSCATION_END</code></td>
-<td>Combined encryption and obfuscation for VxLang code sections</td>
+<td><code>SDKs</code></td>
+<td>SDK resources used to mark protection regions in source code.</td>
 </tr>
 </tbody>
 </table>
+<p>Actual file and directory contents may vary depending on the <strong>purchased product and distribution version</strong>. Not every distribution necessarily includes all the components listed above.</p>
+<h3 id="example-working-directory">Example Working Directory</h3>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">TEXT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code>C:\VxLang\
+├── VxLang.exe
+├── Obscurion.exe
+├── vxlang.vxm          (if a separate license file is supplied)
+├── Extensions\         (if included)
+├── Plugins\            (if included)
+├── SDKs\               (if included)
+└── samples\
+    └── sample.exe      (a test file provided by the user)
+</code></pre><div class="json-tree" hidden=""></div></div>
+<p>This directory layout is illustrative. You do not need to rearrange the original distribution to match it.</p>
 <blockquote>
-<p><strong>Note:</strong> TMA Virtualization and Super Operators refer to the same protection feature in this documentation; they are not presented as separate features.</p>
+<p><strong>Recommendation:</strong> For your first test, use a simple executable that you created or have already verified works correctly. Keep a backup of the original file and use a distinct filename for the protected output.</p>
 </blockquote>
-<h3 id="12-sdk-header-and-macro-activation">1.2. SDK Header and Macro Activation</h3>
-<p>When <code>USE_VL_MACRO</code> is defined and <code>vxlib.h</code> is included, protection marker macros expand into SDK function calls such as <code>VxVirtualizationBegin()</code>.</p>
-<div class="code-block"><div class="code-toolbar"><span class="code-label">CPP</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="cp">#define USE_VL_MACRO</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">"vxlib.h"</span>
+<hr/>
+<h2 id="3-license-setup">3. License Setup</h2>
+<p>A valid license compatible with your distribution is required to run VxLang.</p>
+<p>The earlier official user guide refers to the license file as <code>vxlang.vxm</code> and instructs users to place it in the <strong>same directory</strong> as <code>VxLang.exe</code> and <code>Obscurion.exe</code>.</p>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">TEXT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code>C:\VxLang\
+├── VxLang.exe
+├── Obscurion.exe
+└── vxlang.vxm
 </code></pre><div class="json-tree" hidden=""></div></div>
-<p>If <code>USE_VL_MACRO</code> is not defined, <strong>the protection-region BEGIN/END macros expand to nothing</strong> in the provided header. Make sure this setting is enabled in builds that should contain the protection markers.</p>
-<p>Builds that invoke SDK functions also require the appropriate linkage and implementation. The integration procedure is covered in <strong>SDK Integration</strong>.</p>
-<h3 id="13-code-protection-example">1.3. Code Protection Example</h3>
-<p>The following example marks a portion of a function for virtualization:</p>
-<div class="code-block"><div class="code-toolbar"><span class="code-label">CPP</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="cp">#define USE_VL_MACRO</span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">"vxlib.h"</span>
-
-<span class="kt">int</span><span class="w"> </span><span class="nf">CalculateValue</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">)</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-
-<span class="w">    </span><span class="n">VL_VIRTUALIZATION_BEGIN</span><span class="p">;</span>
-<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">13</span><span class="p">;</span>
-<span class="w">    </span><span class="n">VL_VIRTUALIZATION_END</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
-<span class="p">}</span>
+<p>If your purchased product specifies a different license filename or delivery method, <strong>follow the instructions supplied with that product</strong>.</p>
+<h3 id="verify-startup">Verify Startup</h3>
+<p>Open Command Prompt (<code>cmd</code>) and run the following commands from the VxLang directory:</p>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">BAT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="k">cd</span> /d <span class="s2">"C:\VxLang"</span>
+VxLang.exe
 </code></pre><div class="json-tree" hidden=""></div></div>
-<p>Place BEGIN/END markers so that they <strong>enclose the code you actually want to protect</strong>. For general obfuscation, use <code>VL_OBFUSCATION_BEGIN</code> / <code>VL_OBFUSCATION_END</code>. For TMA virtualization, use <code>VL_TMA_VIRTUALIZATION_BEGIN</code> / <code>VL_TMA_VIRTUALIZATION_END</code>.</p>
-<h3 id="14-runtime-code-encryption-markers">1.4. Runtime Code Encryption Markers</h3>
-<p>Runtime encryption decrypts a protected code region when it is needed for execution and re-encrypts it when use is complete.</p>
-<div class="code-block"><div class="code-toolbar"><span class="code-label">CPP</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="n">VL_ENCRYPT_BEGIN</span><span class="p">;</span>
-<span class="c1">// User code to protect</span>
-<span class="n">VL_ENCRYPT_END</span><span class="p">;</span>
+<p>If the program starts successfully, it may display version information and the available command-line syntax. The exact output varies by version.</p>
+<p>If you encounter a license error, verify the license filename, location, validity period, and compatibility with your distribution.</p>
+<hr/>
+<h2 id="4-quick-start-protecting-your-first-exe">4. Quick Start — Protecting Your First EXE</h2>
+<p>VxLang can protect compiled EXE files directly from the command line. The following example demonstrates a simple workflow that protects <code>sample.exe</code> and generates <code>sample.vxm.exe</code>.</p>
+<h3 id="41-prepare-a-test-file">4.1. Prepare a Test File</h3>
+<p>First, prepare a working Windows executable:</p>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">TEXT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code>C:\VxLang\samples\sample.exe
 </code></pre><div class="json-tree" hidden=""></div></div>
-<p>To combine obfuscation and runtime encryption for a VxLang code section, use:</p>
-<div class="code-block"><div class="code-toolbar"><span class="code-label">CPP</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="n">VL_ENCRYPT_OBFUSCATION_BEGIN</span><span class="p">;</span>
-<span class="c1">// Code to protect</span>
-<span class="n">VL_ENCRYPT_OBFUSCATION_END</span><span class="p">;</span>
+<p>Confirm that the original <code>sample.exe</code> runs correctly before applying protection.</p>
+<h3 id="42-run-protection-from-the-command-line">4.2. Run Protection from the Command Line</h3>
+<p>Open Command Prompt and run:</p>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">BAT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="k">cd</span> /d <span class="s2">"C:\VxLang"</span>
+VxLang.exe <span class="s2">"C:\VxLang\samples\sample.exe"</span> --out <span class="s2">"C:\VxLang\samples\sample.vxm.exe"</span>
 </code></pre><div class="json-tree" hidden=""></div></div>
-<p>According to <code>vxlib.h</code>, the combined markers expand in this order: <strong>begin obfuscation → begin encryption</strong>; on exit, <strong>end encryption → end obfuscation</strong>. Runtime Code Encryption depends on integration with VxLang-Core.</p>
-<h3 id="15-string-link-events">1.5. String Link Events</h3>
-<p><code>vxlib.h</code> also provides link-event macros for strings and resource release.</p>
 <table>
 <thead>
 <tr>
-<th>Macro</th>
-<th>Purpose</th>
+<th>Argument</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>VL_ALLOC_STR(str)</code></td>
-<td>Invokes an ANSI string-related link event</td>
+<td><code>VxLang.exe</code></td>
+<td>The program that performs the protection operation.</td>
 </tr>
 <tr>
-<td><code>VL_ALLOC_WSTR(str)</code></td>
-<td>Invokes a wide-string-related link event</td>
+<td><code>sample.exe</code></td>
+<td>Path to the input binary.</td>
 </tr>
 <tr>
-<td><code>VL_FREE(value)</code></td>
-<td>Requests release of a resource allocated through a link event</td>
+<td><code>--out</code></td>
+<td>Specifies the output path for the protected file.</td>
 </tr>
 </tbody>
 </table>
-<p>Unlike the protection-region markers, these are <strong>APIs that return values or manage resources</strong>. When <code>USE_VL_MACRO</code> is disabled, these macros expand to nothing, so code using the string APIs must account for the selected build configuration. See <strong>SDK Integration</strong> for detailed string-handling and return-value rules.</p>
-<h3 id="16-usage-notes">1.6. Usage Notes</h3>
-<ul>
-<li>Use BEGIN/END markers in pairs, and be careful with branches or early exits that leave a protected region.</li>
-<li>Compiler optimization and inlining can cause the generated machine-code region to differ from the source-code region.</li>
-<li>Prefer important functions or sensitive code regions over performance-critical loops.</li>
-<li>For <code>VL_ENCRYPT_*</code> markers, verify correct BEGIN/END execution and multithreaded behavior.</li>
-<li>The marker names and macro expansion behavior described here are based on the supplied <code>vxlib.h</code>.</li>
-</ul>
+<p>This command format is based on the earlier official CLI guide. Refer to your program's help output and documentation for the options and default behavior supported by your version.</p>
+<h3 id="43-check-the-output">4.3. Check the Output</h3>
+<p>After a successful protection operation, verify that the output file exists at the specified location:</p>
+<div class="code-block"><div class="code-toolbar"><span class="code-label">TEXT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code>C:\VxLang\samples\
+├── sample.exe
+└── sample.vxm.exe
+</code></pre><div class="json-tree" hidden=""></div></div>
+<p>When no output path is provided, the generated filename may append <code>.vxm</code> to the original name. Since this behavior may depend on the version and settings, explicitly specifying the output path with <code>--out</code> is recommended for your first test.</p>
+<h3 id="44-run-the-protected-executable">4.4. Run the Protected Executable</h3>
+<p>Run <code>sample.vxm.exe</code> and check that its basic functionality behaves the same as the original.</p>
+<p>For an initial test, it is best to <strong>complete basic protection and runtime verification first</strong>, rather than enabling multiple advanced obfuscation or virtualization settings at once.</p>
 <hr/>
-<h2 id="2-protection-methods-overview">2. Protection Methods Overview</h2>
-<table>
-<thead>
-<tr>
-<th>Protection method</th>
-<th>Primary target</th>
-<th>Main purpose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Packer &amp; Protector</td>
-<td>Overall executable structure and loading process</td>
-<td>Packing, protection of file structure and sensitive information, integrity checking</td>
-</tr>
-<tr>
-<td>Code Obfuscation</td>
-<td>Selected functions or instruction regions</td>
-<td>Make code representation and analysis structure more complex</td>
-</tr>
-<tr>
-<td>Code Virtualization</td>
-<td>Selected critical code regions</td>
-<td>Transform native code into a virtual-instruction execution model</td>
-</tr>
-<tr>
-<td>Code Flattening</td>
-<td>Function control flow</td>
-<td>Increase the difficulty of analyzing branches and execution flow</td>
-</tr>
-<tr>
-<td>Runtime Code Encryption</td>
-<td>Designated code regions</td>
-<td>Decrypt only when needed and re-encrypt after use</td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>Note:</strong> Availability and detailed behavior may vary depending on the VxLang version, target environment, and configuration.</p>
-</blockquote>
-<hr/>
-<h2 id="3-packer-protector">3. Packer &amp; Protector</h2>
-<h3 id="31-overview">3.1. Overview</h3>
-<p>Packer &amp; Protector protects a target binary's structure and loading process. It works together with VxLang-Core to run protected executables and can include features such as compression and Import Table protection.</p>
-<p>This is the basic configuration typically used when applying protection to an entire program.</p>
-<h3 id="32-executable-packing">3.2. Executable Packing</h3>
-<p>Executable Packing transforms a target binary into VxLang's protected format. Protected executables run through VxLang-Core initialization and execution flow.</p>
-<p><strong>Key characteristics</strong></p>
-<ul>
-<li>Adds a protected loading structure to the executable.</li>
-<li>Makes direct analysis of the original executable structure and entry process more difficult.</li>
-<li>Can be combined with other code-protection methods.</li>
-</ul>
-<h3 id="33-compression">3.3. Compression</h3>
-<p>Compression compresses executable data. It can be enabled or disabled in the project configuration.</p>
-<div class="code-block" data-json-b64="ewogICAgInByb3RlY3RvciI6IHsKICAgICAgICAiY29tcHJlc3MiOiB0cnVlCiAgICB9Cn0K"><div class="code-toolbar"><span class="code-label">JSON</span><div class="code-actions"><button class="view-btn" type="button">Tree View</button><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="p">{</span>
+<h2 id="5-project-configuration-json">5. Project Configuration (JSON)</h2>
+<p>VxLang uses <strong>JSON files as project files</strong>. A project file stores the input binary path, output settings, virtualization and obfuscation regions, packing options, and other protection settings.</p>
+<p>The example below preserves the structure of the provided <code>temp.json</code> file, with <strong><code>input</code> changed to an empty string (<code>""</code>)</strong> as requested. Before running a protection operation, specify the target binary path in <code>input</code>.</p>
+<h3 id="51-example-project-json">5.1. Example Project JSON</h3>
+<div class="code-block" data-json-b64="ewogICAgImlucHV0IjogIiIsCiAgICAib3V0cHV0IjogIiIsCiAgICAiYmFja3VwIjogZmFsc2UsCiAgICAidXNlLWRhdGEtc2VjdGlvbiI6IGZhbHNlLAogICAgImJhc2Utc2VjdGlvbi1uYW1lIjogIiIsCiAgICAibWFwLWZpbGUtcGF0aCI6ICIiLAogICAgInBkYi1maWxlLXBhdGgiOiAiIiwKICAgICJjb3JlLW5hbWUtbGlzdCI6IFsKICAgICAgICAidnhsYW5nIiwKICAgICAgICAicGhvYm9zIiwKICAgICAgICAiZGVpbW9zIgogICAgXSwKICAgICJjb3JlLW5hbWUiOiAicGhvYm9zIiwKICAgICJ1c2UtY2V0LW1vZGUiOiBmYWxzZSwKICAgICJ2aXJ0dWFsaXplciI6IHsKICAgICAgICAiZW50cnktcG9pbnQiOiBmYWxzZSwKICAgICAgICAibWFjaGluZS1jb3VudCI6IDMsCiAgICAgICAgInZpcnR1YWxpemF0aW9uIjogW10sCiAgICAgICAgImR1YWwtbW9kZSI6IFtdCiAgICB9LAogICAgIm9iZnVzY2F0b3IiOiB7CiAgICAgICAgImVudHJ5LXBvaW50IjogZmFsc2UsCiAgICAgICAgImZ1bmN0aW9uLWVudHJ5IjogZmFsc2UsCiAgICAgICAgIm9iZnVzY2F0aW9uIjogW10sCiAgICAgICAgImZsYXR0ZW5pbmciOiBbXQogICAgfSwKICAgICJwcm90ZWN0b3IiOiB7CiAgICAgICAgImNvbXByZXNzIjogdHJ1ZSwKICAgICAgICAic3ltYm9sLWRhdGEiOiBmYWxzZSwKICAgICAgICAibXV0YXRlLWltcG9ydC10YWJsZSI6IHRydWUsCiAgICAgICAgInJlbW92ZS1pbXBvcnQtdGFibGUiOiB0cnVlLAogICAgICAgICJhbGxvdy13aW5lLXN5c3RlbSI6IGZhbHNlLAogICAgICAgICJleHRlbnNpb24iOiBbXSwKICAgICAgICAicmF3LWRhdGEiOiBbXSwKICAgICAgICAiYW50aS10YW1wZXIiOiB7CiAgICAgICAgICAgICJlbmFibGUiOiBmYWxzZSwKICAgICAgICAgICAgImVuYWJsZS1pbnRlZ3JpdHktY2hlY2siOiBmYWxzZSwKICAgICAgICAgICAgIm1lc3NhZ2UiOiAiIgogICAgICAgIH0sCiAgICAgICAgInJlZmxlY3Rpb24iOiB7CiAgICAgICAgICAgICJlbmFibGUiOiBmYWxzZSwKICAgICAgICAgICAgImxkci11cGRhdGUiOiBmYWxzZQogICAgICAgIH0KICAgIH0sCiAgICAiYWRkcmVzcy1yYW5nZSI6IFtdCn0K"><div class="code-toolbar"><span class="code-label">JSON</span><div class="code-actions"><button class="view-btn" type="button">Tree View</button><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">"input"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"output"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"backup"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"use-data-section"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"base-section-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"map-file-path"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"pdb-file-path"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"core-name-list"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"vxlang"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"phobos"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"deimos"</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"core-name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"phobos"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"use-cet-mode"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"virtualizer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"entry-point"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"machine-count"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"virtualization"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">        </span><span class="nt">"dual-mode"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"obfuscator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"entry-point"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"function-entry"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"obfuscation"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">        </span><span class="nt">"flattening"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
+<span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">"protector"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"compress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">        </span><span class="nt">"compress"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"symbol-data"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"mutate-import-table"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"remove-import-table"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"allow-wine-system"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"extension"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">        </span><span class="nt">"raw-data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
+<span class="w">        </span><span class="nt">"anti-tamper"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"enable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"enable-integrity-check"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"reflection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"enable"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"ldr-update"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"address-range"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span>
 <span class="p">}</span>
 </code></pre><div class="json-tree" hidden=""></div></div>
-<ul>
-<li><code>true</code>: Enable compression.</li>
-<li><code>false</code>: Disable compression.</li>
-</ul>
-<p>Compression is part of the protected-file format; compression alone does not prevent analysis of the code itself. The resulting file size can vary with the compression ratio and the additional protection code.</p>
-<h3 id="34-import-table-protection">3.4. Import Table Protection</h3>
-<p>The Import Table in a Windows PE file contains information about external libraries and APIs used by the application. VxLang provides options to transform the Import Table structure or protect associated information.</p>
+<blockquote>
+<p><strong>Note:</strong> This example illustrates the <strong>project configuration structure</strong>. Arrays such as <code>virtualization</code>, <code>obfuscation</code>, <code>extension</code>, and <code>address-range</code> are empty in the supplied source file, so their individual item schemas cannot be determined from this example alone. Follow the configuration specifications for your VxLang version.</p>
+</blockquote>
+<h3 id="52-general-project-settings">5.2. General Project Settings</h3>
 <table>
 <thead>
 <tr>
-<th>Project option</th>
+<th>Setting</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>mutate-import-table</code></td>
-<td>Enables Import Table mutation.</td>
+<td><code>input</code></td>
+<td>String</td>
+<td><strong>Path to the input binary</strong> to protect. Left empty (<code>""</code>) in this example as requested.</td>
 </tr>
 <tr>
-<td><code>remove-import-table</code></td>
-<td>Enables the Import Table removal-related feature.</td>
+<td><code>output</code></td>
+<td>String</td>
+<td><strong>Output path</strong> for the protected binary. Confirm the automatic naming rules for an empty value (<code>""</code>) in your version.</td>
+</tr>
+<tr>
+<td><code>backup</code></td>
+<td>Boolean</td>
+<td>Option related to backing up the original file. Accepts <code>true</code> or <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>use-data-section</code></td>
+<td>Boolean</td>
+<td>Controls whether a data section is used. Exact placement behavior depends on the version.</td>
+</tr>
+<tr>
+<td><code>base-section-name</code></td>
+<td>String</td>
+<td>Specifies the base name of sections being generated or processed.</td>
+</tr>
+<tr>
+<td><code>map-file-path</code></td>
+<td>String</td>
+<td>Path to a MAP symbol file.</td>
+</tr>
+<tr>
+<td><code>pdb-file-path</code></td>
+<td>String</td>
+<td>Path to a PDB debug-symbol file.</td>
+</tr>
+<tr>
+<td><code>core-name-list</code></td>
+<td>Array of strings</td>
+<td>Names of available cores for the project. This example contains <code>vxlang</code>, <code>phobos</code>, and <code>deimos</code>.</td>
+</tr>
+<tr>
+<td><code>core-name</code></td>
+<td>String</td>
+<td>Name of the selected obfuscation core. This example uses <code>phobos</code>.</td>
+</tr>
+<tr>
+<td><code>use-cet-mode</code></td>
+<td>Boolean</td>
+<td>Enables a CET-compatible execution mode. Actual support depends on the environment and version.</td>
 </tr>
 </tbody>
 </table>
-<p>These features are intended to make it harder to identify external API dependencies through static analysis. Verify the actual effect of enabling both options for your target binary and VxLang version.</p>
-<h3 id="35-entry-point-protection">3.5. Entry Point Protection</h3>
-<p>The Entry Point is where program execution begins. Protecting this region can make analysis of the initial execution path more difficult.</p>
-<p>VxLang can configure virtualization or obfuscation of the Entry Point through project settings.</p>
-<ul>
-<li><code>virtualizer.entry-point</code>: Entry Point virtualization</li>
-<li><code>obfuscator.entry-point</code>: Entry Point obfuscation</li>
-</ul>
-<p>Specific behavior and support conditions may depend on the target file. Verify startup and shutdown behavior after applying protection.</p>
-<h3 id="36-anti-tamper-protection">3.6. Anti-Tamper Protection</h3>
-<p>Anti-Tamper is designed to detect or respond to unauthorized modifications to protected applications. The supplied project format includes:</p>
+<p><strong>About <code>core-name</code>:</strong> In the current VxLang configuration, <code>core-name</code> selects the core for general code obfuscation and obfuscation APIs. It does not select the entire packer shell or virtualization VM handlers. <code>phobos</code> is recommended for general use. Depending on the version, <code>deimos</code> may have compatibility or performance limitations.</p>
+<h3 id="53-virtualizer-code-virtualization-settings">5.3. <code>virtualizer</code> — Code Virtualization Settings</h3>
 <table>
 <thead>
 <tr>
-<th>Project option</th>
+<th>Setting</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>virtualizer.entry-point</code></td>
+<td>Boolean</td>
+<td>Controls whether virtualization is applied to the program entry point.</td>
+</tr>
+<tr>
+<td><code>virtualizer.machine-count</code></td>
+<td>Number</td>
+<td>Specifies the number of VM configurations used by the project. The example value is <code>3</code>.</td>
+</tr>
+<tr>
+<td><code>virtualizer.virtualization</code></td>
+<td>Array</td>
+<td>List of regions configured for standard code virtualization.</td>
+</tr>
+<tr>
+<td><code>virtualizer.dual-mode</code></td>
+<td>Array</td>
+<td>List of regions configured for Dual-Mode protection.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>The item formats of these two arrays (for example, how addresses, functions, or ranges are specified) are not established here because <code>temp.json</code> provides no populated examples.</p>
+</blockquote>
+<h3 id="54-obfuscator-code-obfuscation-settings">5.4. <code>obfuscator</code> — Code Obfuscation Settings</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>obfuscator.entry-point</code></td>
+<td>Boolean</td>
+<td>Controls obfuscation of the program entry point.</td>
+</tr>
+<tr>
+<td><code>obfuscator.function-entry</code></td>
+<td>Boolean</td>
+<td>Controls obfuscation of function entry regions.</td>
+</tr>
+<tr>
+<td><code>obfuscator.obfuscation</code></td>
+<td>Array</td>
+<td>List of regions targeted for general code obfuscation.</td>
+</tr>
+<tr>
+<td><code>obfuscator.flattening</code></td>
+<td>Array</td>
+<td>List of regions targeted for control flow flattening.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="55-protector-packer-and-executable-protection-settings">5.5. <code>protector</code> — Packer and Executable Protection Settings</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>protector.compress</code></td>
+<td>Boolean</td>
+<td>Enables or disables compression during protection.</td>
+</tr>
+<tr>
+<td><code>protector.symbol-data</code></td>
+<td>Boolean</td>
+<td>Option related to symbol-data processing. Refer to the version-specific specification for details.</td>
+</tr>
+<tr>
+<td><code>protector.mutate-import-table</code></td>
+<td>Boolean</td>
+<td>Enables or disables Import Table mutation.</td>
+</tr>
+<tr>
+<td><code>protector.remove-import-table</code></td>
+<td>Boolean</td>
+<td>Configures processing related to Import Table removal.</td>
+</tr>
+<tr>
+<td><code>protector.allow-wine-system</code></td>
+<td>Boolean</td>
+<td>Controls whether the Wine execution environment is allowed.</td>
+</tr>
+<tr>
+<td><code>protector.extension</code></td>
+<td>Array</td>
+<td>Configuration list for protection extensions or modules.</td>
+</tr>
+<tr>
+<td><code>protector.raw-data</code></td>
+<td>Array</td>
+<td>Configuration list for additional raw data.</td>
+</tr>
+</tbody>
+</table>
+<p><code>mutate-import-table</code> and <code>remove-import-table</code> are separate settings. Verify their availability and combined behavior in your version.</p>
+<h4>Anti-Tamper Settings</h4>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>protector.anti-tamper.enable</code></td>
-<td>Enables Anti-Tamper.</td>
+<td>Boolean</td>
+<td>Enables or disables Anti-Tamper protection.</td>
 </tr>
 <tr>
 <td><code>protector.anti-tamper.enable-integrity-check</code></td>
-<td>Enables integrity checking.</td>
+<td>Boolean</td>
+<td>Enables or disables integrity checking.</td>
 </tr>
 <tr>
 <td><code>protector.anti-tamper.message</code></td>
-<td>Sets the message displayed on detection.</td>
+<td>String</td>
+<td>Specifies an Anti-Tamper-related message. Display conditions depend on the implementation.</td>
 </tr>
 </tbody>
 </table>
-<p>This feature <strong>does not guarantee detection of every modification or analysis attempt</strong>. It can be used alongside other safeguards, including code signing, distribution-file verification, and server-side validation.</p>
-<h3 id="37-reflection">3.7. Reflection</h3>
-<p>Reflection is a protection option that adjusts aspects of executable loading.</p>
-<ul>
-<li><code>protector.reflection.enable</code>: Enables Reflection.</li>
-<li><code>protector.reflection.ldr-update</code>: Controls updating Windows loader-management (LDR) information.</li>
-</ul>
-<p>Compatibility testing may be necessary with security software that interacts with the loader and in certain execution environments.</p>
-<hr/>
-<h2 id="4-code-obfuscation">4. Code Obfuscation</h2>
-<h3 id="41-overview">4.1. Overview</h3>
-<p>Code Obfuscation changes the representation and structure of instructions while preserving the behavior of the program's operations. Its purpose is to maintain the same results while complicating static analysis, pattern matching, and automated code interpretation.</p>
-<p>VxLang can apply obfuscation to selected functions or code regions.</p>
-<h3 id="42-instruction-transformation">4.2. Instruction Transformation</h3>
-<p>Instruction transformation replaces existing instructions with semantically equivalent sequences. For example, it may split simple arithmetic or logic operations into multiple operations, introduce intermediate calculations, or change instruction arrangements.</p>
-<p>Results depend on the selected protection core and options.</p>
-<h3 id="43-mba-obfuscation">4.3. MBA Obfuscation</h3>
-<p>MBA (Mixed Boolean-Arithmetic) combines arithmetic and Boolean operations to express an original calculation in a more complex form.</p>
-<p><strong>Expected benefits</strong></p>
-<ul>
-<li>Makes the meaning of code harder to recognize directly.</li>
-<li>Complicates simple instruction-pattern matching.</li>
-<li>Can increase the effort needed to analyze and simplify expressions.</li>
-</ul>
-<p>Applying more MBA transformations can increase code size and execution time.</p>
-<h3 id="44-function-level-obfuscation">4.4. Function-Level Obfuscation</h3>
-<p>Function-level obfuscation protects the implementation of selected functions, such as license checks, critical calculations, and security validation.</p>
-<p>The <code>obfuscator.obfuscation</code> array stores the selection information for code regions to obfuscate. The format of individual array entries is described in <strong>Project Configuration</strong>.</p>
-<p>The <code>obfuscator.function-entry</code> option configures obfuscation associated with function entry points.</p>
-<h3 id="45-protection-core-selection">4.5. Protection Core Selection</h3>
-<p>VxLang uses the <code>core-name</code> setting to select a protection core for general obfuscation.</p>
+<h4>Reflection Settings</h4>
 <table>
 <thead>
 <tr>
-<th>Core</th>
+<th>Setting</th>
+<th>Type</th>
 <th>Description</th>
-<th>Recommendation</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>phobos</code></td>
-<td>Default protection core</td>
-<td>Recommended for general use</td>
+<td><code>protector.reflection.enable</code></td>
+<td>Boolean</td>
+<td>Enables or disables the Reflection feature.</td>
 </tr>
 <tr>
-<td><code>deimos</code></td>
-<td>Core designed to provide polymorphic hash-based MBA obfuscation</td>
-<td>Check compatibility during ongoing core improvements</td>
-</tr>
-<tr>
-<td><code>vxlang</code></td>
-<td>Core name included in the project configuration</td>
-<td>Verify support in the distributed version</td>
+<td><code>protector.reflection.ldr-update</code></td>
+<td>Boolean</td>
+<td>Configures LDR-update behavior associated with Reflection. Refer to the dedicated feature specifications for exact behavior and prerequisites.</td>
 </tr>
 </tbody>
 </table>
-<p><strong>The currently recommended core is <code>phobos</code>.</strong> If <code>core-name</code> is omitted, <code>phobos</code> is used by default.</p>
-<p>In the current core architecture, <code>core-name</code> applies to general obfuscation and the obfuscation API; it does not select the core used by the Packer Shell or VM Handlers. <code>deimos</code> may increase code-block splitting and affect performance, and it may be incompatible during core refactoring.</p>
-<hr/>
-<h2 id="5-code-virtualization">5. Code Virtualization</h2>
-<h3 id="51-overview">5.1. Overview</h3>
-<p>Code Virtualization converts selected native code into VxLang's virtual-instruction format. A VxLang virtual execution engine is used to execute protected code.</p>
-<p>By adding a translation layer between the original machine instructions and the virtual instructions handled at runtime, virtualization aims to make direct reconstruction of the original algorithm and control flow more difficult.</p>
-<h3 id="52-virtual-machine-based-protection">5.2. Virtual Machine-Based Protection</h3>
-<p>A typical protection flow is:</p>
-<div class="code-block"><div class="code-toolbar"><span class="code-label">TEXT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code>Original Native Code
-        |
-        v
-VxLang Virtualization
-        |
-        v
-Virtual Instructions + VM Execution Engine
-        |
-        v
-Protected Code Execution
-</code></pre><div class="json-tree" hidden=""></div></div>
-<p>The selected code region is handled by VxLang's virtual execution model. This transformation can make it harder to understand the code's behavior using native-code analysis alone.</p>
-<h3 id="53-multiple-virtual-machines">5.3. Multiple Virtual Machines</h3>
-<p>VxLang supports configurations using multiple virtual machines. The supplied project file contains:</p>
-<ul>
-<li><code>virtualizer.machine-count</code>: Setting related to the number of virtual machines.</li>
-</ul>
-<p>Using more than one VM does not automatically guarantee stronger protection; code size and execution overhead should also be considered.</p>
-<h3 id="54-dual-mode-protection">5.4. Dual-Mode Protection</h3>
-<p>Dual-Mode <strong>combines Code Obfuscation and Code Virtualization</strong> for selected code.</p>
-<div class="code-block"><div class="code-toolbar"><span class="code-label">TEXT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code>Selected Code
-     |
-     v
-Obfuscation + Virtualization
-     |
-     v
-Protected Execution
-</code></pre><div class="json-tree" hidden=""></div></div>
-<p>It can add complexity compared with virtualization alone, but may also affect performance and binary size. Use <code>virtualizer.dual-mode</code> to specify protected regions.</p>
-<h3 id="55-tma-virtualization-super-operators">5.5. TMA Virtualization (Super Operators)</h3>
-<p><strong>TMA Virtualization and Super Operators are the same feature.</strong> VxLang provides its Super Operator-based execution model under the name TMA Virtualization. They are not separate virtualization options.</p>
-<p>Use the following SDK markers in C/C++:</p>
-<ul>
-<li><code>VL_TMA_VIRTUALIZATION_BEGIN</code></li>
-<li><code>VL_TMA_VIRTUALIZATION_END</code></li>
-</ul>
-<p>TMA has a distinct SDK interface from standard virtualization. Check support requirements and runtime performance with your target application and distributed version.</p>
-<h3 id="56-performance-considerations">5.6. Performance Considerations</h3>
-<p>Virtualization can add processing overhead compared with native instruction execution. Performance degradation may be particularly noticeable when applied broadly to frequently called code or tight loops.</p>
-<p><strong>Recommendation:</strong> Apply virtualization selectively to critical algorithms, validation logic, and high-priority code regions, then compare performance before and after protection.</p>
-<hr/>
-<h2 id="6-code-flattening">6. Code Flattening</h2>
-<h3 id="61-overview">6.1. Overview</h3>
-<p>Code Flattening (Control Flow Flattening) is an obfuscation method that transforms a program's branch and execution-flow structure. It complicates analysis of the original function's control flow and execution order.</p>
-<h3 id="62-control-flow-transformation">6.2. Control Flow Transformation</h3>
-<p>Use <code>obfuscator.flattening</code> in the project to specify regions for this protection.</p>
-<p>Typical functions have relatively recognizable branch graphs formed by conditions and loops. Code Flattening can restructure these flows using state-based dispatch or similar constructs, making the original control flow more difficult to read directly.</p>
-<div class="code-block"><div class="code-toolbar"><span class="code-label">TEXT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code>Before
-
- Entry
-   |
- Condition
-  /     \
- A       B
-  \     /
-    Exit
-
-After (conceptual)
-
-   Entry
-     |
-  Dispatcher &lt;----+
-   /    \         |
- State A State B --+
-     |
-    Exit
-</code></pre><div class="json-tree" hidden=""></div></div>
-<p>This is a conceptual illustration; the generated control flow will not necessarily have exactly this structure.</p>
-<h3 id="63-usage-considerations">6.3. Usage Considerations</h3>
-<ul>
-<li>Prioritize functions where protection is most valuable instead of applying flattening indiscriminately.</li>
-<li>Output code size and execution time may vary with function size and complexity.</li>
-<li>Test protected functions that contain branches, loops, exception handling, and compiler optimizations.</li>
-</ul>
-<hr/>
-<h2 id="7-runtime-code-encryption">7. Runtime Code Encryption</h2>
-<h3 id="71-overview">7.1. Overview</h3>
-<p>Runtime Code Encryption <strong>keeps designated code regions encrypted, decrypts them when execution is required, and re-encrypts them after use</strong>.</p>
-<p>It is designed to account for analysis of process memory at runtime as well as examination of the executable on disk.</p>
-<h3 id="72-encryption-lifecycle">7.2. Encryption Lifecycle</h3>
-<div class="code-block"><div class="code-toolbar"><span class="code-label">TEXT</span><div class="code-actions"><button class="copy-btn" type="button">Copy</button></div></div><pre class="vx-code"><code>Encrypted Code (at rest)
-        |
-        | BEGIN
-        v
-Decrypted Code (in use)
-        |
-        | Protected code executes
-        v
-END
-        |
-        v
-Re-encrypted Code
-</code></pre><div class="json-tree" hidden=""></div></div>
-<ul>
-<li><strong>BEGIN:</strong> Decrypts the protected code region so it can execute.</li>
-<li><strong>Protected Execution:</strong> The decrypted code performs its required operations.</li>
-<li><strong>END:</strong> Re-encrypts the designated protected region.</li>
-</ul>
-<p>There may be an interval during execution when protected code exists in plaintext. Therefore, Runtime Code Encryption <strong>does not mean that original code can never appear in memory</strong>.</p>
-<h3 id="73-vxlang-core-dependency">7.3. VxLang-Core Dependency</h3>
-<p>Runtime Code Encryption is designed to <strong>operate together with VxLang-Core</strong>.</p>
-<p>Removing the Packer Shell from a protected executable does not automatically restore the encrypted original code or make it executable. The required VxLang-Core components must be loaded to decrypt and execute encrypted code.</p>
-<p>This is an important distinction between unpacking an executable and recovering its original code.</p>
-<h3 id="74-protected-code-types">7.4. Protected Code Types</h3>
-<p>The SDK can designate regions for Runtime Code Encryption.</p>
+<h3 id="56-address-range-address-range-settings">5.6. <code>address-range</code> — Address Range Settings</h3>
 <table>
 <thead>
 <tr>
-<th>Protected region</th>
-<th>SDK macros</th>
+<th>Setting</th>
+<th>Type</th>
+<th>Description</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>User code section protection</td>
-<td><code>VL_ENCRYPT_BEGIN</code> / <code>VL_ENCRYPT_END</code></td>
-</tr>
-<tr>
-<td>VxLang code section protection</td>
-<td><code>VL_ENCRYPT_OBFUSCATION_BEGIN</code> / <code>VL_ENCRYPT_OBFUSCATION_END</code></td>
+<td><code>address-range</code></td>
+<td>Array</td>
+<td>Configuration list for address ranges specified in the project.</td>
 </tr>
 </tbody>
 </table>
-<p>The VxLang code section protection API can also be used in configurations with Axion memory protection. Actual declarations, linking requirements, and examples are covered in <strong>SDK Integration</strong>.</p>
-<h3 id="75-thread-safe-execution">7.5. Thread-Safe Execution</h3>
-<p>Runtime Code Encryption is designed around reference counting to account for cases where multiple threads use the same encrypted code region.</p>
-<p>This is intended to prevent premature re-encryption while a thread is still executing the code. Test nested protected regions and thread-termination scenarios in the target application.</p>
-<h3 id="76-protection-benefits">7.6. Protection Benefits</h3>
-<p><strong>Hinders code collection through memory dumps</strong></p>
-<p>Code stays encrypted when not in use, which may make it harder to capture all original code in a protected region from a memory dump taken at an arbitrary moment.</p>
-<p><strong>Increases dynamic analysis effort</strong></p>
-<p>An analyst may need to track the precise decryption and execution windows, requiring more work than conventional bulk dumping and code collection.</p>
-<p><strong>Separates unpacking from original-code recovery</strong></p>
-<p>The VxLang-Core-dependent encryption design can restrict decryption and execution even after the Packer Shell has been removed.</p>
-<p><strong>Increases the difficulty of AI-assisted analysis</strong></p>
-<p>By limiting the time and scope in which plaintext code is available, the feature may make automated code collection and subsequent analysis more difficult. It does not, however, completely conceal code exposed during execution or the results of execution.</p>
-<hr/>
-<h2 id="8-choosing-a-protection-method">8. Choosing a Protection Method</h2>
-<p>Consider the following options based on what you need to protect.</p>
-<table>
-<thead>
-<tr>
-<th>Goal</th>
-<th>Feature to consider first</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Baseline protection for the entire executable</td>
-<td>Packer &amp; Protector</td>
-</tr>
-<tr>
-<td>Increase analysis difficulty for ordinary functions</td>
-<td>Code Obfuscation</td>
-</tr>
-<tr>
-<td>Protect critical algorithms or validation logic</td>
-<td>Code Virtualization</td>
-</tr>
-<tr>
-<td>Combine virtualization and obfuscation</td>
-<td>Dual-Mode</td>
-</tr>
-<tr>
-<td>Protect branching and control-flow structure</td>
-<td>Code Flattening</td>
-</tr>
-<tr>
-<td>Minimize continuous exposure of code during execution</td>
-<td>Runtime Code Encryption</td>
-</tr>
-<tr>
-<td>Combine methods for critical functions</td>
-<td>Evaluate compatible combinations of Virtualization / Obfuscation / Runtime Code Encryption</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Recommended approach:</strong> Start with baseline executable protection, selectively add obfuscation or virtualization to critical functions, and apply Runtime Code Encryption where needed. Choose combinations based on actual feature support and performance testing.</p>
-<h2 id="9-important-considerations">9. Important Considerations</h2>
+<p>In the supplied JSON, <code>address-range</code> is an empty array (<code>[]</code>). Since the file does not define the fields or precedence rules for individual address-range objects, no speculative item format is added here.</p>
+<h3 id="57-project-file-guidelines">5.7. Project File Guidelines</h3>
 <ol>
-<li><strong>Performance:</strong> Some protection methods increase execution time, memory usage, or output file size.</li>
-<li><strong>Compatibility:</strong> Certain options may be limited by the OS, CPU, compiler, exception-handling model, or target binary structure.</li>
-<li><strong>Compiler optimization:</strong> With SDK BEGIN/END regions, compiler code movement or merging may cause the actual protected region to differ from the intended one.</li>
-<li><strong>Feature combinations:</strong> Options apply at different execution layers, so not all combinations are supported in the same way.</li>
-<li><strong>Validation:</strong> After protection, test startup, shutdown, primary functionality, multithreading, exception handling, and performance in the actual deployment environment.</li>
+<li>Enter the actual target binary path in <code>input</code> before using the project. The example in this guide leaves it empty.</li>
+<li>In JSON, enclose strings in double quotes (<code>"</code>) and write Boolean values as <code>true</code> or <code>false</code>.</li>
+<li>Escape backslashes (<code>\</code>) when entering Windows paths directly in JSON strings. Example: <code>"C:\\VxLang\\sample.exe"</code>.</li>
+<li>An empty array (<code>[]</code>) means no items are specified in that array. It does not necessarily mean other related settings are automatically disabled.</li>
+<li>Consider backing up your JSON file before modifying the project configuration so you can compare or restore settings.</li>
 </ol>
-<h2 id="10-related-documentation">10. Related Documentation</h2>
-<ul>
-<li><strong>Getting Started</strong> — Installation and creation of your first project</li>
-<li><strong>Project Configuration (JSON)</strong> — Protection options and project fields</li>
-<li><strong>Using Obscurion (GUI)</strong> — Selecting protected regions through the GUI</li>
-<li><strong>SDK Integration</strong> — Designating protected code regions in C/C++</li>
-<li><strong>Advanced Configuration</strong> — Advanced settings for performance and compatibility</li>
-</ul>
 <hr/>
-<blockquote>
-<p>This is a user-facing overview of VxLang protection features. Refer to the configuration and API reference for your distributed version to confirm the exact feature support and option usage.</p>
-</blockquote>
 </article>
-      <nav class="page-pagination" aria-label="Page navigation"><a class="page-step prev" href="page_1.html"><small>← Previous</small><strong>Getting Started</strong></a><a class="page-step next" href="page_3.html"><small>Next →</small><strong>VxLang SDK Tutorial — Precautions</strong></a></nav>
+      <nav class="page-pagination" aria-label="Page navigation"><a class="page-step prev" href="page_1.html"><small>← Previous</small><strong>Purchase</strong></a><a class="page-step next" href="page_3.html"><small>Next →</small><strong>Protection Features</strong></a></nav>
       <footer class="page-footer">VxLang Documentation · Generated from Markdown</footer>
     </div></main>
-    <aside class="right-toc"><div class="toc-sticky"><div class="toc-heading">ON THIS PAGE</div><a class="toc-link" href="#1-sdk-protection-markers">1. SDK Protection Markers</a>
-<a class="toc-link toc-indent" href="#11-overview">1.1. Overview</a>
-<a class="toc-link toc-indent" href="#12-sdk-header-and-macro-activation">1.2. SDK Header and Macro Activation</a>
-<a class="toc-link toc-indent" href="#13-code-protection-example">1.3. Code Protection Example</a>
-<a class="toc-link toc-indent" href="#14-runtime-code-encryption-markers">1.4. Runtime Code Encryption Markers</a>
-<a class="toc-link toc-indent" href="#15-string-link-events">1.5. String Link Events</a>
-<a class="toc-link toc-indent" href="#16-usage-notes">1.6. Usage Notes</a>
-<a class="toc-link" href="#2-protection-methods-overview">2. Protection Methods Overview</a>
-<a class="toc-link" href="#3-packer-protector">3. Packer &amp; Protector</a>
-<a class="toc-link toc-indent" href="#31-overview">3.1. Overview</a>
-<a class="toc-link toc-indent" href="#32-executable-packing">3.2. Executable Packing</a>
-<a class="toc-link toc-indent" href="#33-compression">3.3. Compression</a>
-<a class="toc-link toc-indent" href="#34-import-table-protection">3.4. Import Table Protection</a>
-<a class="toc-link toc-indent" href="#35-entry-point-protection">3.5. Entry Point Protection</a>
-<a class="toc-link toc-indent" href="#36-anti-tamper-protection">3.6. Anti-Tamper Protection</a>
-<a class="toc-link toc-indent" href="#37-reflection">3.7. Reflection</a>
-<a class="toc-link" href="#4-code-obfuscation">4. Code Obfuscation</a>
-<a class="toc-link toc-indent" href="#41-overview">4.1. Overview</a>
-<a class="toc-link toc-indent" href="#42-instruction-transformation">4.2. Instruction Transformation</a>
-<a class="toc-link toc-indent" href="#43-mba-obfuscation">4.3. MBA Obfuscation</a>
-<a class="toc-link toc-indent" href="#44-function-level-obfuscation">4.4. Function-Level Obfuscation</a>
-<a class="toc-link toc-indent" href="#45-protection-core-selection">4.5. Protection Core Selection</a>
-<a class="toc-link" href="#5-code-virtualization">5. Code Virtualization</a>
-<a class="toc-link toc-indent" href="#51-overview">5.1. Overview</a>
-<a class="toc-link toc-indent" href="#52-virtual-machine-based-protection">5.2. Virtual Machine-Based Protection</a>
-<a class="toc-link toc-indent" href="#53-multiple-virtual-machines">5.3. Multiple Virtual Machines</a>
-<a class="toc-link toc-indent" href="#54-dual-mode-protection">5.4. Dual-Mode Protection</a>
-<a class="toc-link toc-indent" href="#55-tma-virtualization-super-operators">5.5. TMA Virtualization (Super Operators)</a>
-<a class="toc-link toc-indent" href="#56-performance-considerations">5.6. Performance Considerations</a>
-<a class="toc-link" href="#6-code-flattening">6. Code Flattening</a>
-<a class="toc-link toc-indent" href="#61-overview">6.1. Overview</a>
-<a class="toc-link toc-indent" href="#62-control-flow-transformation">6.2. Control Flow Transformation</a>
-<a class="toc-link toc-indent" href="#63-usage-considerations">6.3. Usage Considerations</a>
-<a class="toc-link" href="#7-runtime-code-encryption">7. Runtime Code Encryption</a>
-<a class="toc-link toc-indent" href="#71-overview">7.1. Overview</a>
-<a class="toc-link toc-indent" href="#72-encryption-lifecycle">7.2. Encryption Lifecycle</a>
-<a class="toc-link toc-indent" href="#73-vxlang-core-dependency">7.3. VxLang-Core Dependency</a>
-<a class="toc-link toc-indent" href="#74-protected-code-types">7.4. Protected Code Types</a>
-<a class="toc-link toc-indent" href="#75-thread-safe-execution">7.5. Thread-Safe Execution</a>
-<a class="toc-link toc-indent" href="#76-protection-benefits">7.6. Protection Benefits</a>
-<a class="toc-link" href="#8-choosing-a-protection-method">8. Choosing a Protection Method</a>
-<a class="toc-link" href="#9-important-considerations">9. Important Considerations</a>
-<a class="toc-link" href="#10-related-documentation">10. Related Documentation</a></div></aside>
+    <aside class="right-toc"><div class="toc-sticky"><div class="toc-heading">ON THIS PAGE</div><a class="toc-link" href="#contents">Contents</a>
+<a class="toc-link" href="#1-download-purchase">1. Download &amp; Purchase</a>
+<a class="toc-link toc-indent" href="#purchase-and-download-steps">Purchase and Download Steps</a>
+<a class="toc-link" href="#2-installation-file-structure">2. Installation &amp; File Structure</a>
+<a class="toc-link toc-indent" href="#main-components">Main Components</a>
+<a class="toc-link toc-indent" href="#example-working-directory">Example Working Directory</a>
+<a class="toc-link" href="#3-license-setup">3. License Setup</a>
+<a class="toc-link toc-indent" href="#verify-startup">Verify Startup</a>
+<a class="toc-link" href="#4-quick-start-protecting-your-first-exe">4. Quick Start — Protecting Your First EXE</a>
+<a class="toc-link toc-indent" href="#41-prepare-a-test-file">4.1. Prepare a Test File</a>
+<a class="toc-link toc-indent" href="#42-run-protection-from-the-command-line">4.2. Run Protection from the Command Line</a>
+<a class="toc-link toc-indent" href="#43-check-the-output">4.3. Check the Output</a>
+<a class="toc-link toc-indent" href="#44-run-the-protected-executable">4.4. Run the Protected Executable</a>
+<a class="toc-link" href="#5-project-configuration-json">5. Project Configuration (JSON)</a>
+<a class="toc-link toc-indent" href="#51-example-project-json">5.1. Example Project JSON</a>
+<a class="toc-link toc-indent" href="#52-general-project-settings">5.2. General Project Settings</a>
+<a class="toc-link toc-indent" href="#53-virtualizer-code-virtualization-settings">5.3. virtualizer — Code Virtualization Settings</a>
+<a class="toc-link toc-indent" href="#54-obfuscator-code-obfuscation-settings">5.4. obfuscator — Code Obfuscation Settings</a>
+<a class="toc-link toc-indent" href="#55-protector-packer-and-executable-protection-settings">5.5. protector — Packer and Executable Protection Settings</a>
+<a class="toc-link toc-indent" href="#56-address-range-address-range-settings">5.6. address-range — Address Range Settings</a>
+<a class="toc-link toc-indent" href="#57-project-file-guidelines">5.7. Project File Guidelines</a></div></aside>
   </div>
   <div id="search-modal" class="search-overlay" hidden>
     <div class="search-dialog" role="dialog" aria-modal="true" aria-label="Search documentation">
